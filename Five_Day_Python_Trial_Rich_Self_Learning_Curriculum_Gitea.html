@@ -1,0 +1,3647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Rich learner-facing curriculum with
+lesson-aligned drills, Gitea workflow, peer learning, and AI-awareness
+content." />
+<title>Five-Day Python Trial ��� Self-Learning Curriculum</title>
+<style>
+:root{
+  --bg:#f4f7fb; --paper:#fff; --ink:#142033; --muted:#5e6c80; --line:#dce5f0;
+  --navy:#0f2744; --blue:#2563eb; --teal:#0f766e; --purple:#6d28d9;
+  --soft-blue:#eef5ff; --soft-teal:#eaf8f5; --soft-purple:#f5f0ff;
+  --code:#0b1220; --code-ink:#e7edf7; --shadow:0 12px 34px rgba(15,39,68,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.68 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.shell{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;overflow:auto;background:linear-gradient(180deg,#0d1e33 0%,#112b49 100%);padding:26px 20px;color:#fff;border-right:1px solid rgba(255,255,255,.08)}
+.brand{padding:4px 8px 20px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,.12)}
+.kicker{font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:#9fc4ff}
+.brand h1{font-size:20px;line-height:1.28;color:#fff;margin:8px 0}.brand p{font-size:13px;color:#bdcadd;margin:8px 0 0}
+.toc-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#8fa8c8;margin:18px 8px 10px}
+#TOC ul{list-style:none;padding:0;margin:0}#TOC>ul>li{margin:6px 0}#TOC li ul{padding-left:12px;margin-top:2px}
+#TOC a{display:block;color:#d9e6f5;text-decoration:none;border-radius:8px;padding:6px 9px;font-size:12px;line-height:1.35}
+#TOC>ul>li>a{font-size:13px;font-weight:750;color:#fff}#TOC a:hover{background:rgba(255,255,255,.08)}
+.main{min-width:0}.hero{background:linear-gradient(135deg,#102b4a 0%,#184b79 54%,#2563eb 100%);padding:42px 56px 38px;color:#fff;border-bottom:1px solid rgba(0,0,0,.08)}
+.hero .eyebrow{font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:#c9ddff}.hero h1{font-size:38px;line-height:1.12;margin:9px 0 10px;color:#fff;max-width:980px}.hero p{font-size:17px;color:#e8f0fb;max-width:920px;margin:0}
+.badges{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.badge{font-size:12px;font-weight:700;padding:6px 10px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(255,255,255,.1)}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.action{display:inline-block;color:#fff!important;text-decoration:none!important;font-size:12px;font-weight:750;padding:8px 11px;border-radius:9px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.11)}
+.content-wrap{padding:34px 56px 72px}.document{max-width:1050px;margin:0 auto;background:var(--paper);padding:54px 64px;border-radius:20px;box-shadow:var(--shadow)}
+.document>p:first-child{font-size:17px;color:var(--muted);padding:15px 18px;background:#f7faff;border:1px solid var(--line);border-radius:12px;margin-top:0}
+h1,h2,h3,h4{color:var(--navy);scroll-margin-top:24px}.document h1{font-size:31px;line-height:1.2;margin:60px 0 18px;padding-top:8px;border-top:4px solid var(--blue)}.document h1:first-of-type{margin-top:18px}.document h2{font-size:25px;line-height:1.27;margin:48px 0 16px;padding-left:14px;border-left:4px solid var(--blue)}.document h3{font-size:19px;margin:31px 0 12px}.document h4{font-size:16px;margin:25px 0 10px}
+p{margin:0 0 17px}strong{color:#0f2848}ul,ol{padding-left:25px;margin:8px 0 22px}li{margin:7px 0}
+blockquote{margin:22px 0;padding:14px 18px;border-left:4px solid var(--teal);background:var(--soft-teal);color:#244b49;border-radius:0 10px 10px 0}
+table{width:100%!important;border-collapse:separate;border-spacing:0;margin:22px 0 30px;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}thead th{background:var(--navy);color:#fff;font-weight:750;text-align:left;padding:12px 14px;border-right:1px solid rgba(255,255,255,.15)}thead th:last-child{border-right:0}tbody td,tbody th{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top;text-align:left}tbody tr:nth-child(even){background:#f8fbff}tbody th{background:#f1f6fd;color:#17375e;font-weight:750}
+pre{background:var(--code)!important;color:var(--code-ink)!important;padding:18px 20px;border-radius:12px;overflow:auto;border:1px solid #1d2a3d;margin:18px 0 24px;white-space:pre}pre code{background:none!important;color:inherit!important;padding:0!important;font:14px/1.6 "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace!important}code{background:#eef3f9;color:#15365c;border-radius:6px;padding:.15em .38em;font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;font-size:.92em}
+.sourceCode{background:var(--code)!important}.sourceCode span{color:inherit}.resource-line{border-left:3px solid var(--purple);background:var(--soft-purple);padding:9px 12px;border-radius:7px}
+hr{border:0;border-top:1px solid var(--line);margin:38px 0}.footer{max-width:1050px;margin:26px auto 0;text-align:center;color:#718096;font-size:12px}
+@media(max-width:980px){.shell{grid-template-columns:1fr}.sidebar{position:relative;height:auto;max-height:420px}.hero{padding:32px 24px}.hero h1{font-size:30px}.content-wrap{padding:20px 14px 45px}.document{padding:30px 22px;border-radius:14px}}
+@media print{body{background:#fff;font-size:11pt}.sidebar,.actions{display:none!important}.shell{display:block}.hero{background:#fff!important;color:#000;padding:0 0 18px;border-bottom:2px solid #000}.hero .eyebrow,.hero p{color:#333}.hero h1{color:#000}.content-wrap{padding:0}.document{max-width:none;box-shadow:none;padding:0}a{color:#000;text-decoration:none}pre{white-space:pre-wrap;word-break:break-word}}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="kicker">L2E • Five-Day Python Trial</div>
+      <h1>Five-Day Python Trial ��� Self-Learning Curriculum</h1>
+      <p>Learner-facing curriculum</p>
+    </div>
+    <div class="toc-label">Contents</div>
+    <ul>
+    <li><a href="#purpose-of-this-edition"
+    id="toc-purpose-of-this-edition">Purpose of This Edition</a></li>
+    <li><a href="#how-a-learner-should-use-every-lesson"
+    id="toc-how-a-learner-should-use-every-lesson">How a learner should
+    use every lesson</a></li>
+    <li><a href="#five-day-learning-map"
+    id="toc-five-day-learning-map">Five-Day Learning Map</a></li>
+    <li><a href="#day-1-foundations-git-and-first-working-code"
+    id="toc-day-1-foundations-git-and-first-working-code">Day 1 —
+    Foundations, Git and First Working Code</a>
+    <ul>
+    <li><a href="#lesson-1.1-git-repositories-and-saving-your-work"
+    id="toc-lesson-1.1-git-repositories-and-saving-your-work">Lesson 1.1
+    — Git, Repositories and Saving Your Work</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do"
+    id="toc-what-you-should-be-able-to-do">What you should be able to
+    do</a></li>
+    <li><a href="#why-software-engineers-use-version-control"
+    id="toc-why-software-engineers-use-version-control">Why software
+    engineers use version control</a></li>
+    <li><a href="#the-basic-git-workflow"
+    id="toc-the-basic-git-workflow">The basic Git workflow</a></li>
+    <li><a href="#what-makes-a-useful-commit"
+    id="toc-what-makes-a-useful-commit">What makes a useful
+    commit</a></li>
+    <li><a href="#quick-self-check" id="toc-quick-self-check">Quick
+    self-check</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation"
+    id="toc-optional-resources-if-you-want-another-explanation">Optional
+    resources if you want another explanation</a></li>
+    <li><a href="#drill" id="toc-drill">Drill</a></li>
+    </ul></li>
+    <li><a href="#lesson-1.2-from-a-problem-to-instructions"
+    id="toc-lesson-1.2-from-a-problem-to-instructions">Lesson 1.2 — From
+    a Problem to Instructions</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-1"
+    id="toc-what-you-should-be-able-to-do-1">What you should be able to
+    do</a></li>
+    <li><a href="#start-with-the-problem-not-the-syntax"
+    id="toc-start-with-the-problem-not-the-syntax">Start with the
+    problem, not the syntax</a></li>
+    <li><a href="#turn-the-problem-into-an-algorithm"
+    id="toc-turn-the-problem-into-an-algorithm">Turn the problem into an
+    algorithm</a></li>
+    <li><a href="#think-before-you-run"
+    id="toc-think-before-you-run">Think before you run</a></li>
+    <li><a href="#mini-activity" id="toc-mini-activity">Mini
+    activity</a></li>
+    <li><a href="#common-mistakes-to-watch-for"
+    id="toc-common-mistakes-to-watch-for">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint"
+    id="toc-peer-learning-checkpoint">Peer learning checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-1"
+    id="toc-optional-resources-if-you-want-another-explanation-1">Optional
+    resources if you want another explanation</a></li>
+    <li><a href="#linked-drills-use-these-to-test-what-you-just-learned"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a href="#lesson-1.3-read-your-first-python-function"
+    id="toc-lesson-1.3-read-your-first-python-function">Lesson 1.3 —
+    Read Your First Python Function</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-2"
+    id="toc-what-you-should-be-able-to-do-2">What you should be able to
+    do</a></li>
+    <li><a href="#read-code-as-a-story"
+    id="toc-read-code-as-a-story">Read code as a story</a></li>
+    <li><a href="#what-each-part-means"
+    id="toc-what-each-part-means">What each part means</a></li>
+    <li><a href="#indentation-is-structure-not-decoration"
+    id="toc-indentation-is-structure-not-decoration">Indentation is
+    structure, not decoration</a></li>
+    <li><a href="#trace-it-by-hand" id="toc-trace-it-by-hand">Trace it
+    by hand</a></li>
+    <li><a href="#common-mistakes-to-watch-for-1"
+    id="toc-common-mistakes-to-watch-for-1">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-1"
+    id="toc-peer-learning-checkpoint-1">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-2"
+    id="toc-optional-resources-if-you-want-another-explanation-2">Optional
+    resources if you want another explanation</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-1"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-1">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a href="#lesson-1.4-variables-values-and-arithmetic"
+    id="toc-lesson-1.4-variables-values-and-arithmetic">Lesson 1.4 —
+    Variables, Values and Arithmetic</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-3"
+    id="toc-what-you-should-be-able-to-do-3">What you should be able to
+    do</a></li>
+    <li><a href="#names-make-calculations-readable"
+    id="toc-names-make-calculations-readable">Names make calculations
+    readable</a></li>
+    <li><a href="#arithmetic-operators"
+    id="toc-arithmetic-operators">Arithmetic operators</a></li>
+    <li><a href="#use-the-inputs-never-the-sample-answer"
+    id="toc-use-the-inputs-never-the-sample-answer">Use the inputs —
+    never the sample answer</a></li>
+    <li><a href="#worked-example" id="toc-worked-example">Worked
+    example</a></li>
+    <li><a href="#common-mistakes-to-watch-for-2"
+    id="toc-common-mistakes-to-watch-for-2">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-2"
+    id="toc-peer-learning-checkpoint-2">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-3"
+    id="toc-optional-resources-if-you-want-another-explanation-3">Optional
+    resources if you want another explanation</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-2"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-2">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#lesson-1.5-strings-f-strings-and-exact-returned-messages"
+    id="toc-lesson-1.5-strings-f-strings-and-exact-returned-messages">Lesson
+    1.5 — Strings, f-Strings and Exact Returned Messages</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-4"
+    id="toc-what-you-should-be-able-to-do-4">What you should be able to
+    do</a></li>
+    <li><a href="#text-is-data-too" id="toc-text-is-data-too">Text is
+    data too</a></li>
+    <li><a href="#insert-values-with-f-strings"
+    id="toc-insert-values-with-f-strings">Insert values with
+    f-strings</a></li>
+    <li><a href="#separate-calculation-from-presentation"
+    id="toc-separate-calculation-from-presentation">Separate calculation
+    from presentation</a></li>
+    <li><a href="#worked-example-1" id="toc-worked-example-1">Worked
+    example</a></li>
+    <li><a href="#common-mistakes-to-watch-for-3"
+    id="toc-common-mistakes-to-watch-for-3">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-3"
+    id="toc-peer-learning-checkpoint-3">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-4"
+    id="toc-optional-resources-if-you-want-another-explanation-4">Optional
+    resources if you want another explanation</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-3"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-3">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#lesson-1.6-return-vs-print-function-calls-and-tracing-values"
+    id="toc-lesson-1.6-return-vs-print-function-calls-and-tracing-values">Lesson
+    1.6 — Return vs Print, Function Calls and Tracing Values</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-5"
+    id="toc-what-you-should-be-able-to-do-5">What you should be able to
+    do</a></li>
+    <li><a href="#return-and-print-solve-different-problems"
+    id="toc-return-and-print-solve-different-problems">Return and print
+    solve different problems</a></li>
+    <li><a href="#functions-can-reuse-other-functions"
+    id="toc-functions-can-reuse-other-functions">Functions can reuse
+    other functions</a></li>
+    <li><a href="#trace-the-flow" id="toc-trace-the-flow">Trace the
+    flow</a></li>
+    <li><a href="#common-mistakes-to-watch-for-4"
+    id="toc-common-mistakes-to-watch-for-4">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-4"
+    id="toc-peer-learning-checkpoint-4">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-5"
+    id="toc-optional-resources-if-you-want-another-explanation-5">Optional
+    resources if you want another explanation</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-4"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-4">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#lesson-1.7-read-the-brief-follow-the-contract-and-repair-small-errors"
+    id="toc-lesson-1.7-read-the-brief-follow-the-contract-and-repair-small-errors">Lesson
+    1.7 — Read the Brief, Follow the Contract and Repair Small
+    Errors</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-6"
+    id="toc-what-you-should-be-able-to-do-6">What you should be able to
+    do</a></li>
+    <li><a href="#the-brief-is-part-of-the-test"
+    id="toc-the-brief-is-part-of-the-test">The brief is part of the
+    test</a></li>
+    <li><a href="#syntax-error-vs-logic-error"
+    id="toc-syntax-error-vs-logic-error">Syntax error vs logic
+    error</a></li>
+    <li><a href="#do-not-add-unrelated-features"
+    id="toc-do-not-add-unrelated-features">Do not add unrelated
+    features</a></li>
+    <li><a href="#common-mistakes-to-watch-for-5"
+    id="toc-common-mistakes-to-watch-for-5">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-5"
+    id="toc-peer-learning-checkpoint-5">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-6"
+    id="toc-optional-resources-if-you-want-another-explanation-6">Optional
+    resources if you want another explanation</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-5"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-5">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#ai-lesson-1.8-what-artificial-intelligence-is-and-is-not"
+    id="toc-ai-lesson-1.8-what-artificial-intelligence-is-and-is-not">AI
+    Lesson 1.8 — What Artificial Intelligence Is — and Is Not</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-7"
+    id="toc-what-you-should-be-able-to-do-7">What you should be able to
+    do</a></li>
+    <li><a href="#ai-is-a-broad-idea" id="toc-ai-is-a-broad-idea">AI is
+    a broad idea</a></li>
+    <li><a href="#ai-output-is-not-proof"
+    id="toc-ai-output-is-not-proof">AI output is not proof</a></li>
+    <li><a href="#during-the-trial" id="toc-during-the-trial">During the
+    trial</a></li>
+    <li><a href="#peer-learning-checkpoint-6"
+    id="toc-peer-learning-checkpoint-6">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-7"
+    id="toc-optional-resources-if-you-want-another-explanation-7">Optional
+    resources if you want another explanation</a></li>
+    <li><a href="#drill-1" id="toc-drill-1">Drill</a></li>
+    </ul></li>
+    </ul></li>
+    <li><a href="#day-2-baseline-decisions-and-individual-build"
+    id="toc-day-2-baseline-decisions-and-individual-build">Day 2 —
+    Baseline, Decisions and Individual Build</a>
+    <ul>
+    <li><a href="#day-2-supervised-baseline-checkpoint-10-questions"
+    id="toc-day-2-supervised-baseline-checkpoint-10-questions">Day 2
+    Supervised Baseline Checkpoint — 10 Questions</a></li>
+    <li><a href="#lesson-2.1-comparisons-and-boolean-questions"
+    id="toc-lesson-2.1-comparisons-and-boolean-questions">Lesson 2.1 —
+    Comparisons and Boolean Questions</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-8"
+    id="toc-what-you-should-be-able-to-do-8">What you should be able to
+    do</a></li>
+    <li><a href="#programs-often-need-questions-not-only-calculations"
+    id="toc-programs-often-need-questions-not-only-calculations">Programs
+    often need questions, not only calculations</a></li>
+    <li><a href="#boundary-values-matter"
+    id="toc-boundary-values-matter">Boundary values matter</a></li>
+    <li><a href="#predict-first" id="toc-predict-first">Predict
+    first</a></li>
+    <li><a href="#worked-example-2" id="toc-worked-example-2">Worked
+    example</a></li>
+    <li><a href="#common-mistakes-to-watch-for-6"
+    id="toc-common-mistakes-to-watch-for-6">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-7"
+    id="toc-peer-learning-checkpoint-7">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-8"
+    id="toc-optional-resources-if-you-want-another-explanation-8">Optional
+    resources if you want another explanation</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-6"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-6">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#lesson-2.2-make-decisions-with-ifelse-and-test-the-boundary"
+    id="toc-lesson-2.2-make-decisions-with-ifelse-and-test-the-boundary">Lesson
+    2.2 — Make Decisions with if/else and Test the Boundary</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-9"
+    id="toc-what-you-should-be-able-to-do-9">What you should be able to
+    do</a></li>
+    <li><a href="#from-a-question-to-a-decision"
+    id="toc-from-a-question-to-a-decision">From a question to a
+    decision</a></li>
+    <li><a href="#read-the-rule-before-choosing-the-operator"
+    id="toc-read-the-rule-before-choosing-the-operator">Read the rule
+    before choosing the operator</a></li>
+    <li><a href="#test-three-categories"
+    id="toc-test-three-categories">Test three categories</a></li>
+    <li><a href="#common-mistakes-to-watch-for-7"
+    id="toc-common-mistakes-to-watch-for-7">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-8"
+    id="toc-peer-learning-checkpoint-8">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-9"
+    id="toc-optional-resources-if-you-want-another-explanation-9">Optional
+    resources if you want another explanation</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-7"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-7">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#lesson-2.3-function-contracts-and-combining-small-functions"
+    id="toc-lesson-2.3-function-contracts-and-combining-small-functions">Lesson
+    2.3 — Function Contracts and Combining Small Functions</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-10"
+    id="toc-what-you-should-be-able-to-do-10">What you should be able to
+    do</a></li>
+    <li><a href="#a-function-should-have-a-clear-job"
+    id="toc-a-function-should-have-a-clear-job">A function should have a
+    clear job</a></li>
+    <li><a href="#build-from-small-pieces"
+    id="toc-build-from-small-pieces">Build from small pieces</a></li>
+    <li><a href="#trace-the-contract-chain"
+    id="toc-trace-the-contract-chain">Trace the contract chain</a></li>
+    <li><a href="#common-mistakes-to-watch-for-8"
+    id="toc-common-mistakes-to-watch-for-8">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-9"
+    id="toc-peer-learning-checkpoint-9">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-10"
+    id="toc-optional-resources-if-you-want-another-explanation-10">Optional
+    resources if you want another explanation</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-8"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-8">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#lesson-2.4-testing-expected-results-and-debugging-small-programs"
+    id="toc-lesson-2.4-testing-expected-results-and-debugging-small-programs">Lesson
+    2.4 — Testing Expected Results and Debugging Small Programs</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-11"
+    id="toc-what-you-should-be-able-to-do-11">What you should be able to
+    do</a></li>
+    <li><a href="#a-test-starts-with-an-expectation"
+    id="toc-a-test-starts-with-an-expectation">A test starts with an
+    expectation</a></li>
+    <li><a href="#debugging-is-a-process-not-guessing"
+    id="toc-debugging-is-a-process-not-guessing">Debugging is a process,
+    not guessing</a></li>
+    <li><a href="#keep-evidence-of-improvement"
+    id="toc-keep-evidence-of-improvement">Keep evidence of
+    improvement</a></li>
+    <li><a href="#common-mistakes-to-watch-for-9"
+    id="toc-common-mistakes-to-watch-for-9">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-10"
+    id="toc-peer-learning-checkpoint-10">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-11"
+    id="toc-optional-resources-if-you-want-another-explanation-11">Optional
+    resources if you want another explanation</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-9"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-9">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#lesson-2.5-plan-from-a-brief-build-a-first-attempt-use-feedback-and-retest"
+    id="toc-lesson-2.5-plan-from-a-brief-build-a-first-attempt-use-feedback-and-retest">Lesson
+    2.5 — Plan from a Brief, Build a First Attempt, Use Feedback and
+    Retest</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-12"
+    id="toc-what-you-should-be-able-to-do-12">What you should be able to
+    do</a></li>
+    <li><a href="#planning-prevents-accidental-complexity"
+    id="toc-planning-prevents-accidental-complexity">Planning prevents
+    accidental complexity</a></li>
+    <li><a href="#preserve-the-first-attempt"
+    id="toc-preserve-the-first-attempt">Preserve the first
+    attempt</a></li>
+    <li><a href="#retest-and-explain" id="toc-retest-and-explain">Retest
+    and explain</a></li>
+    <li><a href="#common-mistakes-to-watch-for-10"
+    id="toc-common-mistakes-to-watch-for-10">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-11"
+    id="toc-peer-learning-checkpoint-11">Peer learning
+    checkpoint</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-10"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-10">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a href="#ai-lesson-2.6-generative-ai-and-prompting-basics"
+    id="toc-ai-lesson-2.6-generative-ai-and-prompting-basics">AI Lesson
+    2.6 — Generative AI and Prompting Basics</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-13"
+    id="toc-what-you-should-be-able-to-do-13">What you should be able to
+    do</a></li>
+    <li><a href="#a-prompt-is-part-of-the-input"
+    id="toc-a-prompt-is-part-of-the-input">A prompt is part of the
+    input</a></li>
+    <li><a href="#protect-information"
+    id="toc-protect-information">Protect information</a></li>
+    <li><a href="#verify-do-not-merely-accept"
+    id="toc-verify-do-not-merely-accept">Verify, do not merely
+    accept</a></li>
+    <li><a href="#peer-learning-checkpoint-12"
+    id="toc-peer-learning-checkpoint-12">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-12"
+    id="toc-optional-resources-if-you-want-another-explanation-12">Optional
+    resources if you want another explanation</a></li>
+    <li><a href="#drill-2" id="toc-drill-2">Drill</a></li>
+    </ul></li>
+    <li><a href="#day-2-individual-mission-personal-budget-helper"
+    id="toc-day-2-individual-mission-personal-budget-helper">Day 2
+    Individual Mission — Personal Budget Helper</a>
+    <ul>
+    <li><a href="#mission-workflow" id="toc-mission-workflow">Mission
+    workflow</a></li>
+    </ul></li>
+    </ul></li>
+    <li><a
+    href="#day-3-team-decomposition-integration-and-mission-launch"
+    id="toc-day-3-team-decomposition-integration-and-mission-launch">Day
+    3 — Team Decomposition, Integration and Mission Launch</a>
+    <ul>
+    <li><a
+    href="#lesson-3.1-break-a-team-problem-into-components-and-contracts"
+    id="toc-lesson-3.1-break-a-team-problem-into-components-and-contracts">Lesson
+    3.1 — Break a Team Problem into Components and Contracts</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-14"
+    id="toc-what-you-should-be-able-to-do-14">What you should be able to
+    do</a></li>
+    <li><a href="#a-team-project-is-one-system"
+    id="toc-a-team-project-is-one-system">A team project is one
+    system</a></li>
+    <li><a href="#ownership-does-not-mean-ignorance"
+    id="toc-ownership-does-not-mean-ignorance">Ownership does not mean
+    ignorance</a></li>
+    <li><a href="#define-before-you-build"
+    id="toc-define-before-you-build">Define before you build</a></li>
+    <li><a href="#common-mistakes-to-watch-for-11"
+    id="toc-common-mistakes-to-watch-for-11">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-13"
+    id="toc-peer-learning-checkpoint-13">Peer learning
+    checkpoint</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-11"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-11">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#lesson-3.2-integrate-components-and-reuse-returned-values"
+    id="toc-lesson-3.2-integrate-components-and-reuse-returned-values">Lesson
+    3.2 — Integrate Components and Reuse Returned Values</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-15"
+    id="toc-what-you-should-be-able-to-do-15">What you should be able to
+    do</a></li>
+    <li><a href="#integration-is-where-contracts-meet"
+    id="toc-integration-is-where-contracts-meet">Integration is where
+    contracts meet</a></li>
+    <li><a href="#integrate-in-small-steps"
+    id="toc-integrate-in-small-steps">Integrate in small steps</a></li>
+    <li><a href="#common-mistakes-to-watch-for-12"
+    id="toc-common-mistakes-to-watch-for-12">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-14"
+    id="toc-peer-learning-checkpoint-14">Peer learning
+    checkpoint</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-12"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-12">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#lesson-3.3-test-your-component-document-a-handover-and-repair-peer-code-carefully"
+    id="toc-lesson-3.3-test-your-component-document-a-handover-and-repair-peer-code-carefully">Lesson
+    3.3 — Test Your Component, Document a Handover and Repair Peer Code
+    Carefully</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-16"
+    id="toc-what-you-should-be-able-to-do-16">What you should be able to
+    do</a></li>
+    <li><a href="#a-component-is-not-ready-because-it-ran-once"
+    id="toc-a-component-is-not-ready-because-it-ran-once">A component is
+    not ready because it ran once</a></li>
+    <li><a href="#a-useful-handover-is-short-and-concrete"
+    id="toc-a-useful-handover-is-short-and-concrete">A useful handover
+    is short and concrete</a></li>
+    <li><a href="#review-without-taking-over"
+    id="toc-review-without-taking-over">Review without taking
+    over</a></li>
+    <li><a href="#common-mistakes-to-watch-for-13"
+    id="toc-common-mistakes-to-watch-for-13">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-15"
+    id="toc-peer-learning-checkpoint-15">Peer learning
+    checkpoint</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-13"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-13">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#lesson-3.4-peer-review-and-visible-individual-contribution"
+    id="toc-lesson-3.4-peer-review-and-visible-individual-contribution">Lesson
+    3.4 — Peer Review and Visible Individual Contribution</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-17"
+    id="toc-what-you-should-be-able-to-do-17">What you should be able to
+    do</a></li>
+    <li><a href="#what-counts-as-contribution"
+    id="toc-what-counts-as-contribution">What counts as
+    contribution</a></li>
+    <li><a href="#review-against-the-contract"
+    id="toc-review-against-the-contract">Review against the
+    contract</a></li>
+    <li><a href="#peer-learning-checkpoint-16"
+    id="toc-peer-learning-checkpoint-16">Peer learning
+    checkpoint</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-14"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-14">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#ai-lesson-3.5-ai-as-a-coding-assistant-helpful-but-not-the-owner"
+    id="toc-ai-lesson-3.5-ai-as-a-coding-assistant-helpful-but-not-the-owner">AI
+    Lesson 3.5 — AI as a Coding Assistant — Helpful, but Not the
+    Owner</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-18"
+    id="toc-what-you-should-be-able-to-do-18">What you should be able to
+    do</a></li>
+    <li><a href="#ai-can-accelerate-some-tasks"
+    id="toc-ai-can-accelerate-some-tasks">AI can accelerate some
+    tasks</a></li>
+    <li><a href="#the-engineer-remains-responsible"
+    id="toc-the-engineer-remains-responsible">The engineer remains
+    responsible</a></li>
+    <li><a href="#peer-learning-checkpoint-17"
+    id="toc-peer-learning-checkpoint-17">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-13"
+    id="toc-optional-resources-if-you-want-another-explanation-13">Optional
+    resources if you want another explanation</a></li>
+    <li><a href="#drill-3" id="toc-drill-3">Drill</a></li>
+    </ul></li>
+    <li><a href="#ai-lesson-3.6-data-context-and-better-prompts"
+    id="toc-ai-lesson-3.6-data-context-and-better-prompts">AI Lesson 3.6
+    — Data, Context and Better Prompts</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-19"
+    id="toc-what-you-should-be-able-to-do-19">What you should be able to
+    do</a></li>
+    <li><a href="#context-changes-the-answer"
+    id="toc-context-changes-the-answer">Context changes the
+    answer</a></li>
+    <li><a href="#ask-for-reasoning-that-you-can-verify"
+    id="toc-ask-for-reasoning-that-you-can-verify">Ask for reasoning
+    that you can verify</a></li>
+    <li><a href="#peer-learning-checkpoint-18"
+    id="toc-peer-learning-checkpoint-18">Peer learning
+    checkpoint</a></li>
+    <li><a href="#drill-4" id="toc-drill-4">Drill</a></li>
+    </ul></li>
+    <li><a href="#days-34-team-mission-event-budget-helper"
+    id="toc-days-34-team-mission-event-budget-helper">Days 3–4 Team
+    Mission — Event Budget Helper</a></li>
+    </ul></li>
+    <li><a
+    href="#day-4-regression-testing-debugging-and-team-mission-completion"
+    id="toc-day-4-regression-testing-debugging-and-team-mission-completion">Day
+    4 — Regression Testing, Debugging and Team Mission Completion</a>
+    <ul>
+    <li><a href="#lesson-4.1-acceptance-criteria-and-regression-testing"
+    id="toc-lesson-4.1-acceptance-criteria-and-regression-testing">Lesson
+    4.1 — Acceptance Criteria and Regression Testing</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-20"
+    id="toc-what-you-should-be-able-to-do-20">What you should be able to
+    do</a></li>
+    <li><a href="#acceptance-criteria-describe-success"
+    id="toc-acceptance-criteria-describe-success">Acceptance criteria
+    describe success</a></li>
+    <li><a href="#regression-testing-protects-earlier-work"
+    id="toc-regression-testing-protects-earlier-work">Regression testing
+    protects earlier work</a></li>
+    <li><a href="#record-evidence-not-only-conclusions"
+    id="toc-record-evidence-not-only-conclusions">Record evidence, not
+    only conclusions</a></li>
+    <li><a href="#common-mistakes-to-watch-for-14"
+    id="toc-common-mistakes-to-watch-for-14">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-19"
+    id="toc-peer-learning-checkpoint-19">Peer learning
+    checkpoint</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-15"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-15">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a href="#lesson-4.2-debug-one-cause-at-a-time"
+    id="toc-lesson-4.2-debug-one-cause-at-a-time">Lesson 4.2 — Debug One
+    Cause at a Time</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-21"
+    id="toc-what-you-should-be-able-to-do-21">What you should be able to
+    do</a></li>
+    <li><a href="#first-reproduce-the-problem"
+    id="toc-first-reproduce-the-problem">First reproduce the
+    problem</a></li>
+    <li><a href="#protect-known-good-components"
+    id="toc-protect-known-good-components">Protect known-good
+    components</a></li>
+    <li><a href="#change-one-thing" id="toc-change-one-thing">Change one
+    thing</a></li>
+    <li><a href="#common-mistakes-to-watch-for-15"
+    id="toc-common-mistakes-to-watch-for-15">Common mistakes to watch
+    for</a></li>
+    <li><a href="#peer-learning-checkpoint-20"
+    id="toc-peer-learning-checkpoint-20">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-14"
+    id="toc-optional-resources-if-you-want-another-explanation-14">Optional
+    resources if you want another explanation</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-16"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-16">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#lesson-4.3-explain-a-change-with-evidence-and-prepare-for-inspection"
+    id="toc-lesson-4.3-explain-a-change-with-evidence-and-prepare-for-inspection">Lesson
+    4.3 — Explain a Change with Evidence and Prepare for Inspection</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-22"
+    id="toc-what-you-should-be-able-to-do-22">What you should be able to
+    do</a></li>
+    <li><a href="#explanation-is-part-of-engineering-work"
+    id="toc-explanation-is-part-of-engineering-work">Explanation is part
+    of engineering work</a></li>
+    <li><a href="#use-a-simple-evidence-pattern"
+    id="toc-use-a-simple-evidence-pattern">Use a simple evidence
+    pattern</a></li>
+    <li><a href="#prepare-do-not-rehearse-a-script"
+    id="toc-prepare-do-not-rehearse-a-script">Prepare, do not rehearse a
+    script</a></li>
+    <li><a href="#peer-learning-checkpoint-21"
+    id="toc-peer-learning-checkpoint-21">Peer learning
+    checkpoint</a></li>
+    <li><a
+    href="#linked-drills-use-these-to-test-what-you-just-learned-17"
+    id="toc-linked-drills-use-these-to-test-what-you-just-learned-17">Linked
+    drill(s) — use these to test what you just learned</a></li>
+    </ul></li>
+    <li><a
+    href="#ai-lesson-4.4-hallucinations-verification-privacy-and-responsible-use"
+    id="toc-ai-lesson-4.4-hallucinations-verification-privacy-and-responsible-use">AI
+    Lesson 4.4 — Hallucinations, Verification, Privacy and Responsible
+    Use</a>
+    <ul>
+    <li><a href="#what-you-should-be-able-to-do-23"
+    id="toc-what-you-should-be-able-to-do-23">What you should be able to
+    do</a></li>
+    <li><a href="#confident-does-not-mean-correct"
+    id="toc-confident-does-not-mean-correct">Confident does not mean
+    correct</a></li>
+    <li><a href="#verification-is-a-workflow"
+    id="toc-verification-is-a-workflow">Verification is a
+    workflow</a></li>
+    <li><a href="#peer-learning-checkpoint-22"
+    id="toc-peer-learning-checkpoint-22">Peer learning
+    checkpoint</a></li>
+    <li><a href="#optional-resources-if-you-want-another-explanation-15"
+    id="toc-optional-resources-if-you-want-another-explanation-15">Optional
+    resources if you want another explanation</a></li>
+    <li><a href="#drill-5" id="toc-drill-5">Drill</a></li>
+    </ul></li>
+    <li><a
+    href="#team-mission-part-2-integrate-cross-test-improve-and-inspect"
+    id="toc-team-mission-part-2-integrate-cross-test-improve-and-inspect">Team
+    Mission Part 2 — Integrate, Cross-Test, Improve and Inspect</a></li>
+    </ul></li>
+    <li><a href="#day-5-final-supervised-checkpoint-and-reflection"
+    id="toc-day-5-final-supervised-checkpoint-and-reflection">Day 5 —
+    Final Supervised Checkpoint and Reflection</a>
+    <ul>
+    <li><a href="#day-5-final-coding-checkpoint-15-questions"
+    id="toc-day-5-final-coding-checkpoint-15-questions">Day 5 Final
+    Coding Checkpoint — 15 Questions</a></li>
+    <li><a href="#ai-awareness-check-10-mcqs"
+    id="toc-ai-awareness-check-10-mcqs">AI Awareness Check — 10
+    MCQs</a></li>
+    <li><a href="#final-reflection" id="toc-final-reflection">Final
+    Reflection</a></li>
+    </ul></li>
+    <li><a href="#assessment-and-evidence-summary"
+    id="toc-assessment-and-evidence-summary">Assessment and Evidence
+    Summary</a></li>
+    <li><a href="#resource-library" id="toc-resource-library">Resource
+    Library</a></li>
+    <li><a href="#help-ladder" id="toc-help-ladder">Help Ladder</a></li>
+    </ul>
+  </aside>
+  <main class="main">
+    <header class="hero">
+      <div class="eyebrow">Learner-facing curriculum</div>
+      <h1>Five-Day Python Trial ��� Self-Learning Curriculum</h1>
+      <p>Rich learner-facing curriculum with lesson-aligned drills,
+Gitea workflow, peer learning, and AI-awareness content.</p>
+      <div class="badges">
+        <span class="badge">Python foundations</span>
+        <span class="badge">Gitea workflow</span>
+        <span class="badge">Self-learning</span>
+        <span class="badge">Peer-supported</span>
+        <span class="badge">AI-aware</span>
+        
+      </div>
+      <div class="actions"><a class="action" href="#" onclick="window.print();return false;">Print / Save as PDF</a></div>
+    </header>
+    <div class="content-wrap">
+      <article class="document"><p>Rich self-learning edition with
+lesson-aligned drills and AI awareness</p>
+<p><strong>Self-learning • peer-supported • beginner-friendly •
+AI-aware</strong></p>
+<section id="purpose-of-this-edition" class="level1">
+<h1>Purpose of This Edition</h1>
+<p>This edition is written for the learner, not for a lecturer. Every
+lesson must teach the concept inside the lesson itself. A learner should
+be able to read the explanation, follow the worked example, try a small
+activity, discuss a specific question with a peer, and then complete one
+or more drills that test the exact knowledge taught in that lesson.</p>
+<p>The design principle is simple: lesson first, drill second. The
+lesson explains; the drill tests. Drills are short and focused. Some
+lessons need one drill, while broader lessons use two or three so that
+different parts of the lesson are checked separately. The Git lesson is
+intentionally not graded with a coding drill because its purpose is
+orientation to version control and saving work.</p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Trial goal</strong></th>
+<th>Measure how candidates think, learn, build, test, collaborate and
+improve over five intensive days.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Python scope</strong></td>
+<td>Problem decomposition, functions, variables, arithmetic, strings,
+returned values, comparisons, if/else, helper calls, testing and
+debugging.</td>
+</tr>
+<tr class="even">
+<td><strong>AI scope</strong></td>
+<td>Awareness only: what AI is, generative AI, prompting, coding
+assistance, context, hallucinations and verification.</td>
+</tr>
+<tr class="odd">
+<td><strong>Assessment</strong></td>
+<td>Day 2: supervised 10-question baseline. Day 5: supervised
+15-question final checkpoint. AI awareness is checked separately and is
+informational.</td>
+</tr>
+<tr class="even">
+<td><strong>Selection weights</strong></td>
+<td>Individual mission 25%; checkpoints 30%; learning &amp; improvement
+20%; individual collaboration 15%; shared team result 10%.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="how-a-learner-should-use-every-lesson" class="level1">
+<h1>How a learner should use every lesson</h1>
+<ol type="1">
+<li><p>Read the lesson from beginning to end before opening the
+drill.</p></li>
+<li><p>Pause at worked examples and predict what should happen before
+running code.</p></li>
+<li><p>Use the peer checkpoint to explain your understanding aloud. A
+peer may question your reasoning but should not type your solution for
+you.</p></li>
+<li><p>Complete the linked core drill(s). Use reinforcement drills when
+provided to strengthen the same skill.</p></li>
+<li><p>If a drill fails, read the failure, return to the relevant part
+of the lesson, change one thing, and retry.</p></li>
+<li><p>Use optional resources only when another explanation would help.
+The lesson itself contains the knowledge required for its
+drills.</p></li>
+</ol>
+</section>
+<section id="five-day-learning-map" class="level1">
+<h1>Five-Day Learning Map</h1>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 45%" />
+<col style="width: 24%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Day</strong></th>
+<th><strong>Learn</strong></th>
+<th><strong>Build / practise</strong></th>
+<th><strong>Evidence</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Git basics; problem solving; first Python functions; variables;
+arithmetic; strings; calls; reading briefs; AI foundations</td>
+<td>Lesson-linked drills after each coding lesson</td>
+<td>Completed lessons/drills, working code, explanations; no scored
+mission</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Baseline checkpoint; comparisons; if/else; function contracts;
+testing; debugging; planning; generative AI</td>
+<td>10-question baseline, drills, guided Personal Budget Helper</td>
+<td>Baseline + individual mission + feedback/retest evidence</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Decomposition; component ownership; integration; component tests;
+peer review; AI coding assistance/context</td>
+<td>Drills + team Event Budget Helper launch</td>
+<td>Attributable component, tests, review, collaboration evidence</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Regression testing; systematic debugging; evidence-based
+explanation; responsible AI</td>
+<td>Drills + team integration + cross-team tests + mentor
+inspection</td>
+<td>Shared team result + individual collaboration + improvement
+evidence</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>No new Python content</td>
+<td>15-question final checkpoint + AI awareness MCQ + reflection</td>
+<td>Final independent result and progression evidence</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="day-1-foundations-git-and-first-working-code"
+class="level1">
+<h1>Day 1 — Foundations, Git and First Working Code</h1>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Day outcome</strong></th>
+<th>Understand how code represents instructions; read and modify small
+Python functions; save work using Git concepts.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Day emphasis</strong></td>
+<td>Teaching-heavy day. Every coding lesson is followed by drills. Git
+is orientation only and has no coding drill.</td>
+</tr>
+</tbody>
+</table>
+<section id="lesson-1.1-git-repositories-and-saving-your-work"
+class="level2">
+<h2>Lesson 1.1 — Git, Repositories and Saving Your Work</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>25–30 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Understand the basic version-control ideas you will use throughout
+the trial.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Explain in simple language what Git, a repository and a commit
+are.</p></li>
+<li><p>Recognise the difference between Git and Gitea.</p></li>
+<li><p>Understand the basic save cycle: edit → check → stage → commit →
+push.</p></li>
+<li><p>Know why meaningful commit messages make project history easier
+to understand.</p></li>
+</ul>
+</section>
+<section id="why-software-engineers-use-version-control" class="level3">
+<h3>Why software engineers use version control</h3>
+<p>When you write code, your project changes constantly. You add a
+function, repair a bug, rename something, or try an idea that later
+turns out to be wrong. If the only copy of your project is the latest
+folder on your computer, it can be difficult to remember what changed or
+return to an earlier working version. Git is a version-control system:
+it records the history of changes to a project so that you can see what
+changed and save useful snapshots as you work.</p>
+<p>A repository, often shortened to repo, is the project together with
+its tracked history. You can think of the project folder as the work
+itself and Git as the history that remembers important versions of that
+work. Gitea is the Git hosting and collaboration platform used during
+this trial. It hosts Git repositories so your work can be stored
+remotely, reviewed and shared with the people who have access. Git and
+Gitea are related, but they are not the same thing: Git tracks the
+history of your code, while Gitea provides the server and web interface
+where the repository is hosted.</p>
+</section>
+<section id="the-basic-git-workflow" class="level3">
+<h3>The basic Git workflow</h3>
+<p>A beginner does not need every Git command on Day 1. You only need a
+mental model of a few actions. First, you edit files. Second, you check
+what Git sees as changed. Third, you choose the changes you want in the
+next snapshot. Fourth, you create the snapshot with a short message.
+Finally, when a remote repository is being used, you send your commits
+to it.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add solution.py</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Complete travel cost drill&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div>
+<p>`git status` tells you what has changed. `git add` stages a file for
+the next commit. `git commit` creates a snapshot in the repository
+history. `git push` sends your local commits to the remote repository
+hosted on Gitea. During the trial, use the Gitea repository assigned to
+you and follow the repository workflow provided by the platform. Do not
+create extra branches or change repository configuration unless
+instructed.</p>
+</section>
+<section id="what-makes-a-useful-commit" class="level3">
+<h3>What makes a useful commit</h3>
+<p>A commit should represent a meaningful piece of progress. Messages
+such as “stuff”, “work” or “final final” tell your future self very
+little. Prefer messages that describe the change: “Complete budget
+message”, “Fix exact-fit comparison”, or “Add zero-attendee test”.
+Small, understandable commits make it easier to review how your work
+developed.</p>
+</section>
+<section id="quick-self-check" class="level3">
+<h3>Quick self-check</h3>
+<p>In your own words, explain the difference between a repository and a
+commit. Then explain why a developer may want a history of working
+versions instead of one final folder.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Watch:</strong> <a
+href="https://www.youtube.com/watch?v=hwP7WQkmECE"><u>Git Explained in
+100 Seconds (Fireship)</u></a></p>
+<p><strong>Read:</strong> <a href="https://docs.gitea.com/"><u>Gitea
+Docs: What is Gitea?</u></a></p>
+<p><strong>Try later:</strong> <a
+href="https://docs.gitea.com/usage/repository/"><u>Gitea repository
+guide</u></a></p>
+</section>
+<section id="drill" class="level3">
+<h3>Drill</h3>
+<p>No coding drill is attached to this lesson. The goal is to understand
+the workflow and use the trial repository correctly. Repository activity
+can still be observed as part of your work evidence.</p>
+</section>
+</section>
+<section id="lesson-1.2-from-a-problem-to-instructions" class="level2">
+<h2>Lesson 1.2 — From a Problem to Instructions</h2>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>30–35 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Learn to understand a small problem before writing Python.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-1" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Identify input, processing and output in a small
+problem.</p></li>
+<li><p>Rewrite a short problem as ordered solution steps.</p></li>
+<li><p>Predict a simple numeric answer before coding.</p></li>
+<li><p>Recognise that code is an executable form of a solution
+plan.</p></li>
+</ul>
+</section>
+<section id="start-with-the-problem-not-the-syntax" class="level3">
+<h3>Start with the problem, not the syntax</h3>
+<p>Programming begins before Python. A computer follows instructions
+exactly, so the first job of a programmer is to decide what information
+is available, what should happen to that information, and what result
+should be produced. A useful beginner model is input → processing →
+output.</p>
+<p>Imagine that you buy one item for ₦200 and another for ₦300. The
+inputs are 200 and 300. The processing is addition. The output is 500.
+Nothing about that reasoning depends on Python. Python is simply the
+language we will use to express the reasoning in a form the computer can
+execute.</p>
+</section>
+<section id="turn-the-problem-into-an-algorithm" class="level3">
+<h3>Turn the problem into an algorithm</h3>
+<p>An algorithm is a sequence of steps for solving a problem. For the
+two-item example, a plain-language algorithm could be: receive the first
+cost; receive the second cost; add the two costs; return the total.
+Writing the steps first helps prevent a common beginner mistake: typing
+code before deciding what the code is supposed to do.</p>
+<p>Now consider a daily budget of ₦2,000 with ₦900 spent on food and
+₦600 on transport. The inputs are budget, food and transport. The
+processing is `budget - food - transport`. The output is ₦500. If your
+expected answer is clear before you run code, you have something to
+compare the program against.</p>
+</section>
+<section id="think-before-you-run" class="level3">
+<h3>Think before you run</h3>
+<p>For each problem, write an expected result first. This builds the
+habit of reasoning independently rather than trusting whatever the
+computer displays. Computers execute the instructions we give them; if
+the instructions are wrong, a program can run successfully and still
+return the wrong answer.</p>
+</section>
+<section id="mini-activity" class="level3">
+<h3>Mini activity</h3>
+<p>You have ₦3,000. Lunch costs ₦1,200 and transport costs ₦700. Write
+the three inputs, the processing step and the expected output. Compare
+your answer with a peer before writing any Python.</p>
+</section>
+<section id="common-mistakes-to-watch-for" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Starting to type code before deciding what the output should
+be.</p></li>
+<li><p>Hard-coding the sample answer instead of using the supplied
+inputs.</p></li>
+<li><p>Treating a successful run as proof that the logic is
+correct.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Take one everyday calculation and explain its input, processing and
+output to a peer. Your peer should be able to repeat the steps without
+seeing your notes.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-1"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Watch:</strong> <a
+href="https://www.youtube.com/watch?v=x7X9w_GIm1s"><u>Python in 100
+Seconds (high-level orientation)</u></a></p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D1.2A — Add Two Item Costs</strong></p>
+<p>Complete item_total(first, second). Return the total cost of the two
+supplied non-negative integer amounts. Do not hard-code the sample
+answer.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D1.2B — Calculate Remaining Money</strong></p>
+<p>Complete remaining_money(budget, spent). Return budget minus spent. A
+negative answer is allowed.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section id="lesson-1.3-read-your-first-python-function" class="level2">
+<h2>Lesson 1.3 — Read Your First Python Function</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Build a mental model for the small function pattern used throughout
+the trial.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-2" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Identify a function name, parameters, body and return
+statement.</p></li>
+<li><p>Explain what indentation means in a Python function.</p></li>
+<li><p>Trace supplied arguments into parameters.</p></li>
+<li><p>Predict the returned value of a small function.</p></li>
+</ul>
+</section>
+<section id="read-code-as-a-story" class="level3">
+<h3>Read code as a story</h3>
+<p>You do not need to memorise every symbol before you can read code.
+Start by asking what task the function represents, what values enter it,
+what happens to those values, and what answer leaves it. Consider the
+function below.</p>
+<p>def item_total(first, second):<br />
+total = first + second<br />
+return total</p>
+<p>item_total(200, 300)</p>
+</section>
+<section id="what-each-part-means" class="level3">
+<h3>What each part means</h3>
+<p>`def` begins a function definition. `item_total` is the function
+name. `first` and `second` are parameters: names that will receive
+values when the function is called. The colon marks the start of the
+indented function body. `total = first + second` performs the
+calculation and assigns the result to the name `total`. `return total`
+sends that value back to the caller.</p>
+<p>The call `item_total(200, 300)` supplies the arguments 200 and 300.
+During that call, `first` refers to 200 and `second` refers to 300. The
+function calculates 500 and returns 500. If you change the second
+argument to 450, the returned result should become 650.</p>
+</section>
+<section id="indentation-is-structure-not-decoration" class="level3">
+<h3>Indentation is structure, not decoration</h3>
+<p>Python uses indentation to show which lines belong together. The
+calculation and return lines are indented because they belong to the
+function body. If indentation is missing or inconsistent, Python may
+reject the code or interpret its structure differently from what you
+intended.</p>
+</section>
+<section id="trace-it-by-hand" class="level3">
+<h3>Trace it by hand</h3>
+<p>Before running a function, write the parameter values beside the
+names. Then calculate each assignment in order. Finally, identify the
+value returned. This habit becomes especially useful when one function
+calls another later in the trial.</p>
+</section>
+<section id="common-mistakes-to-watch-for-1" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Confusing parameters in the definition with arguments in the
+call.</p></li>
+<li><p>Forgetting that the indented lines belong to the
+function.</p></li>
+<li><p>Assuming `return` and `print` mean the same thing.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-1" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Explain the function to a peer line by line without saying “it just
+does it.” Your explanation should say where 200 and 300 go and which
+value comes back.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-2"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Watch:</strong> <a
+href="https://www.youtube.com/watch?v=9Os0o3wzS_I"><u>Python Functions
+for Beginners (Corey Schafer)</u></a></p>
+<p><strong>Visualise:</strong> <a
+href="https://pythontutor.com/"><u>Python Tutor: step through code
+execution</u></a></p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-1"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D1.3A — Complete Your First Function</strong></p>
+<p>Complete add_costs(first, second) so that it returns the sum of the
+supplied values. Keep the function name and parameters unchanged.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D1.3B — Repair the Missing Return</strong></p>
+<p>The function calculates the correct value but does not return it.
+Repair the function so the caller receives the integer result and the
+function prints nothing.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section id="lesson-1.4-variables-values-and-arithmetic" class="level2">
+<h2>Lesson 1.4 — Variables, Values and Arithmetic</h2>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Use named values and arithmetic operators to represent simple
+calculations.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-3" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Explain what a variable represents in the small programs used
+here.</p></li>
+<li><p>Use +, -, and * correctly with integer inputs.</p></li>
+<li><p>Break a calculation into readable intermediate steps.</p></li>
+<li><p>Check an arithmetic expression against a hand-calculated expected
+result.</p></li>
+</ul>
+</section>
+<section id="names-make-calculations-readable" class="level3">
+<h3>Names make calculations readable</h3>
+<p>A variable is a name that refers to a value while the program is
+running. In `total = fare * trips`, the name `total` refers to the
+result of multiplying `fare` by `trips`. A useful variable name helps
+another person understand what the value means. Compare `x = a * b` with
+`total = fare * trips`; both may work, but the second communicates the
+purpose more clearly.</p>
+<p>Variables are not permanent boxes stored forever. In these beginner
+functions, they are temporary names used while one function call is
+executing. When the function is called again with different values, the
+calculations are performed again with those new values.</p>
+</section>
+<section id="arithmetic-operators" class="level3">
+<h3>Arithmetic operators</h3>
+<p>Use `+` to add, `-` to subtract and `*` to multiply. Parentheses can
+make the intended order explicit. For example, an event with 10
+attendees, food at ₦800 per person and transport at ₦200 per person has
+a participant cost of `10 * (800 + 200)`, which is ₦10,000.</p>
+<p>When several operations appear in one expression, do not rely only on
+intuition. Work out the expected result by hand and, where helpful,
+split the calculation into named steps. Readable code is easier to test
+and easier to explain.</p>
+</section>
+<section id="use-the-inputs-never-the-sample-answer" class="level3">
+<h3>Use the inputs — never the sample answer</h3>
+<p>If a drill shows `travel_cost(200, 3) =&gt; 600`, returning the
+number 600 directly is not a solution. The function must use `fare` and
+`trips` so it also works when the grader supplies different values.
+Hidden tests exist specifically to check that your logic generalises
+beyond the example.</p>
+</section>
+<section id="worked-example" class="level3">
+<h3>Worked example</h3>
+<p>def travel_cost(fare, trips):<br />
+total = fare * trips<br />
+return total</p>
+<p>def budget_left(budget, food, transport):<br />
+remaining = budget - food - transport<br />
+return remaining</p>
+<p>For travel_cost(200, 3), total becomes 600. For budget_left(2000,
+900, 600), remaining becomes 500. Change the inputs and recalculate
+before running.</p>
+</section>
+<section id="common-mistakes-to-watch-for-2" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Using `+` when the brief requires multiplication.</p></li>
+<li><p>Changing sample numbers inside the function instead of using
+parameters.</p></li>
+<li><p>Ignoring zero values even though zero is a valid input.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-2" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Choose one arithmetic function and ask a peer to predict the output
+for a new set of values. Compare the prediction with the actual result
+and explain any difference.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-3"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Read:</strong> <a
+href="https://docs.python.org/3/tutorial/introduction.html"><u>Python
+tutorial: numbers and basic expressions (optional reference)</u></a></p>
+<p><strong>Visualise:</strong> <a
+href="https://pythontutor.com/"><u>Python Tutor</u></a></p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-2"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D1.4A — Travel Cost</strong></p>
+<p>Complete travel_cost(fare, trips). Return fare multiplied by
+trips.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D1.4B — Budget After Two Costs</strong></p>
+<p>Complete budget_left(budget, food, transport). Return budget minus
+food minus transport.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D1.4C — Participant Cost</strong></p>
+<p>Complete participant_cost(attendees, food_per_person,
+transport_per_person). Return attendees multiplied by the sum of the two
+per-person costs.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section id="lesson-1.5-strings-f-strings-and-exact-returned-messages"
+class="level2">
+<h2>Lesson 1.5 — Strings, f-Strings and Exact Returned Messages</h2>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>30–35 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Learn to construct text responses that match a required format
+exactly.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-4" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Distinguish text strings from integer values.</p></li>
+<li><p>Use an f-string to insert supplied values into text.</p></li>
+<li><p>Preserve required spaces, punctuation and wording.</p></li>
+<li><p>Return text instead of printing it when the platform expects a
+returned value.</p></li>
+</ul>
+</section>
+<section id="text-is-data-too" class="level3">
+<h3>Text is data too</h3>
+<p>Python represents text as strings. A string is written inside
+quotation marks, such as `“Welcome Ada.”`. The integer `500` and the
+string `“500”` are not the same type of value: one is a number used for
+arithmetic, while the other is text. A platform test may care about both
+the value and its type.</p>
+</section>
+<section id="insert-values-with-f-strings" class="level3">
+<h3>Insert values with f-strings</h3>
+<p>An f-string begins with `f` before the opening quote. Names inside
+braces are replaced by their current values. For example, `f”Welcome
+{name}.”` can produce `Welcome Ada.` or `Welcome Tobi.` depending on the
+argument supplied to the function.</p>
+<p>Exact-output drills are deliberately strict. If the expected result
+is `Ada has 500 naira remaining.`, then missing the full stop, adding an
+extra space, changing the word order, or printing instead of returning
+can fail the check even though the sentence looks similar to a
+person.</p>
+</section>
+<section id="separate-calculation-from-presentation" class="level3">
+<h3>Separate calculation from presentation</h3>
+<p>It is often useful for one function to calculate a number and another
+function to turn that number into a readable message. That separation
+will become important in the Day 2 mission and the team project.</p>
+</section>
+<section id="worked-example-1" class="level3">
+<h3>Worked example</h3>
+<p>def welcome(name, days):<br />
+return f”Welcome {name}. Trial length: {days} days.”</p>
+<p>def budget_message(name, remaining):<br />
+return f”{name} has {remaining} naira remaining.”</p>
+<p>Predict the exact string returned for welcome(“Ada”, 5). Then change
+both inputs and check every character in your prediction.</p>
+</section>
+<section id="common-mistakes-to-watch-for-3" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Forgetting the `f` before an f-string.</p></li>
+<li><p>Returning a number when a string is required, or a string when a
+number is required.</p></li>
+<li><p>Changing required punctuation or spacing.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-3" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Read an expected output aloud to a peer. Ask them to compare your
+returned string character-by-character with the requirement.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-4"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Watch:</strong> <a
+href="https://www.youtube.com/watch?v=nghuHvKLhJA"><u>F-Strings quick
+tutorial (Corey Schafer)</u></a></p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-3"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D1.5A — Welcome Message</strong></p>
+<p>Return exactly “Welcome Ada.” with the supplied name substituted.
+Preserve spaces and the final full stop.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D1.5B — Budget Message</strong></p>
+<p>Return exactly “Ada has 500 naira remaining.” using the supplied name
+and remaining value.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section
+id="lesson-1.6-return-vs-print-function-calls-and-tracing-values"
+class="level2">
+<h2>Lesson 1.6 — Return vs Print, Function Calls and Tracing Values</h2>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Understand how one function can return a value that another function
+uses.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-5" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Explain the difference between returning a value and displaying a
+value.</p></li>
+<li><p>Call a supplied helper function from another function.</p></li>
+<li><p>Store a returned value in a variable and continue a
+calculation.</p></li>
+<li><p>Trace a value across two connected functions.</p></li>
+</ul>
+</section>
+<section id="return-and-print-solve-different-problems" class="level3">
+<h3>Return and print solve different problems</h3>
+<p>`print()` displays text in the output area. `return` sends a value
+back to the code that called the function. The trial platform normally
+calls your function itself and checks the returned value. That is why
+adding `input()` prompts or relying on `print()` usually breaks the
+expected contract.</p>
+<p>Imagine a cashier who calculates a subtotal. Printing the subtotal is
+like shouting the number across the room. Returning it is like handing
+the number to the next person who still needs to add delivery. Both can
+make the value visible in some sense, but only the returned value is
+directly available for the next calculation.</p>
+</section>
+<section id="functions-can-reuse-other-functions" class="level3">
+<h3>Functions can reuse other functions</h3>
+<p>When `delivered_cost` calls `item_cost`, the helper performs one
+small job and returns its answer. The caller stores that answer in
+`subtotal`, then adds delivery. This is reuse: instead of rewriting the
+same multiplication everywhere, one named function owns that
+calculation.</p>
+<p>def item_cost(price, quantity):<br />
+return price * quantity</p>
+<p>def delivered_cost(price, quantity, delivery):<br />
+subtotal = item_cost(price, quantity)<br />
+return subtotal + delivery</p>
+</section>
+<section id="trace-the-flow" class="level3">
+<h3>Trace the flow</h3>
+<p>For `delivered_cost(200, 3, 100)`, first call `item_cost(200, 3)`. It
+returns 600. Then `subtotal` becomes 600. Finally the caller returns 600
++ 100, which is 700. If you can trace this sequence on paper, you
+understand the core pattern used later in the team mission.</p>
+</section>
+<section id="common-mistakes-to-watch-for-4" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Using `print()` where the platform expects `return`.</p></li>
+<li><p>Calling a helper but ignoring the value it returns.</p></li>
+<li><p>Repeating the helper calculation instead of using the helper when
+the brief requires a call.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-4" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>One person should play the helper function and the other the calling
+function. Pass the input values and returned value verbally to make the
+flow concrete.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-5"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Watch:</strong> <a
+href="https://www.youtube.com/watch?v=9Os0o3wzS_I"><u>Python Functions
+for Beginners (Corey Schafer)</u></a></p>
+<p><strong>Visualise:</strong> <a
+href="https://pythontutor.com/"><u>Python Tutor: watch function frames
+appear step-by-step</u></a></p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-4"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D1.6A — Use a Supplied Helper</strong></p>
+<p>item_cost is supplied and correct. Complete delivered_cost so it
+calls item_cost(price, quantity), then adds delivery to the returned
+subtotal.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D1.6B — Return, Do Not Display</strong></p>
+<p>Repair combined_cost so that it returns the sum instead of printing
+it. It must produce no printed output.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+<p><strong>D1.6C — Trace a Returned Value</strong></p>
+<p>Complete final_total so it calls subtotal, stores the returned
+answer, and adds service_fee.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section
+id="lesson-1.7-read-the-brief-follow-the-contract-and-repair-small-errors"
+class="level2">
+<h2>Lesson 1.7 — Read the Brief, Follow the Contract and Repair Small
+Errors</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>30–35 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Learn to treat requirements as part of the programming problem, not
+as decoration.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-6" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Extract function name, inputs, output type and exact wording from
+a brief.</p></li>
+<li><p>Distinguish syntax errors from logic errors at a beginner
+level.</p></li>
+<li><p>Make the smallest change needed to satisfy a stated
+requirement.</p></li>
+<li><p>Check your answer against both the examples and the wording of
+the brief.</p></li>
+</ul>
+</section>
+<section id="the-brief-is-part-of-the-test" class="level3">
+<h3>The brief is part of the test</h3>
+<p>A coding task is not only “write something that works.” It defines a
+contract. The contract may specify the function name, parameters,
+required return type, exact output text, assumptions about the inputs
+and restrictions such as “do not print.” If you solve a different
+problem from the one described, technically valid Python can still be
+the wrong answer.</p>
+<p>Before coding, underline four things: the function name, the inputs,
+what must be returned, and any exact wording or boundary rule. Then
+rewrite the requirement in your own words. This two-minute habit
+prevents many avoidable mistakes.</p>
+</section>
+<section id="syntax-error-vs-logic-error" class="level3">
+<h3>Syntax error vs logic error</h3>
+<p>A syntax error prevents Python from understanding or running the
+code, for example a missing colon after `def` or inconsistent
+indentation. A logic error is different: the code runs but produces the
+wrong answer. `cost = pages + price_per_page` is valid Python, but it is
+the wrong logic if total printing cost should be pages multiplied by
+price per page.</p>
+<p>When you debug, first ask whether the program can run. If not, read
+the error location and inspect syntax. If it runs but fails a test,
+compare the expected calculation with the operations in your code.</p>
+</section>
+<section id="do-not-add-unrelated-features" class="level3">
+<h3>Do not add unrelated features</h3>
+<p>In a short trial exercise, extra menus, input validation, files or
+clever shortcuts can make a simple solution harder to understand and
+harder to grade. Solve the stated problem directly. Advanced features
+earn no benefit when the task does not ask for them.</p>
+</section>
+<section id="common-mistakes-to-watch-for-5" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Renaming the supplied function.</p></li>
+<li><p>Adding `input()` prompts to a function-return drill.</p></li>
+<li><p>Solving only the visible sample instead of the general
+rule.</p></li>
+<li><p>Changing several things at once when debugging.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-5" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Exchange briefs with a peer. Without writing code, each person should
+state the function name, parameters, return type and one important
+restriction.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-6"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Visualise:</strong> <a
+href="https://pythontutor.com/"><u>Python Tutor for tracing
+logic</u></a></p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-5"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D1.7A — Follow the Brief Exactly</strong></p>
+<p>Complete learner_status(name, tasks) to return exactly “Ada completed
+4 tasks.” Use the supplied values and keep the word tasks even when the
+value is 1.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D1.7B — Repair a Small Logic Error</strong></p>
+<p>The function is meant to return the remaining budget after a printing
+cost. Repair the arithmetic.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section id="ai-lesson-1.8-what-artificial-intelligence-is-and-is-not"
+class="level2">
+<h2>AI Lesson 1.8 — What Artificial Intelligence Is — and Is Not</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>20–25 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Build basic AI literacy without turning the trial into an
+AI-development course.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-7" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Describe AI as a broad field rather than a single
+product.</p></li>
+<li><p>Recognise generative AI as one category of AI systems.</p></li>
+<li><p>Explain why AI output can be useful without always being
+correct.</p></li>
+<li><p>Distinguish using AI from understanding and verifying software
+work.</p></li>
+</ul>
+</section>
+<section id="ai-is-a-broad-idea" class="level3">
+<h3>AI is a broad idea</h3>
+<p>Artificial intelligence describes computer systems designed to
+perform tasks associated with capabilities such as pattern recognition,
+language understanding, prediction, recommendation, decision support and
+content generation. AI is not one chatbot and it is not magic. Different
+AI systems are built for different tasks and may use very different
+methods.</p>
+<p>Generative AI is the category that produces new content such as text,
+images, audio or code in response to instructions. Large language models
+are one kind of generative AI system. During this trial, you are not
+learning how to train a large language model. You are developing enough
+awareness to use modern tools thoughtfully as your software-engineering
+skills grow.</p>
+</section>
+<section id="ai-output-is-not-proof" class="level3">
+<h3>AI output is not proof</h3>
+<p>An AI system can produce an answer that sounds confident and is still
+wrong. It may misunderstand context, invent details or produce code that
+looks reasonable but fails important cases. An AI-native engineer is
+therefore not someone who copies output quickly. It is someone who can
+define a problem, ask useful questions, inspect the output, test it and
+take responsibility for the final result.</p>
+</section>
+<section id="during-the-trial" class="level3">
+<h3>During the trial</h3>
+<p>AI tools may be discussed in the awareness lessons, but supervised
+checkpoints are independent work. The purpose is to measure what you can
+reason through yourself. When AI use is allowed in future learning,
+verification remains your responsibility.</p>
+</section>
+<section id="peer-learning-checkpoint-6" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Name one useful AI application and one reason a human still needs to
+verify its output. Compare your examples with a peer.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-7"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Read:</strong> <a
+href="https://www.ibm.com/think/topics/artificial-intelligence"><u>IBM:
+What is Artificial Intelligence?</u></a></p>
+<p><strong>Explore later:</strong> <a
+href="https://digital-skills-jobs.europa.eu/en/learning-space/training-catalogue/elements-ai"><u>Elements
+of AI introductory course</u></a></p>
+</section>
+<section id="drill-1" class="level3">
+<h3>Drill</h3>
+<p>No coding drill. Complete the short AI knowledge check attached to
+the lesson on the platform. It checks concepts only and does not
+contribute to the technical selection score.</p>
+</section>
+</section>
+</section>
+<section id="day-2-baseline-decisions-and-individual-build"
+class="level1">
+<h1>Day 2 — Baseline, Decisions and Individual Build</h1>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Day outcome</strong></th>
+<th>Establish current ability, learn decisions/testing, and build the
+guided Personal Budget Helper.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Day emphasis</strong></td>
+<td>The supervised baseline happens before Day 2 teaching so it remains
+a genuine starting-point measure. Lessons then teach new skills and each
+has aligned drills.</td>
+</tr>
+</tbody>
+</table>
+<section id="day-2-supervised-baseline-checkpoint-10-questions"
+class="level2">
+<h2>Day 2 Supervised Baseline Checkpoint — 10 Questions</h2>
+<p>Complete the baseline independently before today’s new lessons. This
+checkpoint is designed to show your current level, including any
+knowledge you had before the trial. It is not expected that every
+beginner will answer every question. Questions become progressively more
+demanding. Do not use AI tools, personal notes, previous solutions or
+peer assistance. You may run your code and retry during the allowed
+time.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Questions</strong></th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Purpose</strong></td>
+<td>Baseline/current ability, not a test of Day 1 only</td>
+</tr>
+<tr class="even">
+<td><strong>Selection contribution</strong></td>
+<td>5 points within the combined 30% checkpoint component</td>
+</tr>
+<tr class="odd">
+<td><strong>Supervision</strong></td>
+<td>Individual, no AI, no peer assistance</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lesson-2.1-comparisons-and-boolean-questions"
+class="level2">
+<h2>Lesson 2.1 — Comparisons and Boolean Questions</h2>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>30–35 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Teach programs to ask yes/no questions about values.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-8" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Explain what True and False represent.</p></li>
+<li><p>Use ==, &gt;, &lt;, &gt;= and &lt;= in simple
+comparisons.</p></li>
+<li><p>Distinguish assignment `=` from equality comparison
+`==`.</p></li>
+<li><p>Predict the result of a comparison before running code.</p></li>
+</ul>
+</section>
+<section id="programs-often-need-questions-not-only-calculations"
+class="level3">
+<h3>Programs often need questions, not only calculations</h3>
+<p>Yesterday most functions followed one straight path: receive values,
+calculate something and return an answer. Many useful programs also need
+to ask questions. Is the budget enough? Is the total exactly equal to
+the expected value? Has capacity been reached? A comparison answers a
+question with one of two Boolean values: `True` or `False`.</p>
+<p>`budget &gt;= cost` asks whether budget is greater than or equal to
+cost. `actual == expected` asks whether two values are equal. The double
+equals sign is important: a single `=` assigns a value to a name, while
+`==` compares two values.</p>
+</section>
+<section id="boundary-values-matter" class="level3">
+<h3>Boundary values matter</h3>
+<p>Words such as “at least”, “at most”, “greater than”, “less than” and
+“exactly” translate into different comparisons. “At least 18” includes
+18, so `age &gt;= 18` is appropriate. “More than 18” does not include
+18, so `age &gt; 18` is different. Small wording differences create real
+logic differences.</p>
+</section>
+<section id="predict-first" class="level3">
+<h3>Predict first</h3>
+<p>For each comparison, choose a value just below the boundary, exactly
+on the boundary, and just above it. If the rule is “budget is enough
+when budget &gt;= cost”, test 699, 700 and 701 against a cost of 700.
+This pattern helps reveal off-by-one and equality mistakes early.</p>
+</section>
+<section id="worked-example-2" class="level3">
+<h3>Worked example</h3>
+<p>def can_afford(budget, cost):<br />
+return budget &gt;= cost</p>
+<p>def matches_expected(actual, expected):<br />
+return actual == expected</p>
+<p>can_afford(700, 700) returns True because equality is included.
+can_afford(699, 700) returns False.</p>
+</section>
+<section id="common-mistakes-to-watch-for-6" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Using `=` instead of `==` for equality.</p></li>
+<li><p>Using `&gt;` when the words say “greater than or equal
+to”.</p></li>
+<li><p>Testing only values far away from the boundary.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-7" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Create one English rule containing “at least” or “at most.” Ask a
+peer to choose the correct comparison operator and explain why equality
+is or is not included.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-8"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Watch:</strong> <a
+href="https://www.youtube.com/watch?v=DZwmZ8Usvnk"><u>Conditionals and
+Booleans (Corey Schafer)</u></a></p>
+<p><strong>Read:</strong> <a
+href="https://docs.python.org/3/tutorial/controlflow.html"><u>Python
+control flow reference (optional)</u></a></p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-6"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D2.1A — Can the Budget Cover the Cost?</strong></p>
+<p>Return True when budget is greater than or equal to cost; otherwise
+return False.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D2.1B — Compare Two Totals</strong></p>
+<p>Return True when actual is exactly equal to expected; otherwise
+return False.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section
+id="lesson-2.2-make-decisions-with-ifelse-and-test-the-boundary"
+class="level2">
+<h2>Lesson 2.2 — Make Decisions with if/else and Test the Boundary</h2>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Use a comparison to choose between two outcomes.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-9" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Write a two-branch if/else function.</p></li>
+<li><p>Explain that only one branch runs in this pattern.</p></li>
+<li><p>Handle equality according to the brief.</p></li>
+<li><p>Return the required value from each branch.</p></li>
+</ul>
+</section>
+<section id="from-a-question-to-a-decision" class="level3">
+<h3>From a question to a decision</h3>
+<p>A comparison produces `True` or `False`. An `if/else` statement uses
+that result to decide which block of code should run. If the condition
+is true, Python executes the indented `if` block. Otherwise it executes
+the `else` block. For a simple two-outcome problem, exactly one of these
+branches runs.</p>
+<p>def funding_status(budget, cost):<br />
+if budget &gt;= cost:<br />
+return “Enough”<br />
+else:<br />
+return “Not enough”</p>
+</section>
+<section id="read-the-rule-before-choosing-the-operator" class="level3">
+<h3>Read the rule before choosing the operator</h3>
+<p>The important part is not memorising `if`. The important part is
+translating the requirement correctly. If the brief says an exact match
+is enough, then equality must be included. If you accidentally use
+`budget &gt; cost`, a budget of 700 and cost of 700 will go to the wrong
+branch.</p>
+<p>Indentation again shows structure. Both return statements are
+indented under the branch they belong to. The colon after the `if`
+condition and after `else` is required syntax.</p>
+</section>
+<section id="test-three-categories" class="level3">
+<h3>Test three categories</h3>
+<p>Whenever a rule has a boundary, test below, equal and above. For
+funding_status with a cost of 700, try budgets of 699, 700 and 701. For
+a capacity rule where booked must be at most capacity, test one below
+capacity, exactly capacity and one above capacity.</p>
+</section>
+<section id="common-mistakes-to-watch-for-7" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Forgetting the colon after `if` or `else`.</p></li>
+<li><p>Using the wrong comparison at the equality boundary.</p></li>
+<li><p>Returning the right words from the wrong branch.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-8" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Before running any code, take one drill sample and explain which
+branch should run and why. Your peer should challenge the equality
+case.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-9"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Watch:</strong> <a
+href="https://www.youtube.com/watch?v=DZwmZ8Usvnk"><u>Conditionals and
+Booleans (Corey Schafer)</u></a></p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-7"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D2.2A — Funding Status</strong></p>
+<p>Return “Enough” when budget is greater than or equal to cost.
+Otherwise return “Not enough”. Exact equality counts as enough.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D2.2B — Capacity Status</strong></p>
+<p>Return “Fits” when booked is at most capacity; otherwise return “Too
+many”.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+<p><strong>D2.2C — Positive Places</strong></p>
+<p>Return “Available” when places is greater than zero; otherwise return
+“Full”.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section
+id="lesson-2.3-function-contracts-and-combining-small-functions"
+class="level2">
+<h2>Lesson 2.3 — Function Contracts and Combining Small Functions</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>40–45 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Build larger behaviour by connecting small functions with clear
+responsibilities.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-10" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Describe a function contract using inputs, output and
+responsibility.</p></li>
+<li><p>Call a helper rather than duplicating its calculation.</p></li>
+<li><p>Pass a returned value into another calculation or
+decision.</p></li>
+<li><p>Explain why small functions are easier to test and
+combine.</p></li>
+</ul>
+</section>
+<section id="a-function-should-have-a-clear-job" class="level3">
+<h3>A function should have a clear job</h3>
+<p>A function contract tells you what values the function receives, what
+it promises to return and what responsibility belongs inside it. For
+example, `participant_cost(attendees, food_per_person,
+transport_per_person)` owns the attendance-based cost calculation.
+`event_total(…)` can then call that helper and add a venue cost.
+Separating responsibilities makes both pieces easier to test.</p>
+</section>
+<section id="build-from-small-pieces" class="level3">
+<h3>Build from small pieces</h3>
+<p>When one function already solves part of the problem, reuse it. The
+goal is not merely shorter code. Reuse creates a single place
+responsible for a rule. If the participant-cost formula changes later, a
+program that consistently calls the helper is easier to update than a
+program that copied the formula into several places.</p>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+<p>def event_total(attendees, food_per_person, transport_per_person,
+venue_cost):<br />
+people = participant_cost(attendees, food_per_person,
+transport_per_person)<br />
+return people + venue_cost</p>
+</section>
+<section id="trace-the-contract-chain" class="level3">
+<h3>Trace the contract chain</h3>
+<p>For `event_total(10, 800, 200, 5000)`, the helper receives 10, 800
+and 200 and returns 10,000. The caller stores that returned value in
+`people`, adds 5,000 and returns 15,000. A later status function can
+receive that 15,000 and compare it with a budget. This chain of small
+contracts is the foundation of the Day 3 team mission.</p>
+</section>
+<section id="common-mistakes-to-watch-for-8" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Repeating helper logic when the task requires the helper to be
+called.</p></li>
+<li><p>Changing the supplied helper instead of completing the missing
+function.</p></li>
+<li><p>Calling a function but ignoring its returned value.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-9" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Draw boxes for two functions. Label the inputs and returned output of
+each, then draw an arrow showing how the first function’s answer becomes
+data for the second.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-10"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Watch:</strong> <a
+href="https://www.youtube.com/watch?v=9Os0o3wzS_I"><u>Python Functions
+for Beginners (Corey Schafer)</u></a></p>
+<p><strong>Visualise:</strong> <a
+href="https://pythontutor.com/"><u>Python Tutor</u></a></p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-8"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D2.3A — Event Total with a Helper</strong></p>
+<p>participant_cost is supplied. Complete event_total by calling
+participant_cost and adding venue_cost.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D2.3B — Calculate Then Format</strong></p>
+<p>Complete budget_report so it calls budget_left and uses the returned
+value in the exact message “500 naira remaining.”</p>
+<p><strong>Type:</strong> Reinforcement</p>
+<p><strong>D2.3C — Calculate Then Decide</strong></p>
+<p>Complete trip_status so it calls trip_cost and returns “Within
+budget” when the returned total is at most budget; otherwise return
+“Over budget”.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section
+id="lesson-2.4-testing-expected-results-and-debugging-small-programs"
+class="level2">
+<h2>Lesson 2.4 — Testing Expected Results and Debugging Small
+Programs</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>40–45 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Learn a disciplined way to decide whether code is correct and repair
+it when it is not.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-11" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Write an expected answer before running a test.</p></li>
+<li><p>Compare expected and actual results.</p></li>
+<li><p>Distinguish syntax failures from wrong-result failures.</p></li>
+<li><p>Change one likely cause at a time and rerun the failing
+case.</p></li>
+<li><p>Retest earlier passing cases after a fix.</p></li>
+</ul>
+</section>
+<section id="a-test-starts-with-an-expectation" class="level3">
+<h3>A test starts with an expectation</h3>
+<p>If you run code without deciding what should happen, the result can
+look convincing even when it is wrong. A basic test has an input, an
+expected result and an actual result. You calculate or reason about the
+expected result first, run the function, and compare the two.</p>
+<p>A strong small test set contains different kinds of cases: a usual
+case, a zero case when zero is allowed, and a boundary case when a
+decision rule contains equality. Different cases reveal different
+mistakes.</p>
+</section>
+<section id="debugging-is-a-process-not-guessing" class="level3">
+<h3>Debugging is a process, not guessing</h3>
+<p>When a test fails, avoid changing several lines at random. First
+identify the earliest place where the calculation or decision differs
+from what the problem requires. Make one focused change. Rerun the
+failing case. Then rerun earlier passing cases because a fix can
+accidentally break behaviour that already worked.</p>
+<p>If the code does not run at all, read the error message and inspect
+syntax near the reported line: colons, parentheses, indentation and
+spelling are common beginner causes. If it runs but returns the wrong
+value, compare the operators and branch conditions with the written
+brief.</p>
+</section>
+<section id="keep-evidence-of-improvement" class="level3">
+<h3>Keep evidence of improvement</h3>
+<p>During the trial, the first attempt and the improved attempt are both
+useful evidence. A mistake is not automatically a negative signal. The
+important question is whether you can interpret feedback, make an
+appropriate change, explain why it works and retest it.</p>
+</section>
+<section id="common-mistakes-to-watch-for-9" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Changing multiple lines at once and not knowing which change
+fixed the issue.</p></li>
+<li><p>Checking only the sample that already passed.</p></li>
+<li><p>Treating a failed test as a reason to rewrite
+everything.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-10" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Show a failing input and expected result to a peer, but not your
+intended fix. Ask the peer to point to the first line they would
+investigate and explain why.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-11"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Visualise:</strong> <a
+href="https://pythontutor.com/"><u>Python Tutor for step-by-step
+debugging</u></a></p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-9"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D2.4A — Repair Printing Cost</strong></p>
+<p>The function is meant to return the remaining budget after a printing
+cost. Repair the arithmetic.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D2.4B — Repair an Equality Bug</strong></p>
+<p>The brief says an exact budget match is “Within budget”. Repair the
+function.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+<p><strong>D2.4C — Retest After a Fix</strong></p>
+<p>Repair seats_left so it subtracts booked from capacity. The platform
+will test normal, zero and exact-fit cases.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section
+id="lesson-2.5-plan-from-a-brief-build-a-first-attempt-use-feedback-and-retest"
+class="level2">
+<h2>Lesson 2.5 — Plan from a Brief, Build a First Attempt, Use Feedback
+and Retest</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Bring the earlier skills together before the individual
+mission.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-12" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Extract a small program plan from a written requirement.</p></li>
+<li><p>Choose inputs, output and ordered calculation steps before
+coding.</p></li>
+<li><p>Produce an inspectable first attempt rather than hiding
+mistakes.</p></li>
+<li><p>Apply a specific hint without changing the task
+contract.</p></li>
+<li><p>Retest after revision and record what changed.</p></li>
+</ul>
+</section>
+<section id="planning-prevents-accidental-complexity" class="level3">
+<h3>Planning prevents accidental complexity</h3>
+<p>Before the mission, practise turning a short brief into a plan. Write
+the function name and parameters exactly as supplied. State what should
+be returned. List the calculations or decisions in order. Identify one
+normal test and one edge or boundary test. Only then write the function
+body.</p>
+<p>This does not need to be a formal flowchart. A few clear steps are
+enough. The goal is to reduce the amount of problem-solving you are
+trying to do at the same moment that you are remembering Python
+syntax.</p>
+</section>
+<section id="preserve-the-first-attempt" class="level3">
+<h3>Preserve the first attempt</h3>
+<p>Your first attempt shows how you understood the task before feedback.
+Save it even if it is incomplete. When you receive a hint, avoid
+replacing your entire solution with someone else’s answer. Use the hint
+to identify the part of your reasoning that needs to change, then make
+the smallest appropriate revision.</p>
+</section>
+<section id="retest-and-explain" class="level3">
+<h3>Retest and explain</h3>
+<p>After a change, rerun the case that failed and at least one earlier
+case. Then write one or two sentences explaining what was wrong and why
+your change addresses the requirement. This is exactly the kind of
+behaviour measured under learning and improvement.</p>
+</section>
+<section id="common-mistakes-to-watch-for-10" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Coding without first identifying the required output.</p></li>
+<li><p>Replacing the whole solution after feedback instead of
+understanding the issue.</p></li>
+<li><p>Claiming a fix works without rerunning tests.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-11" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Read a new brief together, but separate before coding. Compare only
+your plans first: function inputs, output, calculation steps and test
+cases.</p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-10"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D2.5A — Build from a Written Brief</strong></p>
+<p>A community workshop charges fee_per_person for each attendee and has
+a fixed room_cost. Complete workshop_total to return the full integer
+cost.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D2.5B — Apply Feedback Without Changing the
+Contract</strong></p>
+<p>The original function returns the wrong sentence. Fix only the
+function body. Keep its name and parameters unchanged and return exactly
+“Tobi has 250 naira left.” for name=“Tobi”, remaining=250.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section id="ai-lesson-2.6-generative-ai-and-prompting-basics"
+class="level2">
+<h2>AI Lesson 2.6 — Generative AI and Prompting Basics</h2>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>20–25 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Understand how clear context and constraints affect AI-generated
+responses.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-13" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Explain generative AI in simple terms.</p></li>
+<li><p>Identify the purpose, context, constraints and desired output in
+a prompt.</p></li>
+<li><p>Recognise that a polished AI answer still requires
+verification.</p></li>
+<li><p>Avoid sharing secrets, credentials or unnecessary personal data
+with AI tools.</p></li>
+</ul>
+</section>
+<section id="a-prompt-is-part-of-the-input" class="level3">
+<h3>A prompt is part of the input</h3>
+<p>Generative AI systems produce content in response to instructions and
+context. A vague request such as “fix my code” leaves many assumptions
+unspecified. A better prompt states the goal, the relevant code or
+error, constraints such as “do not change the function signature”, and
+what kind of response would help, for example “explain the bug before
+showing a corrected version.”</p>
+<p>Good prompting is not a replacement for programming knowledge. The
+more clearly you understand the problem, the better you can describe it
+and the better you can evaluate the response.</p>
+</section>
+<section id="protect-information" class="level3">
+<h3>Protect information</h3>
+<p>Do not paste passwords, access tokens, private keys, confidential
+customer information or unnecessary personal data into an AI tool. An
+AI-native engineer treats information security as part of responsible
+tool use.</p>
+</section>
+<section id="verify-do-not-merely-accept" class="level3">
+<h3>Verify, do not merely accept</h3>
+<p>When AI suggests code, inspect whether it matches the requirements,
+run tests, check boundary cases and make sure you can explain the final
+solution. During supervised trial checkpoints, AI tools are not allowed
+because the checkpoint measures your own reasoning.</p>
+</section>
+<section id="peer-learning-checkpoint-12" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Rewrite the vague prompt “help with my budget program” into a clearer
+prompt containing the goal, relevant context, one constraint and the
+desired form of help.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-12"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Read:</strong> <a
+href="https://www.ibm.com/think/topics/artificial-intelligence"><u>IBM
+AI overview</u></a></p>
+</section>
+<section id="drill-2" class="level3">
+<h3>Drill</h3>
+<p>Complete the attached AI knowledge check (MCQ). It is an awareness
+check, not a coding drill and does not add technical selection
+points.</p>
+</section>
+</section>
+<section id="day-2-individual-mission-personal-budget-helper"
+class="level2">
+<h2>Day 2 Individual Mission — Personal Budget Helper</h2>
+<p>This is a guided individual build. It deliberately reuses the ideas
+taught in Days 1 and 2 so that a beginner is not asked to invent an
+unfamiliar architecture. You still have to understand the brief, write
+the function bodies, test them, preserve your first attempt and improve
+the work after feedback.</p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Mission weight</strong></th>
+<th>25% of final selection score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Functions</strong></td>
+<td>budget_remaining(budget, food, transport) and budget_message(name,
+remaining)</td>
+</tr>
+<tr class="even">
+<td><strong>Inputs</strong></td>
+<td>Whole-number naira amounts; names are non-empty text</td>
+</tr>
+<tr class="odd">
+<td><strong>Required evidence</strong></td>
+<td>First attempt, tests, feedback received, improved attempt, retest,
+short reflection</td>
+</tr>
+</tbody>
+</table>
+<p>def budget_remaining(budget, food, transport):<br />
+pass</p>
+<p>def budget_message(name, remaining):<br />
+pass</p>
+<p>Acceptance behaviour: budget_remaining returns budget - food -
+transport. Negative remaining values are allowed. budget_message returns
+exactly: `Ada has 500 naira remaining.` with supplied values
+substituted. Do not add input prompts or unrelated output inside these
+functions.</p>
+<section id="mission-workflow" class="level3">
+<h3>Mission workflow</h3>
+<ol start="7" type="1">
+<li><p>Write the inputs, required outputs and solution steps before
+coding.</p></li>
+<li><p>Implement budget_remaining and test a normal case, zero case and
+overspend case.</p></li>
+<li><p>Implement budget_message and compare the returned string
+character-by-character with the required format.</p></li>
+<li><p>Save the first complete attempt.</p></li>
+<li><p>Receive one specific hint or review point.</p></li>
+<li><p>Revise only what is needed, rerun the failing case and at least
+one earlier passing case.</p></li>
+<li><p>Submit final code, test results and a short explanation of what
+changed.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="day-3-team-decomposition-integration-and-mission-launch"
+class="level1">
+<h1>Day 3 — Team Decomposition, Integration and Mission Launch</h1>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Day outcome</strong></th>
+<th>Transfer individual skills into a team project with clear component
+ownership and testable contracts.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Day emphasis</strong></td>
+<td>Less new syntax, more application. Each lesson is followed by
+focused drills before the team mission work continues.</td>
+</tr>
+</tbody>
+</table>
+<section
+id="lesson-3.1-break-a-team-problem-into-components-and-contracts"
+class="level2">
+<h2>Lesson 3.1 — Break a Team Problem into Components and Contracts</h2>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Learn how a team can divide one program without dividing
+understanding.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-14" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Identify separate responsibilities in a larger brief.</p></li>
+<li><p>Write a simple contract for each component.</p></li>
+<li><p>Understand ownership without creating isolated silos.</p></li>
+<li><p>Explain what another component expects from your
+component.</p></li>
+</ul>
+</section>
+<section id="a-team-project-is-one-system" class="level3">
+<h3>A team project is one system</h3>
+<p>The Event Budget Helper is larger than the Day 2 mission, but it is
+built from the same kinds of small functions. The safest way to
+collaborate is to agree on the component contracts before everyone
+starts coding. A contract should name the function, list its inputs,
+state its returned value and describe the rule it owns.</p>
+<p>For example, participant_cost owns attendee-based food and transport
+cost. event_total owns the addition of venue cost to that participant
+cost. budget_status owns the comparison between total and budget.
+event_summary owns the final readable message. If these contracts are
+clear, team members can work separately and still create compatible
+pieces.</p>
+</section>
+<section id="ownership-does-not-mean-ignorance" class="level3">
+<h3>Ownership does not mean ignorance</h3>
+<p>Every learner should own code, but every learner should also
+understand how their component connects to at least one other component.
+A team member assigned only to presentation or administration has not
+produced enough technical evidence. Likewise, the strongest learner
+should not silently rewrite everyone else’s work.</p>
+</section>
+<section id="define-before-you-build" class="level3">
+<h3>Define before you build</h3>
+<p>Write the four contracts on paper or in your team notes. Agree on
+exact function names and return types. Then allocate owners and
+reviewers. This prevents integration failures caused by one person
+returning text where another component expects a number, or by
+inconsistent names.</p>
+</section>
+<section id="common-mistakes-to-watch-for-11" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Starting to code before agreeing on function names and
+outputs.</p></li>
+<li><p>Giving one learner all difficult technical work.</p></li>
+<li><p>Changing another person’s contract without telling the
+team.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-13" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>As a team, each learner should explain one component they do not own
+and describe what value enters it and what value should leave it.</p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-11"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D3.1A — Implement a Component Contract</strong></p>
+<p>Implement participant_cost exactly as specified: attendees *
+(food_per_person + transport_per_person). Return an integer.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D3.1B — Implement the Status Contract</strong></p>
+<p>Complete budget_status(budget, total). Return “Within budget” when
+total &lt;= budget; otherwise return “Over budget”.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section id="lesson-3.2-integrate-components-and-reuse-returned-values"
+class="level2">
+<h2>Lesson 3.2 — Integrate Components and Reuse Returned Values</h2>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Connect separately tested functions into one working flow.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-15" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Call one component from another where the design requires
+it.</p></li>
+<li><p>Trace a value from one function to the next.</p></li>
+<li><p>Recognise interface mismatches during integration.</p></li>
+<li><p>Keep integration code simple and inspectable.</p></li>
+</ul>
+</section>
+<section id="integration-is-where-contracts-meet" class="level3">
+<h3>Integration is where contracts meet</h3>
+<p>A component can pass its own tests and still fail when connected to
+the rest of the program if the team disagreed about names, types or
+meanings. Integration means connecting the pieces and checking that the
+output of one component is suitable as the input to the next.</p>
+<p>The Event Budget Helper flow is: calculate participant cost →
+calculate event total → determine budget status → build the summary.
+Each step produces a value that the next step can use.</p>
+<p>people = participant_cost(10, 800, 200)<br />
+total = event_total(10, 800, 200, 5000)<br />
+status = budget_status(16000, total)<br />
+summary = event_summary(“Study Day”, total, status)</p>
+</section>
+<section id="integrate-in-small-steps" class="level3">
+<h3>Integrate in small steps</h3>
+<p>Do not wait until every component is “finished” and then combine
+everything at once. First confirm one helper works. Connect the next
+function and rerun. Then connect the decision. Finally connect the
+summary. When a failure appears, the smaller integration step makes it
+easier to locate the mismatch.</p>
+</section>
+<section id="common-mistakes-to-watch-for-12" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Copying calculations instead of using the agreed helper.</p></li>
+<li><p>Integrating all components at once and not knowing where a wrong
+value appeared.</p></li>
+<li><p>Changing a function signature during integration without
+coordinating with the owner.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-14" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Trace one sample through the entire program as a team. Each owner
+should say what value their function receives and returns.</p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-12"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D3.2A — Integrate Participant and Venue Costs</strong></p>
+<p>participant_cost is supplied. Complete event_total by calling
+participant_cost and adding venue_cost.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D3.2B — Build the Final Event Summary</strong></p>
+<p>Complete event_summary(event_name, total, status). Return exactly
+“Study Day: total 15000 naira. Within budget.” with supplied values
+substituted.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section
+id="lesson-3.3-test-your-component-document-a-handover-and-repair-peer-code-carefully"
+class="level2">
+<h2>Lesson 3.3 — Test Your Component, Document a Handover and Repair
+Peer Code Carefully</h2>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Make individual work safe to integrate and easy for a teammate to
+review.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-16" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Test a component independently before handing it over.</p></li>
+<li><p>Include normal, zero and boundary cases when relevant.</p></li>
+<li><p>Write a short handover note that another learner can
+use.</p></li>
+<li><p>Review peer code by identifying the smallest necessary change
+rather than taking over.</p></li>
+</ul>
+</section>
+<section id="a-component-is-not-ready-because-it-ran-once"
+class="level3">
+<h3>A component is not ready because it ran once</h3>
+<p>Before handing your function to the team, run the published sample
+and at least one additional case. If zero is allowed, include it. If a
+boundary exists, include equality. Record the expected and actual
+result. This gives the integrator evidence that the component behaved
+correctly on its own.</p>
+</section>
+<section id="a-useful-handover-is-short-and-concrete" class="level3">
+<h3>A useful handover is short and concrete</h3>
+<p>A handover note can contain four lines: component owned; what it
+returns; tests run; any assumption or unresolved issue. This is enough
+for another learner to integrate your work without guessing what you
+intended.</p>
+</section>
+<section id="review-without-taking-over" class="level3">
+<h3>Review without taking over</h3>
+<p>When reviewing peer code, first explain the observed problem and the
+evidence for it. Ask the owner what they think is happening. Point to
+the relevant rule or test. Only after the owner has had a chance to
+reason should you suggest a specific change. A reviewer who replaces the
+whole solution removes learning evidence from the owner.</p>
+</section>
+<section id="common-mistakes-to-watch-for-13" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Handing over untested code.</p></li>
+<li><p>Saying “it works” without listing a test result.</p></li>
+<li><p>Rewriting a teammate’s entire function when one operator is
+wrong.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-15" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Exchange one component with another learner. The reviewer must first
+state one passing test and one question before suggesting any code
+change.</p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-13"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D3.3A — Test a Component with Zero</strong></p>
+<p>Complete venue_only_total so it returns venue_cost when attendees is
+zero and otherwise returns attendee costs plus venue. Use the supplied
+participant_cost helper.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D3.3B — Repair a Teammate Component</strong></p>
+<p>A teammate wrote the wrong operation. Repair event_total so it adds
+venue_cost after calling participant_cost.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section id="lesson-3.4-peer-review-and-visible-individual-contribution"
+class="level2">
+<h2>Lesson 3.4 — Peer Review and Visible Individual Contribution</h2>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>25–30 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Make collaboration observable and technically meaningful.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-17" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Distinguish contribution from merely being present in a
+team.</p></li>
+<li><p>Give review feedback tied to a requirement or test.</p></li>
+<li><p>Record what you changed, reviewed or verified.</p></li>
+<li><p>Explain your own code and one part you reviewed.</p></li>
+</ul>
+</section>
+<section id="what-counts-as-contribution" class="level3">
+<h3>What counts as contribution</h3>
+<p>Individual collaboration evidence should come from actions that can
+be inspected: code you own, a test you wrote, a bug you identified with
+evidence, a review question that helped improve a component, or a clear
+handover. Talking a lot or controlling the keyboard is not automatically
+strong collaboration.</p>
+<p>The shared project receives one team result, but individual
+collaboration is evaluated separately. That means every learner should
+leave a visible technical trail even though the final project belongs to
+the team.</p>
+</section>
+<section id="review-against-the-contract" class="level3">
+<h3>Review against the contract</h3>
+<p>Useful review comments point to something concrete: “The brief says
+equality is within budget; this condition uses `&lt;`.” Less useful
+feedback sounds like “this is wrong” or “I would write it differently.”
+Review the required behaviour, not personal style.</p>
+</section>
+<section id="peer-learning-checkpoint-16" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Each learner should identify one concrete contribution they have
+already made and one contribution they still need to make before Day 4
+ends.</p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-14"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D3.4A — Review Before You Rewrite</strong></p>
+<p>Repair only the incorrect comparison in budget_status. Do not rename
+the function, change its inputs, or add unrelated features.</p>
+<p><strong>Type:</strong> Core</p>
+</section>
+</section>
+<section
+id="ai-lesson-3.5-ai-as-a-coding-assistant-helpful-but-not-the-owner"
+class="level2">
+<h2>AI Lesson 3.5 — AI as a Coding Assistant — Helpful, but Not the
+Owner</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>20 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Understand appropriate uses of AI during software work without
+surrendering reasoning.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-18" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>List useful assistance tasks such as explaining errors,
+generating examples or suggesting tests.</p></li>
+<li><p>Recognise risky behaviour such as pasting generated code you
+cannot explain.</p></li>
+<li><p>Describe a verification workflow for AI-generated code.</p></li>
+</ul>
+</section>
+<section id="ai-can-accelerate-some-tasks" class="level3">
+<h3>AI can accelerate some tasks</h3>
+<p>An AI assistant may help explain an unfamiliar error message, suggest
+edge cases, rewrite a vague explanation, or propose a small example that
+makes a concept easier to understand. These uses can reduce friction
+when the learner still owns the reasoning and checks the result.</p>
+</section>
+<section id="the-engineer-remains-responsible" class="level3">
+<h3>The engineer remains responsible</h3>
+<p>Generated code can introduce incorrect assumptions, hidden
+dependencies, security problems or logic that does not match the brief.
+Before accepting it, compare it with the contract, run tests, inspect
+the exact changes and make sure you can explain why it works. If you
+cannot explain the code, you do not yet own the solution.</p>
+</section>
+<section id="peer-learning-checkpoint-17" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Name one task where AI could help a developer learn and one task
+where blindly accepting AI output would be dangerous.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-13"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Read:</strong> <a
+href="https://www.ibm.com/think/topics/artificial-intelligence"><u>IBM
+AI overview</u></a></p>
+</section>
+<section id="drill-3" class="level3">
+<h3>Drill</h3>
+<p>Complete the attached AI awareness MCQs. These questions are
+informational and are not technical coding drills.</p>
+</section>
+</section>
+<section id="ai-lesson-3.6-data-context-and-better-prompts"
+class="level2">
+<h2>AI Lesson 3.6 — Data, Context and Better Prompts</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>20 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>See why useful AI responses depend on the information and
+constraints supplied.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-19" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Explain why missing context can produce a poor answer.</p></li>
+<li><p>Provide relevant code, expected behaviour and constraints without
+oversharing sensitive data.</p></li>
+<li><p>Ask for explanations and tests, not only final code.</p></li>
+</ul>
+</section>
+<section id="context-changes-the-answer" class="level3">
+<h3>Context changes the answer</h3>
+<p>If you ask an assistant “why does my function fail?” but do not
+provide the function, the expected result or the failure message, the
+system must guess. A useful prompt supplies only the relevant context:
+the brief, the small code sample, the failing input and expected result,
+and any restrictions such as “keep the function signature
+unchanged.”</p>
+<p>Good context is not the same as dumping everything. More information
+can create noise and may expose confidential data. Select the smallest
+amount of information needed to explain the problem.</p>
+</section>
+<section id="ask-for-reasoning-that-you-can-verify" class="level3">
+<h3>Ask for reasoning that you can verify</h3>
+<p>Instead of only asking “give me the fixed code,” ask the assistant to
+identify the likely cause, explain it in beginner language, suggest a
+test that would expose it, and then show a small correction. This makes
+the interaction more useful for learning and easier to verify.</p>
+</section>
+<section id="peer-learning-checkpoint-18" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Take a vague debugging prompt and add: the expected behaviour, the
+actual behaviour, one relevant code snippet and one constraint.</p>
+</section>
+<section id="drill-4" class="level3">
+<h3>Drill</h3>
+<p>Complete the attached AI awareness MCQs. No coding drill is required
+for this awareness lesson.</p>
+</section>
+</section>
+<section id="days-34-team-mission-event-budget-helper" class="level2">
+<h2>Days 3–4 Team Mission — Event Budget Helper</h2>
+<p>Teams of 2–4 build a small event-budget program. This is an expanded
+version of the Day 2 individual mission so the conceptual jump stays
+manageable while collaboration becomes the new challenge.</p>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>A — participant_cost</strong></th>
+<th>Return attendees * (food_per_person + transport_per_person).</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>B — event_total</strong></td>
+<td>Call participant_cost and add venue_cost.</td>
+</tr>
+<tr class="even">
+<td><strong>C — budget_status</strong></td>
+<td>Return “Within budget” when total &lt;= budget; otherwise “Over
+budget”.</td>
+</tr>
+<tr class="odd">
+<td><strong>D — event_summary</strong></td>
+<td>Return a readable exact summary using event name, total and
+status.</td>
+</tr>
+</tbody>
+</table>
+<p>By the end of Day 3, each learner must have one attributable code
+contribution, at least one test result and one review action. Incomplete
+components may be temporarily replaced with a labelled facilitator stub
+so the team can continue, but a stub is not credited as learner
+work.</p>
+</section>
+</section>
+<section
+id="day-4-regression-testing-debugging-and-team-mission-completion"
+class="level1">
+<h1>Day 4 — Regression Testing, Debugging and Team Mission
+Completion</h1>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Day outcome</strong></th>
+<th>Finish the shared program, test it systematically, improve it after
+feedback and explain ownership with evidence.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Day emphasis</strong></td>
+<td>Very little new syntax. The day is mainly about quality, repair,
+verification and mentor inspection.</td>
+</tr>
+</tbody>
+</table>
+<section id="lesson-4.1-acceptance-criteria-and-regression-testing"
+class="level2">
+<h2>Lesson 4.1 — Acceptance Criteria and Regression Testing</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Learn how to protect working behaviour while changing a
+program.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-20" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Explain the difference between a requirement and a test
+case.</p></li>
+<li><p>Use published acceptance cases as evidence that the combined
+program meets the brief.</p></li>
+<li><p>Retest earlier passing behaviour after making a change.</p></li>
+<li><p>Recognise regression as a previously working behaviour that
+becomes broken.</p></li>
+</ul>
+</section>
+<section id="acceptance-criteria-describe-success" class="level3">
+<h3>Acceptance criteria describe success</h3>
+<p>An acceptance criterion states behaviour the finished program must
+satisfy. A test case turns that behaviour into concrete inputs and an
+expected result. For example, “an exact budget match is within budget”
+becomes the test `budget_status(15000, 15000) =&gt; “Within
+budget”`.</p>
+<p>Team projects need acceptance tests because individual components can
+each look correct while the full workflow still fails. Run the agreed
+cases on the integrated program, not only on isolated functions.</p>
+</section>
+<section id="regression-testing-protects-earlier-work" class="level3">
+<h3>Regression testing protects earlier work</h3>
+<p>When you change working code, rerun tests that previously passed.
+Suppose the team adds equipment_cost to the event total. You should test
+the new equipment behaviour and also repeat zero-attendee, exact-budget
+and summary cases. If an older case now fails, the change caused a
+regression.</p>
+</section>
+<section id="record-evidence-not-only-conclusions" class="level3">
+<h3>Record evidence, not only conclusions</h3>
+<p>Instead of writing “all tests passed,” record the input, expected
+result and actual result for the important cases. This gives the mentor
+something concrete to inspect and makes later debugging easier.</p>
+</section>
+<section id="common-mistakes-to-watch-for-14" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Testing only the new change and forgetting earlier
+behaviour.</p></li>
+<li><p>Treating one happy-path test as complete acceptance
+evidence.</p></li>
+<li><p>Changing expected results to match incorrect code.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-19" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Each team member should choose one acceptance criterion and explain
+which concrete test proves it.</p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-15"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D4.1A — Preserve Earlier Behaviour</strong></p>
+<p>Add equipment_cost to event_total while preserving participant and
+venue calculations. Use the supplied helper.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D4.1B — Regression Check: Exact Fit</strong></p>
+<p>The brief says an exact budget match is “Within budget”. Repair the
+function.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section id="lesson-4.2-debug-one-cause-at-a-time" class="level2">
+<h2>Lesson 4.2 — Debug One Cause at a Time</h2>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Use a controlled debugging loop instead of random changes.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-21" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Reproduce a failure consistently.</p></li>
+<li><p>Locate the earliest incorrect value or decision.</p></li>
+<li><p>Make one focused change and retest.</p></li>
+<li><p>Avoid modifying code that already passes its own tests.</p></li>
+</ul>
+</section>
+<section id="first-reproduce-the-problem" class="level3">
+<h3>First reproduce the problem</h3>
+<p>A bug you cannot reproduce is difficult to reason about. Write down
+the failing input, expected result and actual result. Run it again. Once
+you can reproduce it, trace the calculation from the inputs until the
+first value differs from what you expected.</p>
+</section>
+<section id="protect-known-good-components" class="level3">
+<h3>Protect known-good components</h3>
+<p>If `item_cost` passes its tests but `delivered_cost` fails, do not
+rewrite `item_cost` simply because both functions are in the same file.
+Start at the boundary where known-good output enters the failing
+function. This reduces the number of possible causes and prevents new
+bugs.</p>
+</section>
+<section id="change-one-thing" class="level3">
+<h3>Change one thing</h3>
+<p>Random debugging often creates a moving target: several lines change,
+one test begins to pass, and nobody knows why. Make the smallest change
+that addresses the evidence, rerun the failing case, then rerun related
+passing cases.</p>
+</section>
+<section id="common-mistakes-to-watch-for-15" class="level3">
+<h3>Common mistakes to watch for</h3>
+<ul>
+<li><p>Editing a helper that already passes.</p></li>
+<li><p>Making several speculative changes at once.</p></li>
+<li><p>Ignoring the actual failing input and debugging a different
+example.</p></li>
+</ul>
+</section>
+<section id="peer-learning-checkpoint-20" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>One learner describes a failing case without giving the fix. Another
+learner identifies the first variable or decision they would
+inspect.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-14"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Visualise:</strong> <a
+href="https://pythontutor.com/"><u>Python Tutor</u></a></p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-16"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D4.2A — Find the First Wrong Operation</strong></p>
+<p>Repair the two arithmetic mistakes so print_balance returns the
+remaining budget.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D4.2B — Repair Without Breaking a Passing Helper</strong></p>
+<p>item_cost is correct. Fix only delivered_cost so it returns the
+correct total. Do not change item_cost.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+</section>
+</section>
+<section
+id="lesson-4.3-explain-a-change-with-evidence-and-prepare-for-inspection"
+class="level2">
+<h2>Lesson 4.3 — Explain a Change with Evidence and Prepare for
+Inspection</h2>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>30–35 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>Turn project work into evidence a mentor can verify.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-22" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Explain what was wrong before a change.</p></li>
+<li><p>Describe the exact change made and why it matches the
+brief.</p></li>
+<li><p>Show a failing test before and passing retest after the
+change.</p></li>
+<li><p>Explain your own component and one peer-reviewed
+component.</p></li>
+</ul>
+</section>
+<section id="explanation-is-part-of-engineering-work" class="level3">
+<h3>Explanation is part of engineering work</h3>
+<p>A correct final file does not show how the team reached it. During
+inspection, a mentor may ask what you owned, what problem you
+encountered, what test exposed it, what you changed and how you know the
+fix did not break something else. These questions are not a memory test;
+they help verify understanding and contribution.</p>
+</section>
+<section id="use-a-simple-evidence-pattern" class="level3">
+<h3>Use a simple evidence pattern</h3>
+<p>Use four statements: requirement; observed problem; change; evidence.
+Example: “The requirement says exact spending is within budget. Our
+condition used `&lt;`, so the equality test returned Over budget. I
+changed it to `&lt;=`. The equality case now passes and the over-budget
+case still returns Over budget.” This explanation is short but
+technically meaningful.</p>
+</section>
+<section id="prepare-do-not-rehearse-a-script" class="level3">
+<h3>Prepare, do not rehearse a script</h3>
+<p>You should not memorise a polished speech. Open your code and tests,
+and be ready to point to the relevant lines. If you really understand
+the work, you should be able to explain it in slightly different words
+each time.</p>
+</section>
+<section id="peer-learning-checkpoint-21" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Use the four-part evidence pattern on one change your team made
+today: requirement → problem → change → evidence.</p>
+</section>
+<section id="linked-drills-use-these-to-test-what-you-just-learned-17"
+class="level3">
+<h3>Linked drill(s) — use these to test what you just learned</h3>
+<p><strong>D4.3A — Explainable Repair</strong></p>
+<p>Repair seats_left. During inspection, be ready to explain the failing
+case, the change you made, and the retest you used.</p>
+<p><strong>Type:</strong> Core</p>
+</section>
+</section>
+<section
+id="ai-lesson-4.4-hallucinations-verification-privacy-and-responsible-use"
+class="level2">
+<h2>AI Lesson 4.4 — Hallucinations, Verification, Privacy and
+Responsible Use</h2>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated time</strong></th>
+<th>25 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning purpose</strong></td>
+<td>End the AI-awareness thread with a practical verification
+mindset.</td>
+</tr>
+</tbody>
+</table>
+<section id="what-you-should-be-able-to-do-23" class="level3">
+<h3>What you should be able to do</h3>
+<ul>
+<li><p>Explain what an AI hallucination means in practical use.</p></li>
+<li><p>Verify generated claims or code instead of trusting confidence or
+fluency.</p></li>
+<li><p>Recognise sensitive information that should not be shared
+unnecessarily.</p></li>
+<li><p>State when human review is especially important.</p></li>
+</ul>
+</section>
+<section id="confident-does-not-mean-correct" class="level3">
+<h3>Confident does not mean correct</h3>
+<p>Generative AI systems can produce plausible statements, references or
+code that are incorrect. This is often described as hallucination. In
+software work, the response may use a nonexistent library feature,
+misunderstand a function contract or produce code that passes one sample
+but fails a boundary case.</p>
+</section>
+<section id="verification-is-a-workflow" class="level3">
+<h3>Verification is a workflow</h3>
+<p>For code: compare with the requirement, run tests, inspect
+dependencies, check edge cases and understand the logic. For factual
+claims: prefer authoritative sources and confirm important details. For
+decisions with meaningful consequences, human review is essential.</p>
+<p>Privacy also matters. Avoid sharing passwords, API keys, private
+repository secrets, confidential customer data or other information that
+is not necessary for the task. Responsible AI use is part of
+professional software practice, not an optional extra.</p>
+</section>
+<section id="peer-learning-checkpoint-22" class="level3">
+<h3>Peer learning checkpoint</h3>
+<p>Give one example of an AI answer that should be tested with code and
+one example of an AI factual claim that should be checked against a
+reliable source.</p>
+</section>
+<section id="optional-resources-if-you-want-another-explanation-15"
+class="level3">
+<h3>Optional resources if you want another explanation</h3>
+<p><strong>Read:</strong> <a
+href="https://www.ibm.com/think/topics/artificial-intelligence"><u>IBM
+AI overview and limitations context</u></a></p>
+</section>
+<section id="drill-5" class="level3">
+<h3>Drill</h3>
+<p>Complete the attached AI awareness MCQs. These questions are
+informational and remain outside the technical selection weighting.</p>
+</section>
+</section>
+<section
+id="team-mission-part-2-integrate-cross-test-improve-and-inspect"
+class="level2">
+<h2>Team Mission Part 2 — Integrate, Cross-Test, Improve and
+Inspect</h2>
+<ol start="14" type="1">
+<li><p>Finish all four components and run the shared runner.</p></li>
+<li><p>Run published acceptance cases, including zero and exact-boundary
+cases.</p></li>
+<li><p>Exchange the integrated program with another team for
+cross-testing.</p></li>
+<li><p>Record defects as input + expected + actual, not vague
+comments.</p></li>
+<li><p>Each learner implements or verifies at least one documented
+improvement.</p></li>
+<li><p>Rerun the previously failing case and relevant earlier passing
+cases.</p></li>
+<li><p>Submit the final program, test evidence and individual
+contribution records.</p></li>
+<li><p>Complete coding mentor inspection; each learner explains their
+own work and one reviewed area.</p></li>
+</ol>
+</section>
+</section>
+<section id="day-5-final-supervised-checkpoint-and-reflection"
+class="level1">
+<h1>Day 5 — Final Supervised Checkpoint and Reflection</h1>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 85%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Day outcome</strong></th>
+<th>Demonstrate independent Python ability after four days of learning
+and project work.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Day emphasis</strong></td>
+<td>No new Python topic. The day measures independent performance and
+compares it with the Day 2 baseline.</td>
+</tr>
+</tbody>
+</table>
+<section id="day-5-final-coding-checkpoint-15-questions" class="level2">
+<h2>Day 5 Final Coding Checkpoint — 15 Questions</h2>
+<p>The final checkpoint contains 15 supervised coding questions. The
+first questions check the core patterns repeatedly practised in lessons
+and drills. Later questions combine more than one taught idea, such as
+calculating a value and then making a decision or using a helper and
+formatting a result. No question should require a Python topic that was
+not taught during Days 1–4.</p>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Questions</strong></th>
+<th>15</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Selection contribution</strong></td>
+<td>25 points within the combined 30% checkpoint component</td>
+</tr>
+<tr class="even">
+<td><strong>Allowed support</strong></td>
+<td>Common syntax reference supplied to all learners</td>
+</tr>
+<tr class="odd">
+<td><strong>Not allowed</strong></td>
+<td>Peer assistance, AI tools, personal mission solutions or external
+websites</td>
+</tr>
+<tr class="even">
+<td><strong>Progress comparison</strong></td>
+<td>Day 2 baseline → mission/project evidence → Day 5 final</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ai-awareness-check-10-mcqs" class="level2">
+<h2>AI Awareness Check — 10 MCQs</h2>
+<p>The separate AI-awareness assessment checks whether the learner
+understood the surface-level ideas introduced across Days 1–4: what AI
+and generative AI are, prompt quality, verification, hallucinations,
+privacy and responsible use. This result may appear on the dashboard as
+an informational metric such as 8/10, but it does not contribute
+technical selection points.</p>
+</section>
+<section id="final-reflection" class="level2">
+<h2>Final Reflection</h2>
+<ul>
+<li><p>What could you do on Day 5 that you could not do confidently on
+Day 2?</p></li>
+<li><p>Which feedback changed the way you approached a problem?</p></li>
+<li><p>Which test or debugging habit helped you most?</p></li>
+<li><p>What did you contribute to your team?</p></li>
+<li><p>What is one Python concept you still need to practise?</p></li>
+<li><p>What does responsible AI use mean to you as a future software
+engineer?</p></li>
+</ul>
+</section>
+</section>
+<section id="assessment-and-evidence-summary" class="level1">
+<h1>Assessment and Evidence Summary</h1>
+<table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Day 2 Individual Mission</strong></th>
+<th>25%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Combined Checkpoints</strong></td>
+<td>30% — Day 2 baseline 5%, Day 5 final 25%</td>
+</tr>
+<tr class="even">
+<td><strong>Learning &amp; Improvement</strong></td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td><strong>Individual Collaboration</strong></td>
+<td>15%</td>
+</tr>
+<tr class="even">
+<td><strong>Shared Team Result</strong></td>
+<td>10%</td>
+</tr>
+<tr class="odd">
+<td><strong>AI Awareness</strong></td>
+<td>Informational only; 0%</td>
+</tr>
+<tr class="even">
+<td><strong>Activity hours</strong></td>
+<td>Tracked for context; not a direct selection score</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="resource-library" class="level1">
+<h1>Resource Library</h1>
+<p>External resources are optional. They provide another explanation
+when needed; they do not replace the lesson text.</p>
+<p><strong>Git video:</strong> <a
+href="https://www.youtube.com/watch?v=hwP7WQkmECE"><u>Git Explained in
+100 Seconds</u></a></p>
+<p><strong>Gitea reference:</strong> <a
+href="https://docs.gitea.com/"><u>Gitea Docs: What is Gitea?</u></a></p>
+<p><strong>Gitea practice:</strong> <a
+href="https://docs.gitea.com/usage/repository/"><u>Gitea repository
+guide</u></a></p>
+<p><strong>Python orientation:</strong> <a
+href="https://www.youtube.com/watch?v=x7X9w_GIm1s"><u>Python in 100
+Seconds</u></a></p>
+<p><strong>Code visualizer:</strong> <a
+href="https://pythontutor.com/"><u>Python Tutor</u></a></p>
+<p><strong>Functions video:</strong> <a
+href="https://www.youtube.com/watch?v=9Os0o3wzS_I"><u>Corey Schafer:
+Python Functions</u></a></p>
+<p><strong>F-strings video:</strong> <a
+href="https://www.youtube.com/watch?v=nghuHvKLhJA"><u>Corey Schafer:
+F-Strings</u></a></p>
+<p><strong>Conditionals video:</strong> <a
+href="https://www.youtube.com/watch?v=DZwmZ8Usvnk"><u>Corey Schafer:
+Conditionals and Booleans</u></a></p>
+<p><strong>Python reference:</strong> <a
+href="https://docs.python.org/3/tutorial/introduction.html"><u>Official
+Python Tutorial (optional reference; assumes some programming
+background)</u></a></p>
+<p><strong>AI reference:</strong> <a
+href="https://www.ibm.com/think/topics/artificial-intelligence"><u>IBM:
+What is Artificial Intelligence?</u></a></p>
+<p><strong>AI optional course:</strong> <a
+href="https://digital-skills-jobs.europa.eu/en/learning-space/training-catalogue/elements-ai"><u>Elements
+of AI</u></a></p>
+</section>
+<section id="help-ladder" class="level1">
+<h1>Help Ladder</h1>
+<ol start="22" type="1">
+<li><p>Read the requirement again and underline the required
+output.</p></li>
+<li><p>Return to the relevant worked example in the lesson.</p></li>
+<li><p>Predict one small case by hand.</p></li>
+<li><p>Read the failing test or error message carefully.</p></li>
+<li><p>Ask a peer a specific question and show what you already
+tried.</p></li>
+<li><p>Use the optional resource for another explanation.</p></li>
+<li><p>Ask a coding mentor for a concept hint or technical-access help.
+Do not request a complete solution.</p></li>
+</ol>
+</section></article>
+      <div class="footer">Five-Day Python Trial • Professional standalone HTML edition</div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

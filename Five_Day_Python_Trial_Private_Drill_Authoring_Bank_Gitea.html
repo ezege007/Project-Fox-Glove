@@ -1,0 +1,4023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Administrator and curriculum-team
+reference for authoring lesson-aligned drills, tests, restrictions, and
+inspection prompts." />
+<title>Five-Day Python Trial ��� Private Drill Authoring Bank</title>
+<style>
+:root{
+  --bg:#f4f7fb; --paper:#fff; --ink:#142033; --muted:#5e6c80; --line:#dce5f0;
+  --navy:#0f2744; --blue:#2563eb; --teal:#0f766e; --purple:#6d28d9;
+  --soft-blue:#eef5ff; --soft-teal:#eaf8f5; --soft-purple:#f5f0ff;
+  --code:#0b1220; --code-ink:#e7edf7; --shadow:0 12px 34px rgba(15,39,68,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.68 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.shell{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;overflow:auto;background:linear-gradient(180deg,#0d1e33 0%,#112b49 100%);padding:26px 20px;color:#fff;border-right:1px solid rgba(255,255,255,.08)}
+.brand{padding:4px 8px 20px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,.12)}
+.kicker{font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:#9fc4ff}
+.brand h1{font-size:20px;line-height:1.28;color:#fff;margin:8px 0}.brand p{font-size:13px;color:#bdcadd;margin:8px 0 0}
+.toc-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#8fa8c8;margin:18px 8px 10px}
+#TOC ul{list-style:none;padding:0;margin:0}#TOC>ul>li{margin:6px 0}#TOC li ul{padding-left:12px;margin-top:2px}
+#TOC a{display:block;color:#d9e6f5;text-decoration:none;border-radius:8px;padding:6px 9px;font-size:12px;line-height:1.35}
+#TOC>ul>li>a{font-size:13px;font-weight:750;color:#fff}#TOC a:hover{background:rgba(255,255,255,.08)}
+.main{min-width:0}.hero{background:linear-gradient(135deg,#102b4a 0%,#184b79 54%,#2563eb 100%);padding:42px 56px 38px;color:#fff;border-bottom:1px solid rgba(0,0,0,.08)}
+.hero .eyebrow{font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:#c9ddff}.hero h1{font-size:38px;line-height:1.12;margin:9px 0 10px;color:#fff;max-width:980px}.hero p{font-size:17px;color:#e8f0fb;max-width:920px;margin:0}
+.badges{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.badge{font-size:12px;font-weight:700;padding:6px 10px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(255,255,255,.1)}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.action{display:inline-block;color:#fff!important;text-decoration:none!important;font-size:12px;font-weight:750;padding:8px 11px;border-radius:9px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.11)}
+.content-wrap{padding:34px 56px 72px}.document{max-width:1050px;margin:0 auto;background:var(--paper);padding:54px 64px;border-radius:20px;box-shadow:var(--shadow)}
+.document>p:first-child{font-size:17px;color:var(--muted);padding:15px 18px;background:#f7faff;border:1px solid var(--line);border-radius:12px;margin-top:0}
+h1,h2,h3,h4{color:var(--navy);scroll-margin-top:24px}.document h1{font-size:31px;line-height:1.2;margin:60px 0 18px;padding-top:8px;border-top:4px solid var(--blue)}.document h1:first-of-type{margin-top:18px}.document h2{font-size:25px;line-height:1.27;margin:48px 0 16px;padding-left:14px;border-left:4px solid var(--blue)}.document h3{font-size:19px;margin:31px 0 12px}.document h4{font-size:16px;margin:25px 0 10px}
+p{margin:0 0 17px}strong{color:#0f2848}ul,ol{padding-left:25px;margin:8px 0 22px}li{margin:7px 0}
+blockquote{margin:22px 0;padding:14px 18px;border-left:4px solid var(--teal);background:var(--soft-teal);color:#244b49;border-radius:0 10px 10px 0}
+table{width:100%!important;border-collapse:separate;border-spacing:0;margin:22px 0 30px;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}thead th{background:var(--navy);color:#fff;font-weight:750;text-align:left;padding:12px 14px;border-right:1px solid rgba(255,255,255,.15)}thead th:last-child{border-right:0}tbody td,tbody th{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top;text-align:left}tbody tr:nth-child(even){background:#f8fbff}tbody th{background:#f1f6fd;color:#17375e;font-weight:750}
+pre{background:var(--code)!important;color:var(--code-ink)!important;padding:18px 20px;border-radius:12px;overflow:auto;border:1px solid #1d2a3d;margin:18px 0 24px;white-space:pre}pre code{background:none!important;color:inherit!important;padding:0!important;font:14px/1.6 "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace!important}code{background:#eef3f9;color:#15365c;border-radius:6px;padding:.15em .38em;font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;font-size:.92em}
+.sourceCode{background:var(--code)!important}.sourceCode span{color:inherit}.resource-line{border-left:3px solid var(--purple);background:var(--soft-purple);padding:9px 12px;border-radius:7px}
+hr{border:0;border-top:1px solid var(--line);margin:38px 0}.footer{max-width:1050px;margin:26px auto 0;text-align:center;color:#718096;font-size:12px}
+@media(max-width:980px){.shell{grid-template-columns:1fr}.sidebar{position:relative;height:auto;max-height:420px}.hero{padding:32px 24px}.hero h1{font-size:30px}.content-wrap{padding:20px 14px 45px}.document{padding:30px 22px;border-radius:14px}}
+@media print{body{background:#fff;font-size:11pt}.sidebar,.actions{display:none!important}.shell{display:block}.hero{background:#fff!important;color:#000;padding:0 0 18px;border-bottom:2px solid #000}.hero .eyebrow,.hero p{color:#333}.hero h1{color:#000}.content-wrap{padding:0}.document{max-width:none;box-shadow:none;padding:0}a{color:#000;text-decoration:none}pre{white-space:pre-wrap;word-break:break-word}}
+
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="kicker">L2E • Five-Day Python Trial</div>
+      <h1>Five-Day Python Trial ��� Private Drill Authoring Bank</h1>
+      <p>Private authoring reference</p>
+    </div>
+    <div class="toc-label">Contents</div>
+    <ul>
+    <li><a href="#how-to-use-this-file"
+    id="toc-how-to-use-this-file">How to Use This File</a></li>
+    <li><a href="#lesson-to-drill-map"
+    id="toc-lesson-to-drill-map">Lesson-to-Drill Map</a></li>
+    <li><a href="#d1.2a-add-two-item-costs"
+    id="toc-d1.2a-add-two-item-costs">D1.2A — Add Two Item Costs</a>
+    <ul>
+    <li><a href="#instructions-markdown"
+    id="toc-instructions-markdown">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template"
+    id="toc-default-code-template">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs"
+    id="toc-allowed-keywords-constructs">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings"
+    id="toc-restrictions-forbidden-strings">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests"
+    id="toc-visible-sample-tests">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests"
+    id="toc-private-hidden-tests">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution"
+    id="toc-private-reference-solution">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.2b-calculate-remaining-money"
+    id="toc-d1.2b-calculate-remaining-money">D1.2B — Calculate Remaining
+    Money</a>
+    <ul>
+    <li><a href="#instructions-markdown-1"
+    id="toc-instructions-markdown-1">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-1"
+    id="toc-default-code-template-1">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-1"
+    id="toc-allowed-keywords-constructs-1">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-1"
+    id="toc-restrictions-forbidden-strings-1">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-1"
+    id="toc-visible-sample-tests-1">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-1"
+    id="toc-private-hidden-tests-1">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-1"
+    id="toc-private-reference-solution-1">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.3a-complete-your-first-function"
+    id="toc-d1.3a-complete-your-first-function">D1.3A — Complete Your
+    First Function</a>
+    <ul>
+    <li><a href="#instructions-markdown-2"
+    id="toc-instructions-markdown-2">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-2"
+    id="toc-default-code-template-2">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-2"
+    id="toc-allowed-keywords-constructs-2">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-2"
+    id="toc-restrictions-forbidden-strings-2">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-2"
+    id="toc-visible-sample-tests-2">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-2"
+    id="toc-private-hidden-tests-2">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-2"
+    id="toc-private-reference-solution-2">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.3b-repair-the-missing-return"
+    id="toc-d1.3b-repair-the-missing-return">D1.3B — Repair the Missing
+    Return</a>
+    <ul>
+    <li><a href="#instructions-markdown-3"
+    id="toc-instructions-markdown-3">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-3"
+    id="toc-default-code-template-3">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-3"
+    id="toc-allowed-keywords-constructs-3">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-3"
+    id="toc-restrictions-forbidden-strings-3">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-3"
+    id="toc-visible-sample-tests-3">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-3"
+    id="toc-private-hidden-tests-3">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-3"
+    id="toc-private-reference-solution-3">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.4a-travel-cost" id="toc-d1.4a-travel-cost">D1.4A —
+    Travel Cost</a>
+    <ul>
+    <li><a href="#instructions-markdown-4"
+    id="toc-instructions-markdown-4">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-4"
+    id="toc-default-code-template-4">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-4"
+    id="toc-allowed-keywords-constructs-4">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-4"
+    id="toc-restrictions-forbidden-strings-4">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-4"
+    id="toc-visible-sample-tests-4">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-4"
+    id="toc-private-hidden-tests-4">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-4"
+    id="toc-private-reference-solution-4">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.4b-budget-after-two-costs"
+    id="toc-d1.4b-budget-after-two-costs">D1.4B — Budget After Two
+    Costs</a>
+    <ul>
+    <li><a href="#instructions-markdown-5"
+    id="toc-instructions-markdown-5">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-5"
+    id="toc-default-code-template-5">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-5"
+    id="toc-allowed-keywords-constructs-5">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-5"
+    id="toc-restrictions-forbidden-strings-5">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-5"
+    id="toc-visible-sample-tests-5">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-5"
+    id="toc-private-hidden-tests-5">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-5"
+    id="toc-private-reference-solution-5">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.4c-participant-cost"
+    id="toc-d1.4c-participant-cost">D1.4C — Participant Cost</a>
+    <ul>
+    <li><a href="#instructions-markdown-6"
+    id="toc-instructions-markdown-6">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-6"
+    id="toc-default-code-template-6">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-6"
+    id="toc-allowed-keywords-constructs-6">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-6"
+    id="toc-restrictions-forbidden-strings-6">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-6"
+    id="toc-visible-sample-tests-6">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-6"
+    id="toc-private-hidden-tests-6">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-6"
+    id="toc-private-reference-solution-6">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.5a-welcome-message"
+    id="toc-d1.5a-welcome-message">D1.5A — Welcome Message</a>
+    <ul>
+    <li><a href="#instructions-markdown-7"
+    id="toc-instructions-markdown-7">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-7"
+    id="toc-default-code-template-7">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-7"
+    id="toc-allowed-keywords-constructs-7">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-7"
+    id="toc-restrictions-forbidden-strings-7">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-7"
+    id="toc-visible-sample-tests-7">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-7"
+    id="toc-private-hidden-tests-7">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-7"
+    id="toc-private-reference-solution-7">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.5b-budget-message"
+    id="toc-d1.5b-budget-message">D1.5B — Budget Message</a>
+    <ul>
+    <li><a href="#instructions-markdown-8"
+    id="toc-instructions-markdown-8">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-8"
+    id="toc-default-code-template-8">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-8"
+    id="toc-allowed-keywords-constructs-8">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-8"
+    id="toc-restrictions-forbidden-strings-8">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-8"
+    id="toc-visible-sample-tests-8">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-8"
+    id="toc-private-hidden-tests-8">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-8"
+    id="toc-private-reference-solution-8">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.6a-use-a-supplied-helper"
+    id="toc-d1.6a-use-a-supplied-helper">D1.6A — Use a Supplied
+    Helper</a>
+    <ul>
+    <li><a href="#instructions-markdown-9"
+    id="toc-instructions-markdown-9">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-9"
+    id="toc-default-code-template-9">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-9"
+    id="toc-allowed-keywords-constructs-9">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-9"
+    id="toc-restrictions-forbidden-strings-9">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-9"
+    id="toc-visible-sample-tests-9">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-9"
+    id="toc-private-hidden-tests-9">Private Hidden Tests</a></li>
+    <li><a href="#inspection-checklist"
+    id="toc-inspection-checklist">Inspection Checklist</a></li>
+    <li><a href="#private-reference-solution-9"
+    id="toc-private-reference-solution-9">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.6b-return-do-not-display"
+    id="toc-d1.6b-return-do-not-display">D1.6B — Return, Do Not
+    Display</a>
+    <ul>
+    <li><a href="#instructions-markdown-10"
+    id="toc-instructions-markdown-10">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-10"
+    id="toc-default-code-template-10">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-10"
+    id="toc-allowed-keywords-constructs-10">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-10"
+    id="toc-restrictions-forbidden-strings-10">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-10"
+    id="toc-visible-sample-tests-10">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-10"
+    id="toc-private-hidden-tests-10">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-10"
+    id="toc-private-reference-solution-10">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.6c-trace-a-returned-value"
+    id="toc-d1.6c-trace-a-returned-value">D1.6C — Trace a Returned
+    Value</a>
+    <ul>
+    <li><a href="#instructions-markdown-11"
+    id="toc-instructions-markdown-11">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-11"
+    id="toc-default-code-template-11">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-11"
+    id="toc-allowed-keywords-constructs-11">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-11"
+    id="toc-restrictions-forbidden-strings-11">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-11"
+    id="toc-visible-sample-tests-11">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-11"
+    id="toc-private-hidden-tests-11">Private Hidden Tests</a></li>
+    <li><a href="#inspection-checklist-1"
+    id="toc-inspection-checklist-1">Inspection Checklist</a></li>
+    <li><a href="#private-reference-solution-11"
+    id="toc-private-reference-solution-11">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.7a-follow-the-brief-exactly"
+    id="toc-d1.7a-follow-the-brief-exactly">D1.7A — Follow the Brief
+    Exactly</a>
+    <ul>
+    <li><a href="#instructions-markdown-12"
+    id="toc-instructions-markdown-12">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-12"
+    id="toc-default-code-template-12">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-12"
+    id="toc-allowed-keywords-constructs-12">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-12"
+    id="toc-restrictions-forbidden-strings-12">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-12"
+    id="toc-visible-sample-tests-12">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-12"
+    id="toc-private-hidden-tests-12">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-12"
+    id="toc-private-reference-solution-12">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d1.7b-repair-a-small-logic-error"
+    id="toc-d1.7b-repair-a-small-logic-error">D1.7B — Repair a Small
+    Logic Error</a>
+    <ul>
+    <li><a href="#instructions-markdown-13"
+    id="toc-instructions-markdown-13">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-13"
+    id="toc-default-code-template-13">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-13"
+    id="toc-allowed-keywords-constructs-13">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-13"
+    id="toc-restrictions-forbidden-strings-13">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-13"
+    id="toc-visible-sample-tests-13">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-13"
+    id="toc-private-hidden-tests-13">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-13"
+    id="toc-private-reference-solution-13">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.1a-can-the-budget-cover-the-cost"
+    id="toc-d2.1a-can-the-budget-cover-the-cost">D2.1A — Can the Budget
+    Cover the Cost?</a>
+    <ul>
+    <li><a href="#instructions-markdown-14"
+    id="toc-instructions-markdown-14">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-14"
+    id="toc-default-code-template-14">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-14"
+    id="toc-allowed-keywords-constructs-14">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-14"
+    id="toc-restrictions-forbidden-strings-14">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-14"
+    id="toc-visible-sample-tests-14">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-14"
+    id="toc-private-hidden-tests-14">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-14"
+    id="toc-private-reference-solution-14">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.1b-compare-two-totals"
+    id="toc-d2.1b-compare-two-totals">D2.1B — Compare Two Totals</a>
+    <ul>
+    <li><a href="#instructions-markdown-15"
+    id="toc-instructions-markdown-15">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-15"
+    id="toc-default-code-template-15">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-15"
+    id="toc-allowed-keywords-constructs-15">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-15"
+    id="toc-restrictions-forbidden-strings-15">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-15"
+    id="toc-visible-sample-tests-15">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-15"
+    id="toc-private-hidden-tests-15">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-15"
+    id="toc-private-reference-solution-15">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.2a-funding-status"
+    id="toc-d2.2a-funding-status">D2.2A — Funding Status</a>
+    <ul>
+    <li><a href="#instructions-markdown-16"
+    id="toc-instructions-markdown-16">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-16"
+    id="toc-default-code-template-16">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-16"
+    id="toc-allowed-keywords-constructs-16">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-16"
+    id="toc-restrictions-forbidden-strings-16">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-16"
+    id="toc-visible-sample-tests-16">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-16"
+    id="toc-private-hidden-tests-16">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-16"
+    id="toc-private-reference-solution-16">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.2b-capacity-status"
+    id="toc-d2.2b-capacity-status">D2.2B — Capacity Status</a>
+    <ul>
+    <li><a href="#instructions-markdown-17"
+    id="toc-instructions-markdown-17">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-17"
+    id="toc-default-code-template-17">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-17"
+    id="toc-allowed-keywords-constructs-17">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-17"
+    id="toc-restrictions-forbidden-strings-17">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-17"
+    id="toc-visible-sample-tests-17">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-17"
+    id="toc-private-hidden-tests-17">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-17"
+    id="toc-private-reference-solution-17">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.2c-positive-places"
+    id="toc-d2.2c-positive-places">D2.2C — Positive Places</a>
+    <ul>
+    <li><a href="#instructions-markdown-18"
+    id="toc-instructions-markdown-18">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-18"
+    id="toc-default-code-template-18">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-18"
+    id="toc-allowed-keywords-constructs-18">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-18"
+    id="toc-restrictions-forbidden-strings-18">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-18"
+    id="toc-visible-sample-tests-18">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-18"
+    id="toc-private-hidden-tests-18">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-18"
+    id="toc-private-reference-solution-18">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.3a-event-total-with-a-helper"
+    id="toc-d2.3a-event-total-with-a-helper">D2.3A — Event Total with a
+    Helper</a>
+    <ul>
+    <li><a href="#instructions-markdown-19"
+    id="toc-instructions-markdown-19">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-19"
+    id="toc-default-code-template-19">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-19"
+    id="toc-allowed-keywords-constructs-19">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-19"
+    id="toc-restrictions-forbidden-strings-19">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-19"
+    id="toc-visible-sample-tests-19">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-19"
+    id="toc-private-hidden-tests-19">Private Hidden Tests</a></li>
+    <li><a href="#inspection-checklist-2"
+    id="toc-inspection-checklist-2">Inspection Checklist</a></li>
+    <li><a href="#private-reference-solution-19"
+    id="toc-private-reference-solution-19">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.3b-calculate-then-format"
+    id="toc-d2.3b-calculate-then-format">D2.3B — Calculate Then
+    Format</a>
+    <ul>
+    <li><a href="#instructions-markdown-20"
+    id="toc-instructions-markdown-20">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-20"
+    id="toc-default-code-template-20">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-20"
+    id="toc-allowed-keywords-constructs-20">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-20"
+    id="toc-restrictions-forbidden-strings-20">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-20"
+    id="toc-visible-sample-tests-20">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-20"
+    id="toc-private-hidden-tests-20">Private Hidden Tests</a></li>
+    <li><a href="#inspection-checklist-3"
+    id="toc-inspection-checklist-3">Inspection Checklist</a></li>
+    <li><a href="#private-reference-solution-20"
+    id="toc-private-reference-solution-20">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.3c-calculate-then-decide"
+    id="toc-d2.3c-calculate-then-decide">D2.3C — Calculate Then
+    Decide</a>
+    <ul>
+    <li><a href="#instructions-markdown-21"
+    id="toc-instructions-markdown-21">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-21"
+    id="toc-default-code-template-21">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-21"
+    id="toc-allowed-keywords-constructs-21">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-21"
+    id="toc-restrictions-forbidden-strings-21">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-21"
+    id="toc-visible-sample-tests-21">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-21"
+    id="toc-private-hidden-tests-21">Private Hidden Tests</a></li>
+    <li><a href="#inspection-checklist-4"
+    id="toc-inspection-checklist-4">Inspection Checklist</a></li>
+    <li><a href="#private-reference-solution-21"
+    id="toc-private-reference-solution-21">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.4a-repair-printing-cost"
+    id="toc-d2.4a-repair-printing-cost">D2.4A — Repair Printing Cost</a>
+    <ul>
+    <li><a href="#instructions-markdown-22"
+    id="toc-instructions-markdown-22">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-22"
+    id="toc-default-code-template-22">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-22"
+    id="toc-allowed-keywords-constructs-22">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-22"
+    id="toc-restrictions-forbidden-strings-22">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-22"
+    id="toc-visible-sample-tests-22">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-22"
+    id="toc-private-hidden-tests-22">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-22"
+    id="toc-private-reference-solution-22">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.4b-repair-an-equality-bug"
+    id="toc-d2.4b-repair-an-equality-bug">D2.4B — Repair an Equality
+    Bug</a>
+    <ul>
+    <li><a href="#instructions-markdown-23"
+    id="toc-instructions-markdown-23">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-23"
+    id="toc-default-code-template-23">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-23"
+    id="toc-allowed-keywords-constructs-23">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-23"
+    id="toc-restrictions-forbidden-strings-23">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-23"
+    id="toc-visible-sample-tests-23">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-23"
+    id="toc-private-hidden-tests-23">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-23"
+    id="toc-private-reference-solution-23">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.4c-retest-after-a-fix"
+    id="toc-d2.4c-retest-after-a-fix">D2.4C — Retest After a Fix</a>
+    <ul>
+    <li><a href="#instructions-markdown-24"
+    id="toc-instructions-markdown-24">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-24"
+    id="toc-default-code-template-24">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-24"
+    id="toc-allowed-keywords-constructs-24">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-24"
+    id="toc-restrictions-forbidden-strings-24">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-24"
+    id="toc-visible-sample-tests-24">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-24"
+    id="toc-private-hidden-tests-24">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-24"
+    id="toc-private-reference-solution-24">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.5a-build-from-a-written-brief"
+    id="toc-d2.5a-build-from-a-written-brief">D2.5A — Build from a
+    Written Brief</a>
+    <ul>
+    <li><a href="#instructions-markdown-25"
+    id="toc-instructions-markdown-25">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-25"
+    id="toc-default-code-template-25">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-25"
+    id="toc-allowed-keywords-constructs-25">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-25"
+    id="toc-restrictions-forbidden-strings-25">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-25"
+    id="toc-visible-sample-tests-25">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-25"
+    id="toc-private-hidden-tests-25">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-25"
+    id="toc-private-reference-solution-25">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d2.5b-apply-feedback-without-changing-the-contract"
+    id="toc-d2.5b-apply-feedback-without-changing-the-contract">D2.5B —
+    Apply Feedback Without Changing the Contract</a>
+    <ul>
+    <li><a href="#instructions-markdown-26"
+    id="toc-instructions-markdown-26">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-26"
+    id="toc-default-code-template-26">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-26"
+    id="toc-allowed-keywords-constructs-26">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-26"
+    id="toc-restrictions-forbidden-strings-26">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-26"
+    id="toc-visible-sample-tests-26">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-26"
+    id="toc-private-hidden-tests-26">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-26"
+    id="toc-private-reference-solution-26">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d3.1a-implement-a-component-contract"
+    id="toc-d3.1a-implement-a-component-contract">D3.1A — Implement a
+    Component Contract</a>
+    <ul>
+    <li><a href="#instructions-markdown-27"
+    id="toc-instructions-markdown-27">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-27"
+    id="toc-default-code-template-27">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-27"
+    id="toc-allowed-keywords-constructs-27">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-27"
+    id="toc-restrictions-forbidden-strings-27">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-27"
+    id="toc-visible-sample-tests-27">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-27"
+    id="toc-private-hidden-tests-27">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-27"
+    id="toc-private-reference-solution-27">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d3.1b-implement-the-status-contract"
+    id="toc-d3.1b-implement-the-status-contract">D3.1B — Implement the
+    Status Contract</a>
+    <ul>
+    <li><a href="#instructions-markdown-28"
+    id="toc-instructions-markdown-28">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-28"
+    id="toc-default-code-template-28">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-28"
+    id="toc-allowed-keywords-constructs-28">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-28"
+    id="toc-restrictions-forbidden-strings-28">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-28"
+    id="toc-visible-sample-tests-28">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-28"
+    id="toc-private-hidden-tests-28">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-28"
+    id="toc-private-reference-solution-28">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d3.2a-integrate-participant-and-venue-costs"
+    id="toc-d3.2a-integrate-participant-and-venue-costs">D3.2A —
+    Integrate Participant and Venue Costs</a>
+    <ul>
+    <li><a href="#instructions-markdown-29"
+    id="toc-instructions-markdown-29">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-29"
+    id="toc-default-code-template-29">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-29"
+    id="toc-allowed-keywords-constructs-29">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-29"
+    id="toc-restrictions-forbidden-strings-29">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-29"
+    id="toc-visible-sample-tests-29">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-29"
+    id="toc-private-hidden-tests-29">Private Hidden Tests</a></li>
+    <li><a href="#inspection-checklist-5"
+    id="toc-inspection-checklist-5">Inspection Checklist</a></li>
+    <li><a href="#private-reference-solution-29"
+    id="toc-private-reference-solution-29">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d3.2b-build-the-final-event-summary"
+    id="toc-d3.2b-build-the-final-event-summary">D3.2B — Build the Final
+    Event Summary</a>
+    <ul>
+    <li><a href="#instructions-markdown-30"
+    id="toc-instructions-markdown-30">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-30"
+    id="toc-default-code-template-30">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-30"
+    id="toc-allowed-keywords-constructs-30">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-30"
+    id="toc-restrictions-forbidden-strings-30">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-30"
+    id="toc-visible-sample-tests-30">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-30"
+    id="toc-private-hidden-tests-30">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-30"
+    id="toc-private-reference-solution-30">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d3.3a-test-a-component-with-zero"
+    id="toc-d3.3a-test-a-component-with-zero">D3.3A — Test a Component
+    with Zero</a>
+    <ul>
+    <li><a href="#instructions-markdown-31"
+    id="toc-instructions-markdown-31">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-31"
+    id="toc-default-code-template-31">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-31"
+    id="toc-allowed-keywords-constructs-31">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-31"
+    id="toc-restrictions-forbidden-strings-31">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-31"
+    id="toc-visible-sample-tests-31">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-31"
+    id="toc-private-hidden-tests-31">Private Hidden Tests</a></li>
+    <li><a href="#inspection-checklist-6"
+    id="toc-inspection-checklist-6">Inspection Checklist</a></li>
+    <li><a href="#private-reference-solution-31"
+    id="toc-private-reference-solution-31">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d3.3b-repair-a-teammate-component"
+    id="toc-d3.3b-repair-a-teammate-component">D3.3B — Repair a Teammate
+    Component</a>
+    <ul>
+    <li><a href="#instructions-markdown-32"
+    id="toc-instructions-markdown-32">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-32"
+    id="toc-default-code-template-32">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-32"
+    id="toc-allowed-keywords-constructs-32">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-32"
+    id="toc-restrictions-forbidden-strings-32">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-32"
+    id="toc-visible-sample-tests-32">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-32"
+    id="toc-private-hidden-tests-32">Private Hidden Tests</a></li>
+    <li><a href="#inspection-checklist-7"
+    id="toc-inspection-checklist-7">Inspection Checklist</a></li>
+    <li><a href="#private-reference-solution-32"
+    id="toc-private-reference-solution-32">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d3.4a-review-before-you-rewrite"
+    id="toc-d3.4a-review-before-you-rewrite">D3.4A — Review Before You
+    Rewrite</a>
+    <ul>
+    <li><a href="#instructions-markdown-33"
+    id="toc-instructions-markdown-33">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-33"
+    id="toc-default-code-template-33">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-33"
+    id="toc-allowed-keywords-constructs-33">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-33"
+    id="toc-restrictions-forbidden-strings-33">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-33"
+    id="toc-visible-sample-tests-33">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-33"
+    id="toc-private-hidden-tests-33">Private Hidden Tests</a></li>
+    <li><a href="#inspection-checklist-8"
+    id="toc-inspection-checklist-8">Inspection Checklist</a></li>
+    <li><a href="#private-reference-solution-33"
+    id="toc-private-reference-solution-33">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d4.1a-preserve-earlier-behaviour"
+    id="toc-d4.1a-preserve-earlier-behaviour">D4.1A — Preserve Earlier
+    Behaviour</a>
+    <ul>
+    <li><a href="#instructions-markdown-34"
+    id="toc-instructions-markdown-34">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-34"
+    id="toc-default-code-template-34">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-34"
+    id="toc-allowed-keywords-constructs-34">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-34"
+    id="toc-restrictions-forbidden-strings-34">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-34"
+    id="toc-visible-sample-tests-34">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-34"
+    id="toc-private-hidden-tests-34">Private Hidden Tests</a></li>
+    <li><a href="#inspection-checklist-9"
+    id="toc-inspection-checklist-9">Inspection Checklist</a></li>
+    <li><a href="#private-reference-solution-34"
+    id="toc-private-reference-solution-34">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d4.1b-regression-check-exact-fit"
+    id="toc-d4.1b-regression-check-exact-fit">D4.1B — Regression Check:
+    Exact Fit</a>
+    <ul>
+    <li><a href="#instructions-markdown-35"
+    id="toc-instructions-markdown-35">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-35"
+    id="toc-default-code-template-35">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-35"
+    id="toc-allowed-keywords-constructs-35">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-35"
+    id="toc-restrictions-forbidden-strings-35">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-35"
+    id="toc-visible-sample-tests-35">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-35"
+    id="toc-private-hidden-tests-35">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-35"
+    id="toc-private-reference-solution-35">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d4.2a-find-the-first-wrong-operation"
+    id="toc-d4.2a-find-the-first-wrong-operation">D4.2A — Find the First
+    Wrong Operation</a>
+    <ul>
+    <li><a href="#instructions-markdown-36"
+    id="toc-instructions-markdown-36">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-36"
+    id="toc-default-code-template-36">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-36"
+    id="toc-allowed-keywords-constructs-36">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-36"
+    id="toc-restrictions-forbidden-strings-36">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-36"
+    id="toc-visible-sample-tests-36">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-36"
+    id="toc-private-hidden-tests-36">Private Hidden Tests</a></li>
+    <li><a href="#private-reference-solution-36"
+    id="toc-private-reference-solution-36">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d4.2b-repair-without-breaking-a-passing-helper"
+    id="toc-d4.2b-repair-without-breaking-a-passing-helper">D4.2B —
+    Repair Without Breaking a Passing Helper</a>
+    <ul>
+    <li><a href="#instructions-markdown-37"
+    id="toc-instructions-markdown-37">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-37"
+    id="toc-default-code-template-37">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-37"
+    id="toc-allowed-keywords-constructs-37">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-37"
+    id="toc-restrictions-forbidden-strings-37">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-37"
+    id="toc-visible-sample-tests-37">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-37"
+    id="toc-private-hidden-tests-37">Private Hidden Tests</a></li>
+    <li><a href="#inspection-checklist-10"
+    id="toc-inspection-checklist-10">Inspection Checklist</a></li>
+    <li><a href="#private-reference-solution-37"
+    id="toc-private-reference-solution-37">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#d4.3a-explainable-repair"
+    id="toc-d4.3a-explainable-repair">D4.3A — Explainable Repair</a>
+    <ul>
+    <li><a href="#instructions-markdown-38"
+    id="toc-instructions-markdown-38">Instructions (Markdown)</a></li>
+    <li><a href="#default-code-template-38"
+    id="toc-default-code-template-38">Default Code Template</a></li>
+    <li><a href="#allowed-keywords-constructs-38"
+    id="toc-allowed-keywords-constructs-38">Allowed Keywords /
+    Constructs</a></li>
+    <li><a href="#restrictions-forbidden-strings-38"
+    id="toc-restrictions-forbidden-strings-38">Restrictions / Forbidden
+    Strings</a></li>
+    <li><a href="#visible-sample-tests-38"
+    id="toc-visible-sample-tests-38">Visible Sample Tests</a></li>
+    <li><a href="#private-hidden-tests-38"
+    id="toc-private-hidden-tests-38">Private Hidden Tests</a></li>
+    <li><a href="#inspection-checklist-11"
+    id="toc-inspection-checklist-11">Inspection Checklist</a></li>
+    <li><a href="#private-reference-solution-38"
+    id="toc-private-reference-solution-38">Private Reference
+    Solution</a></li>
+    </ul></li>
+    <li><a href="#ai-lesson-knowledge-checks-authoring-guidance"
+    id="toc-ai-lesson-knowledge-checks-authoring-guidance">AI Lesson
+    Knowledge Checks — Authoring Guidance</a></li>
+    </ul>
+  </aside>
+  <main class="main">
+    <header class="hero">
+      <div class="eyebrow">Private authoring reference</div>
+      <h1>Five-Day Python Trial ��� Private Drill Authoring Bank</h1>
+      <p>Administrator and curriculum-team reference for authoring
+lesson-aligned drills, tests, restrictions, and inspection prompts.</p>
+      <div class="badges">
+        <span class="badge">Python foundations</span>
+        <span class="badge">Gitea workflow</span>
+        <span class="badge">Self-learning</span>
+        <span class="badge">Peer-supported</span>
+        <span class="badge">AI-aware</span>
+        <span class="badge">Internal / administrator use</span>
+      </div>
+      <div class="actions"><a class="action" href="#" onclick="window.print();return false;">Print / Save as PDF</a></div>
+    </header>
+    <div class="content-wrap">
+      <article class="document"><p>Administrator / curriculum team copy
+— do not publish hidden tests or reference solutions</p>
+<p><strong>Self-learning • peer-supported • beginner-friendly •
+AI-aware</strong></p>
+<section id="how-to-use-this-file" class="level1">
+<h1>How to Use This File</h1>
+<p>This file translates the learner-facing drill titles into
+platform-authoring fields similar to the challenge configuration screen:
+display name, coins, instructions, default code template, allowed
+constructs, restrictions, visible sample checks, private hidden checks
+and inspection prompts. Hidden tests and reference solutions must not be
+visible to learners.</p>
+<p>Core drills are the minimum linked assessment after the lesson.
+Reinforcement drills test the same lesson from another angle and may be
+assigned when time permits or when a learner needs more practice. Drill
+coins reward completion/activity only; they do not directly change the
+agreed 100-point selection weighting.</p>
+<p><strong>Repository platform note:</strong> Lesson 1.1 teaches Git
+concepts using Gitea, the repository hosting platform used for the
+trial. It intentionally has no coding drill; repository use is observed
+as work evidence instead.</p>
+</section>
+<section id="lesson-to-drill-map" class="level1">
+<h1>Lesson-to-Drill Map</h1>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>
+<strong>Lesson</strong>
+</th>
+<th>
+<strong>Core drill(s)</strong>
+</th>
+<th>
+<strong>Reinforcement drill(s)</strong>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+Lesson 1.2
+</td>
+<td>
+D1.2A Add Two Item Costs
+</td>
+<td>
+D1.2B Calculate Remaining Money
+</td>
+</tr>
+<tr class="even">
+<td>
+Lesson 1.3
+</td>
+<td>
+D1.3A Complete Your First Function
+</td>
+<td>
+D1.3B Repair the Missing Return
+</td>
+</tr>
+<tr class="odd">
+<td>
+Lesson 1.4
+</td>
+<td>
+D1.4A Travel Cost<br /> D1.4B Budget After Two Costs
+</td>
+<td>
+D1.4C Participant Cost
+</td>
+</tr>
+<tr class="even">
+<td>
+Lesson 1.5
+</td>
+<td>
+D1.5A Welcome Message
+</td>
+<td>
+D1.5B Budget Message
+</td>
+</tr>
+<tr class="odd">
+<td>
+Lesson 1.6
+</td>
+<td>
+D1.6A Use a Supplied Helper
+</td>
+<td>
+D1.6B Return, Do Not Display<br /> D1.6C Trace a Returned Value
+</td>
+</tr>
+<tr class="even">
+<td>
+Lesson 1.7
+</td>
+<td>
+D1.7A Follow the Brief Exactly
+</td>
+<td>
+D1.7B Repair a Small Logic Error
+</td>
+</tr>
+<tr class="odd">
+<td>
+Lesson 2.1
+</td>
+<td>
+D2.1A Can the Budget Cover the Cost?
+</td>
+<td>
+D2.1B Compare Two Totals
+</td>
+</tr>
+<tr class="even">
+<td>
+Lesson 2.2
+</td>
+<td>
+D2.2A Funding Status
+</td>
+<td>
+D2.2B Capacity Status<br /> D2.2C Positive Places
+</td>
+</tr>
+<tr class="odd">
+<td>
+Lesson 2.3
+</td>
+<td>
+D2.3A Event Total with a Helper
+</td>
+<td>
+D2.3B Calculate Then Format<br /> D2.3C Calculate Then Decide
+</td>
+</tr>
+<tr class="even">
+<td>
+Lesson 2.4
+</td>
+<td>
+D2.4A Repair Printing Cost
+</td>
+<td>
+D2.4B Repair an Equality Bug<br /> D2.4C Retest After a Fix
+</td>
+</tr>
+<tr class="odd">
+<td>
+Lesson 2.5
+</td>
+<td>
+D2.5A Build from a Written Brief
+</td>
+<td>
+D2.5B Apply Feedback Without Changing the Contract
+</td>
+</tr>
+<tr class="even">
+<td>
+Lesson 3.1
+</td>
+<td>
+D3.1A Implement a Component Contract
+</td>
+<td>
+D3.1B Implement the Status Contract
+</td>
+</tr>
+<tr class="odd">
+<td>
+Lesson 3.2
+</td>
+<td>
+D3.2A Integrate Participant and Venue Costs
+</td>
+<td>
+D3.2B Build the Final Event Summary
+</td>
+</tr>
+<tr class="even">
+<td>
+Lesson 3.3
+</td>
+<td>
+D3.3A Test a Component with Zero
+</td>
+<td>
+D3.3B Repair a Teammate Component
+</td>
+</tr>
+<tr class="odd">
+<td>
+Lesson 3.4
+</td>
+<td>
+D3.4A Review Before You Rewrite
+</td>
+<td>
+—
+</td>
+</tr>
+<tr class="even">
+<td>
+Lesson 4.1
+</td>
+<td>
+D4.1A Preserve Earlier Behaviour
+</td>
+<td>
+D4.1B Regression Check: Exact Fit
+</td>
+</tr>
+<tr class="odd">
+<td>
+Lesson 4.2
+</td>
+<td>
+D4.2A Find the First Wrong Operation
+</td>
+<td>
+D4.2B Repair Without Breaking a Passing Helper
+</td>
+</tr>
+<tr class="even">
+<td>
+Lesson 4.3
+</td>
+<td>
+D4.3A Explainable Repair
+</td>
+<td>
+—
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="d1.2a-add-two-item-costs" class="level1">
+<h1>D1.2A — Add Two Item Costs</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-2a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete item_total(first, second). Return the total cost of the two
+supplied non-negative integer amounts. Do not hard-code the sample
+answer.</p>
+</section>
+<section id="default-code-template" class="level2">
+<h2>Default Code Template</h2>
+<p>def item_total(first, second):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, +</p>
+</section>
+<section id="restrictions-forbidden-strings" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(200, 300) =&gt; 500</p>
+<p>(450, 150) =&gt; 600</p>
+</section>
+<section id="private-hidden-tests" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(0, 0) =&gt; 0</p>
+<p>(125, 375) =&gt; 500</p>
+<p>(900, 100) =&gt; 1000</p>
+</section>
+<section id="private-reference-solution" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def item_total(first, second):<br />
+return first + second</p>
+</section>
+</section>
+<section id="d1.2b-calculate-remaining-money" class="level1">
+<h1>D1.2B — Calculate Remaining Money</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-2b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-1" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete remaining_money(budget, spent). Return budget minus spent. A
+negative answer is allowed.</p>
+</section>
+<section id="default-code-template-1" class="level2">
+<h2>Default Code Template</h2>
+<p>def remaining_money(budget, spent):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-1" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, -</p>
+</section>
+<section id="restrictions-forbidden-strings-1" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-1" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(1000, 600) =&gt; 400</p>
+<p>(500, 500) =&gt; 0</p>
+</section>
+<section id="private-hidden-tests-1" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(0, 0) =&gt; 0</p>
+<p>(300, 450) =&gt; -150</p>
+<p>(2500, 125) =&gt; 2375</p>
+</section>
+<section id="private-reference-solution-1" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def remaining_money(budget, spent):<br />
+return budget - spent</p>
+</section>
+</section>
+<section id="d1.3a-complete-your-first-function" class="level1">
+<h1>D1.3A — Complete Your First Function</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-3a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-2" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete add_costs(first, second) so that it returns the sum of the
+supplied values. Keep the function name and parameters unchanged.</p>
+</section>
+<section id="default-code-template-2" class="level2">
+<h2>Default Code Template</h2>
+<p>def add_costs(first, second):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-2" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, +</p>
+</section>
+<section id="restrictions-forbidden-strings-2" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-2" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(120, 80) =&gt; 200</p>
+<p>(0, 25) =&gt; 25</p>
+</section>
+<section id="private-hidden-tests-2" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(7, 8) =&gt; 15</p>
+<p>(1000, 1) =&gt; 1001</p>
+<p>(0, 0) =&gt; 0</p>
+</section>
+<section id="private-reference-solution-2" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def add_costs(first, second):<br />
+return first + second</p>
+</section>
+</section>
+<section id="d1.3b-repair-the-missing-return" class="level1">
+<h1>D1.3B — Repair the Missing Return</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-3b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-3" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>The function calculates the correct value but does not return it.
+Repair the function so the caller receives the integer result and the
+function prints nothing.</p>
+</section>
+<section id="default-code-template-3" class="level2">
+<h2>Default Code Template</h2>
+<p>def total_cost(first, second):<br />
+total = first + second<br />
+print(total)</p>
+</section>
+<section id="allowed-keywords-constructs-3" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, +, =</p>
+</section>
+<section id="restrictions-forbidden-strings-3" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>print, input, import</p>
+</section>
+<section id="visible-sample-tests-3" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(50, 75) =&gt; 125</p>
+<p>(0, 10) =&gt; 10</p>
+</section>
+<section id="private-hidden-tests-3" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(900, 100) =&gt; 1000</p>
+<p>(4, 6) =&gt; 10</p>
+</section>
+<section id="private-reference-solution-3" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def total_cost(first, second):<br />
+total = first + second<br />
+return total</p>
+</section>
+</section>
+<section id="d1.4a-travel-cost" class="level1">
+<h1>D1.4A — Travel Cost</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-4a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-4" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete travel_cost(fare, trips). Return fare multiplied by
+trips.</p>
+</section>
+<section id="default-code-template-4" class="level2">
+<h2>Default Code Template</h2>
+<p>def travel_cost(fare, trips):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-4" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, *</p>
+</section>
+<section id="restrictions-forbidden-strings-4" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-4" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(200, 3) =&gt; 600</p>
+<p>(150, 0) =&gt; 0</p>
+</section>
+<section id="private-hidden-tests-4" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(75, 4) =&gt; 300</p>
+<p>(0, 9) =&gt; 0</p>
+<p>(1000, 1) =&gt; 1000</p>
+</section>
+<section id="private-reference-solution-4" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def travel_cost(fare, trips):<br />
+return fare * trips</p>
+</section>
+</section>
+<section id="d1.4b-budget-after-two-costs" class="level1">
+<h1>D1.4B — Budget After Two Costs</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-4b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-5" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete budget_left(budget, food, transport). Return budget minus
+food minus transport.</p>
+</section>
+<section id="default-code-template-5" class="level2">
+<h2>Default Code Template</h2>
+<p>def budget_left(budget, food, transport):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-5" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, -</p>
+</section>
+<section id="restrictions-forbidden-strings-5" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-5" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(2000, 900, 600) =&gt; 500</p>
+<p>(1000, 700, 300) =&gt; 0</p>
+</section>
+<section id="private-hidden-tests-5" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(1000, 800, 500) =&gt; -300</p>
+<p>(0, 0, 0) =&gt; 0</p>
+<p>(2500, 250, 500) =&gt; 1750</p>
+</section>
+<section id="private-reference-solution-5" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def budget_left(budget, food, transport):<br />
+return budget - food - transport</p>
+</section>
+</section>
+<section id="d1.4c-participant-cost" class="level1">
+<h1>D1.4C — Participant Cost</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-4c/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-6" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete participant_cost(attendees, food_per_person,
+transport_per_person). Return attendees multiplied by the sum of the two
+per-person costs.</p>
+</section>
+<section id="default-code-template-6" class="level2">
+<h2>Default Code Template</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-6" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, +, *, (, )</p>
+</section>
+<section id="restrictions-forbidden-strings-6" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-6" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(10, 800, 200) =&gt; 10000</p>
+<p>(0, 800, 200) =&gt; 0</p>
+</section>
+<section id="private-hidden-tests-6" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(3, 700, 300) =&gt; 3000</p>
+<p>(5, 0, 100) =&gt; 500</p>
+<p>(2, 50, 50) =&gt; 200</p>
+</section>
+<section id="private-reference-solution-6" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+</section>
+</section>
+<section id="d1.5a-welcome-message" class="level1">
+<h1>D1.5A — Welcome Message</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-5a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-7" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Return exactly “Welcome Ada.” with the supplied name substituted.
+Preserve spaces and the final full stop.</p>
+</section>
+<section id="default-code-template-7" class="level2">
+<h2>Default Code Template</h2>
+<p>def welcome_message(name):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-7" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, f-string, string</p>
+</section>
+<section id="restrictions-forbidden-strings-7" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-7" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(‘Ada’,) =&gt; ‘Welcome Ada.’</p>
+<p>(‘Tobi’,) =&gt; ‘Welcome Tobi.’</p>
+</section>
+<section id="private-hidden-tests-7" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(‘Mary Jane’,) =&gt; ‘Welcome Mary Jane.’</p>
+<p>(‘A’,) =&gt; ‘Welcome A.’</p>
+</section>
+<section id="private-reference-solution-7" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def welcome_message(name):<br />
+return f”Welcome {name}.”</p>
+</section>
+</section>
+<section id="d1.5b-budget-message" class="level1">
+<h1>D1.5B — Budget Message</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-5b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-8" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Return exactly “Ada has 500 naira remaining.” using the supplied name
+and remaining value.</p>
+</section>
+<section id="default-code-template-8" class="level2">
+<h2>Default Code Template</h2>
+<p>def budget_message(name, remaining):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-8" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, f-string, string</p>
+</section>
+<section id="restrictions-forbidden-strings-8" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-8" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(‘Ada’, 500) =&gt; ‘Ada has 500 naira remaining.’</p>
+<p>(‘Tobi’, -300) =&gt; ‘Tobi has -300 naira remaining.’</p>
+</section>
+<section id="private-hidden-tests-8" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(‘Chika’, 0) =&gt; ‘Chika has 0 naira remaining.’</p>
+<p>(‘Mary Jane’, 125) =&gt; ‘Mary Jane has 125 naira remaining.’</p>
+</section>
+<section id="private-reference-solution-8" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def budget_message(name, remaining):<br />
+return f”{name} has {remaining} naira remaining.”</p>
+</section>
+</section>
+<section id="d1.6a-use-a-supplied-helper" class="level1">
+<h1>D1.6A — Use a Supplied Helper</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-6a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-9" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>item_cost is supplied and correct. Complete delivered_cost so it
+calls item_cost(price, quantity), then adds delivery to the returned
+subtotal.</p>
+</section>
+<section id="default-code-template-9" class="level2">
+<h2>Default Code Template</h2>
+<p>def item_cost(price, quantity):<br />
+return price * quantity</p>
+<p>def delivered_cost(price, quantity, delivery):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-9" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, +, function call</p>
+</section>
+<section id="restrictions-forbidden-strings-9" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-9" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(200, 3, 100) =&gt; 700</p>
+<p>(100, 0, 50) =&gt; 50</p>
+</section>
+<section id="private-hidden-tests-9" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(25, 4, 0) =&gt; 100</p>
+<p>(0, 5, 20) =&gt; 20</p>
+<p>(1, 1, 1) =&gt; 2</p>
+</section>
+<section id="inspection-checklist" class="level2">
+<h2>Inspection Checklist</h2>
+<ul>
+<li>Does delivered_cost call the unchanged item_cost helper with price
+and quantity?</li>
+</ul>
+</section>
+<section id="private-reference-solution-9" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def item_cost(price, quantity):<br />
+return price * quantity</p>
+<p>def delivered_cost(price, quantity, delivery):<br />
+subtotal = item_cost(price, quantity)<br />
+return subtotal + delivery</p>
+</section>
+</section>
+<section id="d1.6b-return-do-not-display" class="level1">
+<h1>D1.6B — Return, Do Not Display</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-6b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-10" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Repair combined_cost so that it returns the sum instead of printing
+it. It must produce no printed output.</p>
+</section>
+<section id="default-code-template-10" class="level2">
+<h2>Default Code Template</h2>
+<p>def combined_cost(first, second):<br />
+total = first + second<br />
+print(total)</p>
+</section>
+<section id="allowed-keywords-constructs-10" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, +, =</p>
+</section>
+<section id="restrictions-forbidden-strings-10" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>print, input, import</p>
+</section>
+<section id="visible-sample-tests-10" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(20, 30) =&gt; 50</p>
+<p>(0, 5) =&gt; 5</p>
+</section>
+<section id="private-hidden-tests-10" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(350, 125) =&gt; 475</p>
+<p>(0, 0) =&gt; 0</p>
+</section>
+<section id="private-reference-solution-10" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def combined_cost(first, second):<br />
+total = first + second<br />
+return total</p>
+</section>
+</section>
+<section id="d1.6c-trace-a-returned-value" class="level1">
+<h1>D1.6C — Trace a Returned Value</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-6c/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-11" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete final_total so it calls subtotal, stores the returned
+answer, and adds service_fee.</p>
+</section>
+<section id="default-code-template-11" class="level2">
+<h2>Default Code Template</h2>
+<p>def subtotal(first, second):<br />
+return first + second</p>
+<p>def final_total(first, second, service_fee):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-11" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, +, function call</p>
+</section>
+<section id="restrictions-forbidden-strings-11" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-11" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(100, 200, 50) =&gt; 350</p>
+<p>(0, 0, 25) =&gt; 25</p>
+</section>
+<section id="private-hidden-tests-11" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(10, 15, 0) =&gt; 25</p>
+<p>(500, 200, 100) =&gt; 800</p>
+</section>
+<section id="inspection-checklist-1" class="level2">
+<h2>Inspection Checklist</h2>
+<ul>
+<li>Does final_total use the value returned by subtotal?</li>
+</ul>
+</section>
+<section id="private-reference-solution-11" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def subtotal(first, second):<br />
+return first + second</p>
+<p>def final_total(first, second, service_fee):<br />
+base = subtotal(first, second)<br />
+return base + service_fee</p>
+</section>
+</section>
+<section id="d1.7a-follow-the-brief-exactly" class="level1">
+<h1>D1.7A — Follow the Brief Exactly</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-7a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-12" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete learner_status(name, tasks) to return exactly “Ada completed
+4 tasks.” Use the supplied values and keep the word tasks even when the
+value is 1.</p>
+</section>
+<section id="default-code-template-12" class="level2">
+<h2>Default Code Template</h2>
+<p>def learner_status(name, tasks):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-12" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, f-string, string</p>
+</section>
+<section id="restrictions-forbidden-strings-12" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-12" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(‘Ada’, 4) =&gt; ‘Ada completed 4 tasks.’</p>
+<p>(‘Tobi’, 0) =&gt; ‘Tobi completed 0 tasks.’</p>
+</section>
+<section id="private-hidden-tests-12" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(‘A’, 1) =&gt; ‘A completed 1 tasks.’</p>
+<p>(‘Mary Jane’, 2) =&gt; ‘Mary Jane completed 2 tasks.’</p>
+</section>
+<section id="private-reference-solution-12" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def learner_status(name, tasks):<br />
+return f”{name} completed {tasks} tasks.”</p>
+</section>
+</section>
+<section id="d1.7b-repair-a-small-logic-error" class="level1">
+<h1>D1.7B — Repair a Small Logic Error</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 1.7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d1-7b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-13" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>The function is meant to return the remaining budget after a printing
+cost. Repair the arithmetic.</p>
+</section>
+<section id="default-code-template-13" class="level2">
+<h2>Default Code Template</h2>
+<p>def print_balance(budget, pages, price_per_page):<br />
+cost = pages + price_per_page<br />
+return budget + cost</p>
+</section>
+<section id="allowed-keywords-constructs-13" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, *, -</p>
+</section>
+<section id="restrictions-forbidden-strings-13" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-13" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(1000, 4, 100) =&gt; 600</p>
+<p>(500, 6, 100) =&gt; -100</p>
+</section>
+<section id="private-hidden-tests-13" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(1500, 5, 200) =&gt; 500</p>
+<p>(800, 0, 50) =&gt; 800</p>
+</section>
+<section id="private-reference-solution-13" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def print_balance(budget, pages, price_per_page):<br />
+cost = pages * price_per_page<br />
+return budget - cost</p>
+</section>
+</section>
+<section id="d2.1a-can-the-budget-cover-the-cost" class="level1">
+<h1>D2.1A — Can the Budget Cover the Cost?</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-1a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-14" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Return True when budget is greater than or equal to cost; otherwise
+return False.</p>
+</section>
+<section id="default-code-template-14" class="level2">
+<h2>Default Code Template</h2>
+<p>def can_afford(budget, cost):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-14" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, &gt;=, True, False</p>
+</section>
+<section id="restrictions-forbidden-strings-14" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-14" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(1000, 700) =&gt; True</p>
+<p>(700, 700) =&gt; True</p>
+</section>
+<section id="private-hidden-tests-14" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(500, 700) =&gt; False</p>
+<p>(0, 0) =&gt; True</p>
+</section>
+<section id="private-reference-solution-14" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def can_afford(budget, cost):<br />
+return budget &gt;= cost</p>
+</section>
+</section>
+<section id="d2.1b-compare-two-totals" class="level1">
+<h1>D2.1B — Compare Two Totals</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-1b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-15" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Return True when actual is exactly equal to expected; otherwise
+return False.</p>
+</section>
+<section id="default-code-template-15" class="level2">
+<h2>Default Code Template</h2>
+<p>def matches_expected(actual, expected):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-15" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, ==, True, False</p>
+</section>
+<section id="restrictions-forbidden-strings-15" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-15" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(500, 500) =&gt; True</p>
+<p>(499, 500) =&gt; False</p>
+</section>
+<section id="private-hidden-tests-15" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(0, 0) =&gt; True</p>
+<p>(-1, -1) =&gt; True</p>
+<p>(10, 11) =&gt; False</p>
+</section>
+<section id="private-reference-solution-15" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def matches_expected(actual, expected):<br />
+return actual == expected</p>
+</section>
+</section>
+<section id="d2.2a-funding-status" class="level1">
+<h1>D2.2A — Funding Status</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-2a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-16" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Return “Enough” when budget is greater than or equal to cost.
+Otherwise return “Not enough”. Exact equality counts as enough.</p>
+</section>
+<section id="default-code-template-16" class="level2">
+<h2>Default Code Template</h2>
+<p>def funding_status(budget, cost):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-16" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, if, else, &gt;=, string</p>
+</section>
+<section id="restrictions-forbidden-strings-16" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-16" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(1000, 700) =&gt; ‘Enough’</p>
+<p>(700, 700) =&gt; ‘Enough’</p>
+<p>(500, 700) =&gt; ‘Not enough’</p>
+</section>
+<section id="private-hidden-tests-16" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(0, 0) =&gt; ‘Enough’</p>
+<p>(200, 500) =&gt; ‘Not enough’</p>
+</section>
+<section id="private-reference-solution-16" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def funding_status(budget, cost):<br />
+if budget &gt;= cost:<br />
+return “Enough”<br />
+else:<br />
+return “Not enough”</p>
+</section>
+</section>
+<section id="d2.2b-capacity-status" class="level1">
+<h1>D2.2B — Capacity Status</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-2b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-17" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Return “Fits” when booked is at most capacity; otherwise return “Too
+many”.</p>
+</section>
+<section id="default-code-template-17" class="level2">
+<h2>Default Code Template</h2>
+<p>def booking_status(capacity, booked):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-17" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, if, else, &lt;=, string</p>
+</section>
+<section id="restrictions-forbidden-strings-17" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-17" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(10, 7) =&gt; ‘Fits’</p>
+<p>(10, 10) =&gt; ‘Fits’</p>
+</section>
+<section id="private-hidden-tests-17" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(10, 11) =&gt; ‘Too many’</p>
+<p>(0, 0) =&gt; ‘Fits’</p>
+<p>(0, 1) =&gt; ‘Too many’</p>
+</section>
+<section id="private-reference-solution-17" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def booking_status(capacity, booked):<br />
+if booked &lt;= capacity:<br />
+return “Fits”<br />
+else:<br />
+return “Too many”</p>
+</section>
+</section>
+<section id="d2.2c-positive-places" class="level1">
+<h1>D2.2C — Positive Places</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-2c/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-18" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Return “Available” when places is greater than zero; otherwise return
+“Full”.</p>
+</section>
+<section id="default-code-template-18" class="level2">
+<h2>Default Code Template</h2>
+<p>def space_status(places):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-18" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, if, else, &gt;, string</p>
+</section>
+<section id="restrictions-forbidden-strings-18" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-18" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(2,) =&gt; ‘Available’</p>
+<p>(0,) =&gt; ‘Full’</p>
+</section>
+<section id="private-hidden-tests-18" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(1,) =&gt; ‘Available’</p>
+<p>(50,) =&gt; ‘Available’</p>
+</section>
+<section id="private-reference-solution-18" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def space_status(places):<br />
+if places &gt; 0:<br />
+return “Available”<br />
+else:<br />
+return “Full”</p>
+</section>
+</section>
+<section id="d2.3a-event-total-with-a-helper" class="level1">
+<h1>D2.3A — Event Total with a Helper</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-3a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-19" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>participant_cost is supplied. Complete event_total by calling
+participant_cost and adding venue_cost.</p>
+</section>
+<section id="default-code-template-19" class="level2">
+<h2>Default Code Template</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+<p>def event_total(attendees, food_per_person, transport_per_person,
+venue_cost):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-19" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, +, function call</p>
+</section>
+<section id="restrictions-forbidden-strings-19" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-19" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(10, 800, 200, 5000) =&gt; 15000</p>
+<p>(0, 800, 200, 5000) =&gt; 5000</p>
+</section>
+<section id="private-hidden-tests-19" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(3, 700, 300, 2000) =&gt; 5000</p>
+<p>(0, 0, 0, 0) =&gt; 0</p>
+</section>
+<section id="inspection-checklist-2" class="level2">
+<h2>Inspection Checklist</h2>
+<ul>
+<li>Does event_total call participant_cost rather than repeat the entire
+calculation?</li>
+</ul>
+</section>
+<section id="private-reference-solution-19" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+<p>def event_total(attendees, food_per_person, transport_per_person,
+venue_cost):<br />
+people = participant_cost(attendees, food_per_person,
+transport_per_person)<br />
+return people + venue_cost</p>
+</section>
+</section>
+<section id="d2.3b-calculate-then-format" class="level1">
+<h1>D2.3B — Calculate Then Format</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-3b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-20" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete budget_report so it calls budget_left and uses the returned
+value in the exact message “500 naira remaining.”</p>
+</section>
+<section id="default-code-template-20" class="level2">
+<h2>Default Code Template</h2>
+<p>def budget_left(budget, food, transport):<br />
+return budget - food - transport</p>
+<p>def budget_report(budget, food, transport):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-20" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, function call, f-string</p>
+</section>
+<section id="restrictions-forbidden-strings-20" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-20" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(2000, 900, 600) =&gt; ‘500 naira remaining.’</p>
+<p>(1000, 800, 500) =&gt; ‘-300 naira remaining.’</p>
+</section>
+<section id="private-hidden-tests-20" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(0, 0, 0) =&gt; ‘0 naira remaining.’</p>
+<p>(500, 125, 125) =&gt; ‘250 naira remaining.’</p>
+</section>
+<section id="inspection-checklist-3" class="level2">
+<h2>Inspection Checklist</h2>
+<ul>
+<li>Does budget_report use budget_left?</li>
+</ul>
+</section>
+<section id="private-reference-solution-20" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def budget_left(budget, food, transport):<br />
+return budget - food - transport</p>
+<p>def budget_report(budget, food, transport):<br />
+remaining = budget_left(budget, food, transport)<br />
+return f”{remaining} naira remaining.”</p>
+</section>
+</section>
+<section id="d2.3c-calculate-then-decide" class="level1">
+<h1>D2.3C — Calculate Then Decide</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-3c/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-21" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete trip_status so it calls trip_cost and returns “Within
+budget” when the returned total is at most budget; otherwise return
+“Over budget”.</p>
+</section>
+<section id="default-code-template-21" class="level2">
+<h2>Default Code Template</h2>
+<p>def trip_cost(fare, trips):<br />
+return fare * trips</p>
+<p>def trip_status(budget, fare, trips):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-21" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, function call, if, else, &lt;=</p>
+</section>
+<section id="restrictions-forbidden-strings-21" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-21" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(1000, 200, 3) =&gt; ‘Within budget’</p>
+<p>(500, 200, 3) =&gt; ‘Over budget’</p>
+</section>
+<section id="private-hidden-tests-21" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(600, 200, 3) =&gt; ‘Within budget’</p>
+<p>(0, 0, 0) =&gt; ‘Within budget’</p>
+</section>
+<section id="inspection-checklist-4" class="level2">
+<h2>Inspection Checklist</h2>
+<ul>
+<li>Does trip_status call trip_cost and use its result?</li>
+</ul>
+</section>
+<section id="private-reference-solution-21" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def trip_cost(fare, trips):<br />
+return fare * trips</p>
+<p>def trip_status(budget, fare, trips):<br />
+total = trip_cost(fare, trips)<br />
+if total &lt;= budget:<br />
+return “Within budget”<br />
+else:<br />
+return “Over budget”</p>
+</section>
+</section>
+<section id="d2.4a-repair-printing-cost" class="level1">
+<h1>D2.4A — Repair Printing Cost</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-4a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-22" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>The function is meant to return the remaining budget after a printing
+cost. Repair the arithmetic.</p>
+</section>
+<section id="default-code-template-22" class="level2">
+<h2>Default Code Template</h2>
+<p>def print_balance(budget, pages, price_per_page):<br />
+cost = pages + price_per_page<br />
+return budget + cost</p>
+</section>
+<section id="allowed-keywords-constructs-22" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, *, -</p>
+</section>
+<section id="restrictions-forbidden-strings-22" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-22" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(1000, 4, 100) =&gt; 600</p>
+<p>(500, 6, 100) =&gt; -100</p>
+</section>
+<section id="private-hidden-tests-22" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(1500, 5, 200) =&gt; 500</p>
+<p>(800, 0, 50) =&gt; 800</p>
+</section>
+<section id="private-reference-solution-22" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def print_balance(budget, pages, price_per_page):<br />
+cost = pages * price_per_page<br />
+return budget - cost</p>
+</section>
+</section>
+<section id="d2.4b-repair-an-equality-bug" class="level1">
+<h1>D2.4B — Repair an Equality Bug</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-4b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-23" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>The brief says an exact budget match is “Within budget”. Repair the
+function.</p>
+</section>
+<section id="default-code-template-23" class="level2">
+<h2>Default Code Template</h2>
+<p>def budget_status(budget, total):<br />
+if total &lt; budget:<br />
+return “Within budget”<br />
+else:<br />
+return “Over budget”</p>
+</section>
+<section id="allowed-keywords-constructs-23" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, if, else, &lt;=</p>
+</section>
+<section id="restrictions-forbidden-strings-23" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-23" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(16000, 15000) =&gt; ‘Within budget’</p>
+<p>(15000, 15000) =&gt; ‘Within budget’</p>
+</section>
+<section id="private-hidden-tests-23" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(14000, 15000) =&gt; ‘Over budget’</p>
+<p>(0, 0) =&gt; ‘Within budget’</p>
+</section>
+<section id="private-reference-solution-23" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def budget_status(budget, total):<br />
+if total &lt;= budget:<br />
+return “Within budget”<br />
+else:<br />
+return “Over budget”</p>
+</section>
+</section>
+<section id="d2.4c-retest-after-a-fix" class="level1">
+<h1>D2.4C — Retest After a Fix</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-4c/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-24" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Repair seats_left so it subtracts booked from capacity. The platform
+will test normal, zero and exact-fit cases.</p>
+</section>
+<section id="default-code-template-24" class="level2">
+<h2>Default Code Template</h2>
+<p>def seats_left(capacity, booked):<br />
+return capacity + booked</p>
+</section>
+<section id="allowed-keywords-constructs-24" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, -</p>
+</section>
+<section id="restrictions-forbidden-strings-24" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-24" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(10, 3) =&gt; 7</p>
+<p>(10, 10) =&gt; 0</p>
+</section>
+<section id="private-hidden-tests-24" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(0, 0) =&gt; 0</p>
+<p>(7, 0) =&gt; 7</p>
+<p>(20, 8) =&gt; 12</p>
+</section>
+<section id="private-reference-solution-24" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def seats_left(capacity, booked):<br />
+return capacity - booked</p>
+</section>
+</section>
+<section id="d2.5a-build-from-a-written-brief" class="level1">
+<h1>D2.5A — Build from a Written Brief</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-5a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-25" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>A community workshop charges fee_per_person for each attendee and has
+a fixed room_cost. Complete workshop_total to return the full integer
+cost.</p>
+</section>
+<section id="default-code-template-25" class="level2">
+<h2>Default Code Template</h2>
+<p>def workshop_total(attendees, fee_per_person, room_cost):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-25" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, *, +</p>
+</section>
+<section id="restrictions-forbidden-strings-25" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-25" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(10, 500, 2000) =&gt; 7000</p>
+<p>(0, 500, 2000) =&gt; 2000</p>
+</section>
+<section id="private-hidden-tests-25" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(3, 1000, 0) =&gt; 3000</p>
+<p>(1, 0, 250) =&gt; 250</p>
+</section>
+<section id="private-reference-solution-25" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def workshop_total(attendees, fee_per_person, room_cost):<br />
+return attendees * fee_per_person + room_cost</p>
+</section>
+</section>
+<section id="d2.5b-apply-feedback-without-changing-the-contract"
+class="level1">
+<h1>D2.5B — Apply Feedback Without Changing the Contract</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 2.5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d2-5b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-26" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>The original function returns the wrong sentence. Fix only the
+function body. Keep its name and parameters unchanged and return exactly
+“Tobi has 250 naira left.” for name=“Tobi”, remaining=250.</p>
+</section>
+<section id="default-code-template-26" class="level2">
+<h2>Default Code Template</h2>
+<p>def remaining_message(name, remaining):<br />
+return f”{remaining} left for {name}”</p>
+</section>
+<section id="allowed-keywords-constructs-26" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, f-string, string</p>
+</section>
+<section id="restrictions-forbidden-strings-26" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-26" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(‘Tobi’, 250) =&gt; ‘Tobi has 250 naira left.’</p>
+<p>(‘Ada’, 0) =&gt; ‘Ada has 0 naira left.’</p>
+</section>
+<section id="private-hidden-tests-26" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(‘Mary Jane’, -50) =&gt; ‘Mary Jane has -50 naira left.’</p>
+</section>
+<section id="private-reference-solution-26" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def remaining_message(name, remaining):<br />
+return f”{name} has {remaining} naira left.”</p>
+</section>
+</section>
+<section id="d3.1a-implement-a-component-contract" class="level1">
+<h1>D3.1A — Implement a Component Contract</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 3.1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d3-1a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-27" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Implement participant_cost exactly as specified: attendees *
+(food_per_person + transport_per_person). Return an integer.</p>
+</section>
+<section id="default-code-template-27" class="level2">
+<h2>Default Code Template</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-27" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, +, *, (, )</p>
+</section>
+<section id="restrictions-forbidden-strings-27" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-27" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(10, 800, 200) =&gt; 10000</p>
+<p>(0, 0, 0) =&gt; 0</p>
+</section>
+<section id="private-hidden-tests-27" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(3, 700, 300) =&gt; 3000</p>
+<p>(5, 100, 0) =&gt; 500</p>
+</section>
+<section id="private-reference-solution-27" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+</section>
+</section>
+<section id="d3.1b-implement-the-status-contract" class="level1">
+<h1>D3.1B — Implement the Status Contract</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 3.1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d3-1b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-28" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete budget_status(budget, total). Return “Within budget” when
+total &lt;= budget; otherwise return “Over budget”.</p>
+</section>
+<section id="default-code-template-28" class="level2">
+<h2>Default Code Template</h2>
+<p>def budget_status(budget, total):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-28" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, if, else, &lt;=</p>
+</section>
+<section id="restrictions-forbidden-strings-28" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-28" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(16000, 15000) =&gt; ‘Within budget’</p>
+<p>(15000, 15000) =&gt; ‘Within budget’</p>
+</section>
+<section id="private-hidden-tests-28" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(14000, 15000) =&gt; ‘Over budget’</p>
+<p>(0, 0) =&gt; ‘Within budget’</p>
+</section>
+<section id="private-reference-solution-28" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def budget_status(budget, total):<br />
+if total &lt;= budget:<br />
+return “Within budget”<br />
+else:<br />
+return “Over budget”</p>
+</section>
+</section>
+<section id="d3.2a-integrate-participant-and-venue-costs"
+class="level1">
+<h1>D3.2A — Integrate Participant and Venue Costs</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 3.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d3-2a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-29" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>participant_cost is supplied. Complete event_total by calling
+participant_cost and adding venue_cost.</p>
+</section>
+<section id="default-code-template-29" class="level2">
+<h2>Default Code Template</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+<p>def event_total(attendees, food_per_person, transport_per_person,
+venue_cost):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-29" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, +, function call</p>
+</section>
+<section id="restrictions-forbidden-strings-29" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-29" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(10, 800, 200, 5000) =&gt; 15000</p>
+<p>(0, 800, 200, 5000) =&gt; 5000</p>
+</section>
+<section id="private-hidden-tests-29" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(3, 700, 300, 2000) =&gt; 5000</p>
+<p>(0, 0, 0, 0) =&gt; 0</p>
+</section>
+<section id="inspection-checklist-5" class="level2">
+<h2>Inspection Checklist</h2>
+<ul>
+<li>Does event_total call participant_cost rather than repeat the entire
+calculation?</li>
+</ul>
+</section>
+<section id="private-reference-solution-29" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+<p>def event_total(attendees, food_per_person, transport_per_person,
+venue_cost):<br />
+people = participant_cost(attendees, food_per_person,
+transport_per_person)<br />
+return people + venue_cost</p>
+</section>
+</section>
+<section id="d3.2b-build-the-final-event-summary" class="level1">
+<h1>D3.2B — Build the Final Event Summary</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 3.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d3-2b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-30" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete event_summary(event_name, total, status). Return exactly
+“Study Day: total 15000 naira. Within budget.” with supplied values
+substituted.</p>
+</section>
+<section id="default-code-template-30" class="level2">
+<h2>Default Code Template</h2>
+<p>def event_summary(event_name, total, status):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-30" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, f-string, string</p>
+</section>
+<section id="restrictions-forbidden-strings-30" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-30" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(‘Study Day’, 15000, ‘Within budget’) =&gt; ‘Study Day: total 15000
+naira. Within budget.’</p>
+<p>(‘Tech Day’, 17000, ‘Over budget’) =&gt; ‘Tech Day: total 17000
+naira. Over budget.’</p>
+</section>
+<section id="private-hidden-tests-30" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(‘A’, 0, ‘Within budget’) =&gt; ‘A: total 0 naira. Within
+budget.’</p>
+</section>
+<section id="private-reference-solution-30" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def event_summary(event_name, total, status):<br />
+return f”{event_name}: total {total} naira. {status}.”</p>
+</section>
+</section>
+<section id="d3.3a-test-a-component-with-zero" class="level1">
+<h1>D3.3A — Test a Component with Zero</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 3.3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d3-3a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-31" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Complete venue_only_total so it returns venue_cost when attendees is
+zero and otherwise returns attendee costs plus venue. Use the supplied
+participant_cost helper.</p>
+</section>
+<section id="default-code-template-31" class="level2">
+<h2>Default Code Template</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+<p>def venue_only_total(attendees, food_per_person,
+transport_per_person, venue_cost):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-31" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, +, function call</p>
+</section>
+<section id="restrictions-forbidden-strings-31" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-31" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(0, 800, 200, 5000) =&gt; 5000</p>
+<p>(10, 800, 200, 5000) =&gt; 15000</p>
+</section>
+<section id="private-hidden-tests-31" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(3, 700, 300, 2000) =&gt; 5000</p>
+</section>
+<section id="inspection-checklist-6" class="level2">
+<h2>Inspection Checklist</h2>
+<ul>
+<li>Does the learner preserve and call participant_cost?</li>
+</ul>
+</section>
+<section id="private-reference-solution-31" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+<p>def venue_only_total(attendees, food_per_person,
+transport_per_person, venue_cost):<br />
+people = participant_cost(attendees, food_per_person,
+transport_per_person)<br />
+return people + venue_cost</p>
+</section>
+</section>
+<section id="d3.3b-repair-a-teammate-component" class="level1">
+<h1>D3.3B — Repair a Teammate Component</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 3.3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d3-3b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-32" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>A teammate wrote the wrong operation. Repair event_total so it adds
+venue_cost after calling participant_cost.</p>
+</section>
+<section id="default-code-template-32" class="level2">
+<h2>Default Code Template</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+<p>def event_total(attendees, food_per_person, transport_per_person,
+venue_cost):<br />
+people = participant_cost(attendees, food_per_person,
+transport_per_person)<br />
+return people - venue_cost</p>
+</section>
+<section id="allowed-keywords-constructs-32" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, +, function call</p>
+</section>
+<section id="restrictions-forbidden-strings-32" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-32" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(10, 800, 200, 5000) =&gt; 15000</p>
+<p>(0, 0, 0, 0) =&gt; 0</p>
+</section>
+<section id="private-hidden-tests-32" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(3, 700, 300, 2000) =&gt; 5000</p>
+</section>
+<section id="inspection-checklist-7" class="level2">
+<h2>Inspection Checklist</h2>
+<ul>
+<li>Can the learner explain what was wrong and which test exposed
+it?</li>
+</ul>
+</section>
+<section id="private-reference-solution-32" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+<p>def event_total(attendees, food_per_person, transport_per_person,
+venue_cost):<br />
+people = participant_cost(attendees, food_per_person,
+transport_per_person)<br />
+return people + venue_cost</p>
+</section>
+</section>
+<section id="d3.4a-review-before-you-rewrite" class="level1">
+<h1>D3.4A — Review Before You Rewrite</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 3.4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d3-4a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-33" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Repair only the incorrect comparison in budget_status. Do not rename
+the function, change its inputs, or add unrelated features.</p>
+</section>
+<section id="default-code-template-33" class="level2">
+<h2>Default Code Template</h2>
+<p>def budget_status(budget, total):<br />
+if total &gt;= budget:<br />
+return “Within budget”<br />
+else:<br />
+return “Over budget”</p>
+</section>
+<section id="allowed-keywords-constructs-33" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, if, else, &lt;=</p>
+</section>
+<section id="restrictions-forbidden-strings-33" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-33" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(16000, 15000) =&gt; ‘Within budget’</p>
+<p>(15000, 15000) =&gt; ‘Within budget’</p>
+</section>
+<section id="private-hidden-tests-33" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(14000, 15000) =&gt; ‘Over budget’</p>
+<p>(0, 0) =&gt; ‘Within budget’</p>
+</section>
+<section id="inspection-checklist-8" class="level2">
+<h2>Inspection Checklist</h2>
+<ul>
+<li>Can the learner identify the smallest necessary change?</li>
+</ul>
+</section>
+<section id="private-reference-solution-33" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def budget_status(budget, total):<br />
+if total &lt;= budget:<br />
+return “Within budget”<br />
+else:<br />
+return “Over budget”</p>
+</section>
+</section>
+<section id="d4.1a-preserve-earlier-behaviour" class="level1">
+<h1>D4.1A — Preserve Earlier Behaviour</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 4.1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d4-1a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-34" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Add equipment_cost to event_total while preserving participant and
+venue calculations. Use the supplied helper.</p>
+</section>
+<section id="default-code-template-34" class="level2">
+<h2>Default Code Template</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+<p>def event_total(attendees, food_per_person, transport_per_person,
+venue_cost, equipment_cost):<br />
+pass</p>
+</section>
+<section id="allowed-keywords-constructs-34" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, +, function call</p>
+</section>
+<section id="restrictions-forbidden-strings-34" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-34" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(10, 800, 200, 5000, 1000) =&gt; 16000</p>
+<p>(0, 0, 0, 5000, 0) =&gt; 5000</p>
+</section>
+<section id="private-hidden-tests-34" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(3, 700, 300, 2000, 500) =&gt; 5500</p>
+<p>(0, 0, 0, 0, 0) =&gt; 0</p>
+</section>
+<section id="inspection-checklist-9" class="level2">
+<h2>Inspection Checklist</h2>
+<ul>
+<li>Does the learner reuse participant_cost and preserve previous
+behaviour?</li>
+</ul>
+</section>
+<section id="private-reference-solution-34" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def participant_cost(attendees, food_per_person,
+transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+<p>def event_total(attendees, food_per_person, transport_per_person,
+venue_cost, equipment_cost):<br />
+people = participant_cost(attendees, food_per_person,
+transport_per_person)<br />
+return people + venue_cost + equipment_cost</p>
+</section>
+</section>
+<section id="d4.1b-regression-check-exact-fit" class="level1">
+<h1>D4.1B — Regression Check: Exact Fit</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 4.1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d4-1b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-35" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>The brief says an exact budget match is “Within budget”. Repair the
+function.</p>
+</section>
+<section id="default-code-template-35" class="level2">
+<h2>Default Code Template</h2>
+<p>def budget_status(budget, total):<br />
+if total &lt; budget:<br />
+return “Within budget”<br />
+else:<br />
+return “Over budget”</p>
+</section>
+<section id="allowed-keywords-constructs-35" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, if, else, &lt;=</p>
+</section>
+<section id="restrictions-forbidden-strings-35" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-35" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(16000, 15000) =&gt; ‘Within budget’</p>
+<p>(15000, 15000) =&gt; ‘Within budget’</p>
+</section>
+<section id="private-hidden-tests-35" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(14000, 15000) =&gt; ‘Over budget’</p>
+<p>(0, 0) =&gt; ‘Within budget’</p>
+</section>
+<section id="private-reference-solution-35" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def budget_status(budget, total):<br />
+if total &lt;= budget:<br />
+return “Within budget”<br />
+else:<br />
+return “Over budget”</p>
+</section>
+</section>
+<section id="d4.2a-find-the-first-wrong-operation" class="level1">
+<h1>D4.2A — Find the First Wrong Operation</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 4.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d4-2a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-36" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Repair the two arithmetic mistakes so print_balance returns the
+remaining budget.</p>
+</section>
+<section id="default-code-template-36" class="level2">
+<h2>Default Code Template</h2>
+<p>def print_balance(budget, pages, price_per_page):<br />
+cost = pages + price_per_page<br />
+return budget + cost</p>
+</section>
+<section id="allowed-keywords-constructs-36" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, *, -</p>
+</section>
+<section id="restrictions-forbidden-strings-36" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-36" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(1000, 4, 100) =&gt; 600</p>
+<p>(500, 6, 100) =&gt; -100</p>
+</section>
+<section id="private-hidden-tests-36" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(800, 0, 50) =&gt; 800</p>
+<p>(300, 4, 100) =&gt; -100</p>
+</section>
+<section id="private-reference-solution-36" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def print_balance(budget, pages, price_per_page):<br />
+cost = pages * price_per_page<br />
+return budget - cost</p>
+</section>
+</section>
+<section id="d4.2b-repair-without-breaking-a-passing-helper"
+class="level1">
+<h1>D4.2B — Repair Without Breaking a Passing Helper</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 4.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Reinforcement</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d4-2b/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-37" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>item_cost is correct. Fix only delivered_cost so it returns the
+correct total. Do not change item_cost.</p>
+</section>
+<section id="default-code-template-37" class="level2">
+<h2>Default Code Template</h2>
+<p>def item_cost(price, quantity):<br />
+return price * quantity</p>
+<p>def delivered_cost(price, quantity, delivery):<br />
+subtotal = item_cost(price, quantity)<br />
+return subtotal - delivery</p>
+</section>
+<section id="allowed-keywords-constructs-37" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, =, +, function call</p>
+</section>
+<section id="restrictions-forbidden-strings-37" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-37" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(200, 3, 100) =&gt; 700</p>
+<p>(100, 0, 50) =&gt; 50</p>
+</section>
+<section id="private-hidden-tests-37" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(25, 4, 0) =&gt; 100</p>
+<p>(0, 5, 20) =&gt; 20</p>
+</section>
+<section id="inspection-checklist-10" class="level2">
+<h2>Inspection Checklist</h2>
+<ul>
+<li>Did the learner leave item_cost unchanged?</li>
+</ul>
+</section>
+<section id="private-reference-solution-37" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def item_cost(price, quantity):<br />
+return price * quantity</p>
+<p>def delivered_cost(price, quantity, delivery):<br />
+subtotal = item_cost(price, quantity)<br />
+return subtotal + delivery</p>
+</section>
+</section>
+<section id="d4.3a-explainable-repair" class="level1">
+<h1>D4.3A — Explainable Repair</h1>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Linked lesson</strong></th>
+<th>Lesson 4.3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Type</strong></td>
+<td>Core</td>
+</tr>
+<tr class="even">
+<td><strong>Coins</strong></td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python</td>
+</tr>
+<tr class="even">
+<td><strong>README location</strong></td>
+<td>README.md</td>
+</tr>
+<tr class="odd">
+<td><strong>Suggested graded file</strong></td>
+<td>d4-3a/solution.py</td>
+</tr>
+</tbody>
+</table>
+<section id="instructions-markdown-38" class="level2">
+<h2>Instructions (Markdown)</h2>
+<p>Repair seats_left. During inspection, be ready to explain the failing
+case, the change you made, and the retest you used.</p>
+</section>
+<section id="default-code-template-38" class="level2">
+<h2>Default Code Template</h2>
+<p>def seats_left(capacity, booked):<br />
+return capacity + booked</p>
+</section>
+<section id="allowed-keywords-constructs-38" class="level2">
+<h2>Allowed Keywords / Constructs</h2>
+<p>def, return, -</p>
+</section>
+<section id="restrictions-forbidden-strings-38" class="level2">
+<h2>Restrictions / Forbidden Strings</h2>
+<p>input, print, import</p>
+</section>
+<section id="visible-sample-tests-38" class="level2">
+<h2>Visible Sample Tests</h2>
+<p>(10, 3) =&gt; 7</p>
+<p>(10, 10) =&gt; 0</p>
+</section>
+<section id="private-hidden-tests-38" class="level2">
+<h2>Private Hidden Tests</h2>
+<p>(0, 0) =&gt; 0</p>
+<p>(20, 8) =&gt; 12</p>
+</section>
+<section id="inspection-checklist-11" class="level2">
+<h2>Inspection Checklist</h2>
+<ul>
+<li>Can the learner state the failing case, the exact change, and a
+retest result?</li>
+</ul>
+</section>
+<section id="private-reference-solution-38" class="level2">
+<h2>Private Reference Solution</h2>
+<p>def seats_left(capacity, booked):<br />
+return capacity - booked</p>
+</section>
+</section>
+<section id="ai-lesson-knowledge-checks-authoring-guidance"
+class="level1">
+<h1>AI Lesson Knowledge Checks — Authoring Guidance</h1>
+<p>AI awareness lessons should use MCQ/knowledge-check items rather than
+coding challenges. Keep the questions conceptual and directly tied to
+the lesson. They remain informational and outside the technical
+selection weighting. Suggested pattern: 2–3 questions after each AI
+lesson, plus the separate 10-question Day 5 AI Awareness Check.</p>
+<ul>
+<li><p>Day 1: distinguish AI from generative AI; recognise that fluent
+output can be wrong.</p></li>
+<li><p>Day 2: identify a clearer prompt; recognise sensitive information
+that should not be shared.</p></li>
+<li><p>Day 3: choose an appropriate AI-assistance use; identify missing
+context in a prompt; choose a verification step.</p></li>
+<li><p>Day 4: identify hallucination risk; choose a responsible
+verification action; recognise privacy/security concerns.</p></li>
+</ul>
+</section></article>
+      <div class="footer">Five-Day Python Trial • Professional standalone HTML edition</div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
