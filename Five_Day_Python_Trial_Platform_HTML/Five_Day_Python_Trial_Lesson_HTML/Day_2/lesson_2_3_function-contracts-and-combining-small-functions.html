@@ -1,0 +1,69 @@
+<article class="l2e-lesson" data-day="2" data-lesson="2.3" data-linked-drills="[&quot;D2.3A \u2014 Event Total with a Helper&quot;, &quot;D2.3B \u2014 Calculate Then Format&quot;, &quot;D2.3C \u2014 Calculate Then Decide&quot;]">
+  <header class="lesson-header">
+    <p class="lesson-kicker">LESSON 2.3</p>
+    <h1>Function Contracts and Combining Small Functions</h1>
+  </header>
+
+  <div class="lesson-body">
+<table class="lesson-meta-table">
+<thead>
+<tr>
+  <th><strong>Estimated time</strong></th>
+  <th>40–45 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Learning purpose</strong></td>
+  <td>Build larger behaviour by connecting small functions with clear responsibilities.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="lesson-section-title">What you should be able to do</h2>
+<ul>
+<li><p>Describe a function contract using inputs, output and responsibility.</p>
+</li>
+<li><p>Call a helper rather than duplicating its calculation.</p>
+</li>
+<li><p>Pass a returned value into another calculation or decision.</p>
+</li>
+<li><p>Explain why small functions are easier to test and combine.</p>
+</li>
+</ul>
+<h3>A function should have a clear job</h3>
+<p>A function contract tells you what values the function receives, what it promises to return and what responsibility belongs inside it. For example, `participant_cost(attendees, food_per_person, transport_per_person)` owns the attendance-based cost calculation. `event_total(...)` can then call that helper and add a venue cost. Separating responsibilities makes both pieces easier to test.</p>
+<h3>Build from small pieces</h3>
+<p>When one function already solves part of the problem, reuse it. The goal is not merely shorter code. Reuse creates a single place responsible for a rule. If the participant-cost formula changes later, a program that consistently calls the helper is easier to update than a program that copied the formula into several places.</p>
+<p>def participant_cost(attendees, food_per_person, transport_per_person):<br />
+return attendees * (food_per_person + transport_per_person)</p>
+<p>def event_total(attendees, food_per_person, transport_per_person, venue_cost):<br />
+people = participant_cost(attendees, food_per_person, transport_per_person)<br />
+return people + venue_cost</p>
+<h3>Trace the contract chain</h3>
+<p>For `event_total(10, 800, 200, 5000)`, the helper receives 10, 800 and 200 and returns 10,000. The caller stores that returned value in `people`, adds 5,000 and returns 15,000. A later status function can receive that 15,000 and compare it with a budget. This chain of small contracts is the foundation of the Day 3 team mission.</p>
+<h2 class="lesson-section-title">Common mistakes to watch for</h2>
+<ul>
+<li><p>Repeating helper logic when the task requires the helper to be called.</p>
+</li>
+<li><p>Changing the supplied helper instead of completing the missing function.</p>
+</li>
+<li><p>Calling a function but ignoring its returned value.</p>
+</li>
+</ul>
+<h2 class="lesson-section-title">Peer learning checkpoint</h2>
+<p>Draw boxes for two functions. Label the inputs and returned output of each, then draw an arrow showing how the first function’s answer becomes data for the second.</p>
+<h2 class="lesson-section-title resources-title">Optional resources</h2>
+<p><strong>Watch:</strong> <a href="https://www.youtube.com/watch?v=9Os0o3wzS_I" target="_blank" rel="noopener noreferrer"><u>Python Functions for Beginners (Corey Schafer)</u></a></p>
+<p><strong>Visualise:</strong> <a href="https://pythontutor.com/" target="_blank" rel="noopener noreferrer"><u>Python Tutor</u></a></p>
+<h2 class="lesson-section-title drills-title">Linked drills — test what you just learned</h2>
+<p><strong>D2.3A — Event Total with a Helper</strong></p>
+<p>participant_cost is supplied. Complete event_total by calling participant_cost and adding venue_cost.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D2.3B — Calculate Then Format</strong></p>
+<p>Complete budget_report so it calls budget_left and uses the returned value in the exact message &quot;500 naira remaining.&quot;</p>
+<p><strong>Type:</strong> Reinforcement</p>
+<p><strong>D2.3C — Calculate Then Decide</strong></p>
+<p>Complete trip_status so it calls trip_cost and returns &quot;Within budget&quot; when the returned total is at most budget; otherwise return &quot;Over budget&quot;.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+  </div>
+</article>

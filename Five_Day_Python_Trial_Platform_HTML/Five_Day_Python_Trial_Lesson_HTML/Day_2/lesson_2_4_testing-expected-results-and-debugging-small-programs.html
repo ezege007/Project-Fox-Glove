@@ -1,0 +1,67 @@
+<article class="l2e-lesson" data-day="2" data-lesson="2.4" data-linked-drills="[&quot;D2.4A \u2014 Repair Printing Cost&quot;, &quot;D2.4B \u2014 Repair an Equality Bug&quot;, &quot;D2.4C \u2014 Retest After a Fix&quot;]">
+  <header class="lesson-header">
+    <p class="lesson-kicker">LESSON 2.4</p>
+    <h1>Testing Expected Results and Debugging Small Programs</h1>
+  </header>
+
+  <div class="lesson-body">
+<table class="lesson-meta-table">
+<thead>
+<tr>
+  <th><strong>Estimated time</strong></th>
+  <th>40–45 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Learning purpose</strong></td>
+  <td>Learn a disciplined way to decide whether code is correct and repair it when it is not.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="lesson-section-title">What you should be able to do</h2>
+<ul>
+<li><p>Write an expected answer before running a test.</p>
+</li>
+<li><p>Compare expected and actual results.</p>
+</li>
+<li><p>Distinguish syntax failures from wrong-result failures.</p>
+</li>
+<li><p>Change one likely cause at a time and rerun the failing case.</p>
+</li>
+<li><p>Retest earlier passing cases after a fix.</p>
+</li>
+</ul>
+<h3>A test starts with an expectation</h3>
+<p>If you run code without deciding what should happen, the result can look convincing even when it is wrong. A basic test has an input, an expected result and an actual result. You calculate or reason about the expected result first, run the function, and compare the two.</p>
+<p>A strong small test set contains different kinds of cases: a usual case, a zero case when zero is allowed, and a boundary case when a decision rule contains equality. Different cases reveal different mistakes.</p>
+<h3>Debugging is a process, not guessing</h3>
+<p>When a test fails, avoid changing several lines at random. First identify the earliest place where the calculation or decision differs from what the problem requires. Make one focused change. Rerun the failing case. Then rerun earlier passing cases because a fix can accidentally break behaviour that already worked.</p>
+<p>If the code does not run at all, read the error message and inspect syntax near the reported line: colons, parentheses, indentation and spelling are common beginner causes. If it runs but returns the wrong value, compare the operators and branch conditions with the written brief.</p>
+<h3>Keep evidence of improvement</h3>
+<p>During the trial, the first attempt and the improved attempt are both useful evidence. A mistake is not automatically a negative signal. The important question is whether you can interpret feedback, make an appropriate change, explain why it works and retest it.</p>
+<h2 class="lesson-section-title">Common mistakes to watch for</h2>
+<ul>
+<li><p>Changing multiple lines at once and not knowing which change fixed the issue.</p>
+</li>
+<li><p>Checking only the sample that already passed.</p>
+</li>
+<li><p>Treating a failed test as a reason to rewrite everything.</p>
+</li>
+</ul>
+<h2 class="lesson-section-title">Peer learning checkpoint</h2>
+<p>Show a failing input and expected result to a peer, but not your intended fix. Ask the peer to point to the first line they would investigate and explain why.</p>
+<h2 class="lesson-section-title resources-title">Optional resources</h2>
+<p><strong>Visualise:</strong> <a href="https://pythontutor.com/" target="_blank" rel="noopener noreferrer"><u>Python Tutor for step-by-step debugging</u></a></p>
+<h2 class="lesson-section-title drills-title">Linked drills — test what you just learned</h2>
+<p><strong>D2.4A — Repair Printing Cost</strong></p>
+<p>The function is meant to return the remaining budget after a printing cost. Repair the arithmetic.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D2.4B — Repair an Equality Bug</strong></p>
+<p>The brief says an exact budget match is &quot;Within budget&quot;. Repair the function.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+<p><strong>D2.4C — Retest After a Fix</strong></p>
+<p>Repair seats_left so it subtracts booked from capacity. The platform will test normal, zero and exact-fit cases.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+  </div>
+</article>

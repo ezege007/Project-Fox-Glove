@@ -1,0 +1,25 @@
+lesson,type,title,day,filename
+1.1,Lesson,"Git, Repositories and Saving Your Work",1,Lessons/Day_1/lesson_1_1_git-repositories-and-saving-your-work.md
+1.2,Lesson,From a Problem to Instructions,1,Lessons/Day_1/lesson_1_2_from-a-problem-to-instructions.md
+1.3,Lesson,Read Your First Python Function,1,Lessons/Day_1/lesson_1_3_read-your-first-python-function.md
+1.4,Lesson,"Variables, Values and Arithmetic",1,Lessons/Day_1/lesson_1_4_variables-values-and-arithmetic.md
+1.5,Lesson,"Strings, f-Strings and Exact Returned Messages",1,Lessons/Day_1/lesson_1_5_strings-f-strings-and-exact-returned-messages.md
+1.6,Lesson,"Return vs Print, Function Calls and Tracing Values",1,Lessons/Day_1/lesson_1_6_return-vs-print-function-calls-and-tracing-values.md
+1.7,Lesson,"Read the Brief, Follow the Contract and Repair Small Errors",1,Lessons/Day_1/lesson_1_7_read-the-brief-follow-the-contract-and-repair-small-errors.md
+1.8,AI Lesson,What Artificial Intelligence Is — and Is Not,1,Lessons/Day_1/lesson_1_8_what-artificial-intelligence-is-and-is-not.md
+2.1,Lesson,Comparisons and Boolean Questions,2,Lessons/Day_2/lesson_2_1_comparisons-and-boolean-questions.md
+2.2,Lesson,Make Decisions with if/else and Test the Boundary,2,Lessons/Day_2/lesson_2_2_make-decisions-with-if-else-and-test-the-boundary.md
+2.3,Lesson,Function Contracts and Combining Small Functions,2,Lessons/Day_2/lesson_2_3_function-contracts-and-combining-small-functions.md
+2.4,Lesson,Testing Expected Results and Debugging Small Programs,2,Lessons/Day_2/lesson_2_4_testing-expected-results-and-debugging-small-programs.md
+2.5,Lesson,"Plan from a Brief, Build a First Attempt, Use Feedback and Retest",2,Lessons/Day_2/lesson_2_5_plan-from-a-brief-build-a-first-attempt-use-feedback-and-retest.md
+2.6,AI Lesson,Generative AI and Prompting Basics,2,Lessons/Day_2/lesson_2_6_generative-ai-and-prompting-basics.md
+3.1,Lesson,Break a Team Problem into Components and Contracts,3,Lessons/Day_3/lesson_3_1_break-a-team-problem-into-components-and-contracts.md
+3.2,Lesson,Integrate Components and Reuse Returned Values,3,Lessons/Day_3/lesson_3_2_integrate-components-and-reuse-returned-values.md
+3.3,Lesson,"Test Your Component, Document a Handover and Repair Peer Code Carefully",3,Lessons/Day_3/lesson_3_3_test-your-component-document-a-handover-and-repair-peer-code-carefully.md
+3.4,Lesson,Peer Review and Visible Individual Contribution,3,Lessons/Day_3/lesson_3_4_peer-review-and-visible-individual-contribution.md
+3.5,AI Lesson,"AI as a Coding Assistant — Helpful, but Not the Owner",3,Lessons/Day_3/lesson_3_5_ai-as-a-coding-assistant-helpful-but-not-the-owner.md
+3.6,AI Lesson,"Data, Context and Better Prompts",3,Lessons/Day_3/lesson_3_6_data-context-and-better-prompts.md
+4.1,Lesson,Acceptance Criteria and Regression Testing,4,Lessons/Day_4/lesson_4_1_acceptance-criteria-and-regression-testing.md
+4.2,Lesson,Debug One Cause at a Time,4,Lessons/Day_4/lesson_4_2_debug-one-cause-at-a-time.md
+4.3,Lesson,Explain a Change with Evidence and Prepare for Inspection,4,Lessons/Day_4/lesson_4_3_explain-a-change-with-evidence-and-prepare-for-inspection.md
+4.4,AI Lesson,"Hallucinations, Verification, Privacy and Responsible Use",4,Lessons/Day_4/lesson_4_4_hallucinations-verification-privacy-and-responsible-use.md

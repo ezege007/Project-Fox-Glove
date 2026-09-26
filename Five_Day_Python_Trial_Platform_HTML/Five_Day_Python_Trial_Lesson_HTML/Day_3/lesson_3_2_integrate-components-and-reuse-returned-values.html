@@ -1,0 +1,61 @@
+<article class="l2e-lesson" data-day="3" data-lesson="3.2" data-linked-drills="[&quot;D3.2A \u2014 Integrate Participant and Venue Costs&quot;, &quot;D3.2B \u2014 Build the Final Event Summary&quot;]">
+  <header class="lesson-header">
+    <p class="lesson-kicker">LESSON 3.2</p>
+    <h1>Integrate Components and Reuse Returned Values</h1>
+  </header>
+
+  <div class="lesson-body">
+<table class="lesson-meta-table">
+<thead>
+<tr>
+  <th><strong>Estimated time</strong></th>
+  <th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Learning purpose</strong></td>
+  <td>Connect separately tested functions into one working flow.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="lesson-section-title">What you should be able to do</h2>
+<ul>
+<li><p>Call one component from another where the design requires it.</p>
+</li>
+<li><p>Trace a value from one function to the next.</p>
+</li>
+<li><p>Recognise interface mismatches during integration.</p>
+</li>
+<li><p>Keep integration code simple and inspectable.</p>
+</li>
+</ul>
+<h3>Integration is where contracts meet</h3>
+<p>A component can pass its own tests and still fail when connected to the rest of the program if the team disagreed about names, types or meanings. Integration means connecting the pieces and checking that the output of one component is suitable as the input to the next.</p>
+<p>The Event Budget Helper flow is: calculate participant cost → calculate event total → determine budget status → build the summary. Each step produces a value that the next step can use.</p>
+<p>people = participant_cost(10, 800, 200)<br />
+total = event_total(10, 800, 200, 5000)<br />
+status = budget_status(16000, total)<br />
+summary = event_summary(&quot;Study Day&quot;, total, status)</p>
+<h3>Integrate in small steps</h3>
+<p>Do not wait until every component is “finished” and then combine everything at once. First confirm one helper works. Connect the next function and rerun. Then connect the decision. Finally connect the summary. When a failure appears, the smaller integration step makes it easier to locate the mismatch.</p>
+<h2 class="lesson-section-title">Common mistakes to watch for</h2>
+<ul>
+<li><p>Copying calculations instead of using the agreed helper.</p>
+</li>
+<li><p>Integrating all components at once and not knowing where a wrong value appeared.</p>
+</li>
+<li><p>Changing a function signature during integration without coordinating with the owner.</p>
+</li>
+</ul>
+<h2 class="lesson-section-title">Peer learning checkpoint</h2>
+<p>Trace one sample through the entire program as a team. Each owner should say what value their function receives and returns.</p>
+<h2 class="lesson-section-title drills-title">Linked drills — test what you just learned</h2>
+<p><strong>D3.2A — Integrate Participant and Venue Costs</strong></p>
+<p>participant_cost is supplied. Complete event_total by calling participant_cost and adding venue_cost.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D3.2B — Build the Final Event Summary</strong></p>
+<p>Complete event_summary(event_name, total, status). Return exactly &quot;Study Day: total 15000 naira. Within budget.&quot; with supplied values substituted.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+  </div>
+</article>

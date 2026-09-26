@@ -1,0 +1,40 @@
+drill_id,title,day,linked_lesson,type,coins,filename
+D1.2A,Add Two Item Costs,1,Lesson 1.2,Core,10,Day_1/d1_2a_add-two-item-costs.html
+D1.2B,Calculate Remaining Money,1,Lesson 1.2,Reinforcement,10,Day_1/d1_2b_calculate-remaining-money.html
+D1.3A,Complete Your First Function,1,Lesson 1.3,Core,10,Day_1/d1_3a_complete-your-first-function.html
+D1.3B,Repair the Missing Return,1,Lesson 1.3,Reinforcement,10,Day_1/d1_3b_repair-the-missing-return.html
+D1.4A,Travel Cost,1,Lesson 1.4,Core,10,Day_1/d1_4a_travel-cost.html
+D1.4B,Budget After Two Costs,1,Lesson 1.4,Core,10,Day_1/d1_4b_budget-after-two-costs.html
+D1.4C,Participant Cost,1,Lesson 1.4,Reinforcement,10,Day_1/d1_4c_participant-cost.html
+D1.5A,Welcome Message,1,Lesson 1.5,Core,10,Day_1/d1_5a_welcome-message.html
+D1.5B,Budget Message,1,Lesson 1.5,Reinforcement,10,Day_1/d1_5b_budget-message.html
+D1.6A,Use a Supplied Helper,1,Lesson 1.6,Core,10,Day_1/d1_6a_use-a-supplied-helper.html
+D1.6B,"Return, Do Not Display",1,Lesson 1.6,Reinforcement,10,Day_1/d1_6b_return-do-not-display.html
+D1.6C,Trace a Returned Value,1,Lesson 1.6,Reinforcement,10,Day_1/d1_6c_trace-a-returned-value.html
+D1.7A,Follow the Brief Exactly,1,Lesson 1.7,Core,10,Day_1/d1_7a_follow-the-brief-exactly.html
+D1.7B,Repair a Small Logic Error,1,Lesson 1.7,Reinforcement,10,Day_1/d1_7b_repair-a-small-logic-error.html
+D2.1A,Can the Budget Cover the Cost?,2,Lesson 2.1,Core,10,Day_2/d2_1a_can-the-budget-cover-the-cost.html
+D2.1B,Compare Two Totals,2,Lesson 2.1,Reinforcement,10,Day_2/d2_1b_compare-two-totals.html
+D2.2A,Funding Status,2,Lesson 2.2,Core,10,Day_2/d2_2a_funding-status.html
+D2.2B,Capacity Status,2,Lesson 2.2,Reinforcement,10,Day_2/d2_2b_capacity-status.html
+D2.2C,Positive Places,2,Lesson 2.2,Reinforcement,10,Day_2/d2_2c_positive-places.html
+D2.3A,Event Total with a Helper,2,Lesson 2.3,Core,10,Day_2/d2_3a_event-total-with-a-helper.html
+D2.3B,Calculate Then Format,2,Lesson 2.3,Reinforcement,10,Day_2/d2_3b_calculate-then-format.html
+D2.3C,Calculate Then Decide,2,Lesson 2.3,Reinforcement,10,Day_2/d2_3c_calculate-then-decide.html
+D2.4A,Repair Printing Cost,2,Lesson 2.4,Core,10,Day_2/d2_4a_repair-printing-cost.html
+D2.4B,Repair an Equality Bug,2,Lesson 2.4,Reinforcement,10,Day_2/d2_4b_repair-an-equality-bug.html
+D2.4C,Retest After a Fix,2,Lesson 2.4,Reinforcement,10,Day_2/d2_4c_retest-after-a-fix.html
+D2.5A,Build from a Written Brief,2,Lesson 2.5,Core,10,Day_2/d2_5a_build-from-a-written-brief.html
+D2.5B,Apply Feedback Without Changing the Contract,2,Lesson 2.5,Reinforcement,10,Day_2/d2_5b_apply-feedback-without-changing-the-contract.html
+D3.1A,Implement a Component Contract,3,Lesson 3.1,Core,10,Day_3/d3_1a_implement-a-component-contract.html
+D3.1B,Implement the Status Contract,3,Lesson 3.1,Reinforcement,10,Day_3/d3_1b_implement-the-status-contract.html
+D3.2A,Integrate Participant and Venue Costs,3,Lesson 3.2,Core,10,Day_3/d3_2a_integrate-participant-and-venue-costs.html
+D3.2B,Build the Final Event Summary,3,Lesson 3.2,Reinforcement,10,Day_3/d3_2b_build-the-final-event-summary.html
+D3.3A,Test a Component with Zero,3,Lesson 3.3,Core,10,Day_3/d3_3a_test-a-component-with-zero.html
+D3.3B,Repair a Teammate Component,3,Lesson 3.3,Reinforcement,10,Day_3/d3_3b_repair-a-teammate-component.html
+D3.4A,Review Before You Rewrite,3,Lesson 3.4,Core,10,Day_3/d3_4a_review-before-you-rewrite.html
+D4.1A,Preserve Earlier Behaviour,4,Lesson 4.1,Core,10,Day_4/d4_1a_preserve-earlier-behaviour.html
+D4.1B,Regression Check: Exact Fit,4,Lesson 4.1,Reinforcement,10,Day_4/d4_1b_regression-check-exact-fit.html
+D4.2A,Find the First Wrong Operation,4,Lesson 4.2,Core,10,Day_4/d4_2a_find-the-first-wrong-operation.html
+D4.2B,Repair Without Breaking a Passing Helper,4,Lesson 4.2,Reinforcement,10,Day_4/d4_2b_repair-without-breaking-a-passing-helper.html
+D4.3A,Explainable Repair,4,Lesson 4.3,Core,10,Day_4/d4_3a_explainable-repair.html

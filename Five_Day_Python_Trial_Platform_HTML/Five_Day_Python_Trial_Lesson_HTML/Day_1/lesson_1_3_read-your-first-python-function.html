@@ -1,0 +1,68 @@
+<article class="l2e-lesson" data-day="1" data-lesson="1.3" data-linked-drills="[&quot;D1.3A \u2014 Complete Your First Function&quot;, &quot;D1.3B \u2014 Repair the Missing Return&quot;]">
+  <header class="lesson-header">
+    <p class="lesson-kicker">LESSON 1.3</p>
+    <h1>Read Your First Python Function</h1>
+  </header>
+
+  <div class="lesson-body">
+<table class="lesson-meta-table">
+<thead>
+<tr>
+  <th><strong>Estimated time</strong></th>
+  <th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Learning purpose</strong></td>
+  <td>Build a mental model for the small function pattern used throughout the trial.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="lesson-section-title">What you should be able to do</h2>
+<ul>
+<li><p>Identify a function name, parameters, body and return statement.</p>
+</li>
+<li><p>Explain what indentation means in a Python function.</p>
+</li>
+<li><p>Trace supplied arguments into parameters.</p>
+</li>
+<li><p>Predict the returned value of a small function.</p>
+</li>
+</ul>
+<h3>Read code as a story</h3>
+<p>You do not need to memorise every symbol before you can read code. Start by asking what task the function represents, what values enter it, what happens to those values, and what answer leaves it. Consider the function below.</p>
+<p>def item_total(first, second):<br />
+total = first + second<br />
+return total</p>
+<p>item_total(200, 300)</p>
+<h3>What each part means</h3>
+<p>`def` begins a function definition. `item_total` is the function name. `first` and `second` are parameters: names that will receive values when the function is called. The colon marks the start of the indented function body. `total = first + second` performs the calculation and assigns the result to the name `total`. `return total` sends that value back to the caller.</p>
+<p>The call `item_total(200, 300)` supplies the arguments 200 and 300. During that call, `first` refers to 200 and `second` refers to 300. The function calculates 500 and returns 500. If you change the second argument to 450, the returned result should become 650.</p>
+<h3>Indentation is structure, not decoration</h3>
+<p>Python uses indentation to show which lines belong together. The calculation and return lines are indented because they belong to the function body. If indentation is missing or inconsistent, Python may reject the code or interpret its structure differently from what you intended.</p>
+<h3>Trace it by hand</h3>
+<p>Before running a function, write the parameter values beside the names. Then calculate each assignment in order. Finally, identify the value returned. This habit becomes especially useful when one function calls another later in the trial.</p>
+<h2 class="lesson-section-title">Common mistakes to watch for</h2>
+<ul>
+<li><p>Confusing parameters in the definition with arguments in the call.</p>
+</li>
+<li><p>Forgetting that the indented lines belong to the function.</p>
+</li>
+<li><p>Assuming `return` and `print` mean the same thing.</p>
+</li>
+</ul>
+<h2 class="lesson-section-title">Peer learning checkpoint</h2>
+<p>Explain the function to a peer line by line without saying “it just does it.” Your explanation should say where 200 and 300 go and which value comes back.</p>
+<h2 class="lesson-section-title resources-title">Optional resources</h2>
+<p><strong>Watch:</strong> <a href="https://www.youtube.com/watch?v=9Os0o3wzS_I" target="_blank" rel="noopener noreferrer"><u>Python Functions for Beginners (Corey Schafer)</u></a></p>
+<p><strong>Visualise:</strong> <a href="https://pythontutor.com/" target="_blank" rel="noopener noreferrer"><u>Python Tutor: step through code execution</u></a></p>
+<h2 class="lesson-section-title drills-title">Linked drills — test what you just learned</h2>
+<p><strong>D1.3A — Complete Your First Function</strong></p>
+<p>Complete add_costs(first, second) so that it returns the sum of the supplied values. Keep the function name and parameters unchanged.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D1.3B — Repair the Missing Return</strong></p>
+<p>The function calculates the correct value but does not return it. Repair the function so the caller receives the integer result and the function prints nothing.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+  </div>
+</article>

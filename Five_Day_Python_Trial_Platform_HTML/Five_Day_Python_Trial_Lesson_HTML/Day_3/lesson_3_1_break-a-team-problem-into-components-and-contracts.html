@@ -1,0 +1,59 @@
+<article class="l2e-lesson" data-day="3" data-lesson="3.1" data-linked-drills="[&quot;D3.1A \u2014 Implement a Component Contract&quot;, &quot;D3.1B \u2014 Implement the Status Contract&quot;]">
+  <header class="lesson-header">
+    <p class="lesson-kicker">LESSON 3.1</p>
+    <h1>Break a Team Problem into Components and Contracts</h1>
+  </header>
+
+  <div class="lesson-body">
+<table class="lesson-meta-table">
+<thead>
+<tr>
+  <th><strong>Estimated time</strong></th>
+  <th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Learning purpose</strong></td>
+  <td>Learn how a team can divide one program without dividing understanding.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="lesson-section-title">What you should be able to do</h2>
+<ul>
+<li><p>Identify separate responsibilities in a larger brief.</p>
+</li>
+<li><p>Write a simple contract for each component.</p>
+</li>
+<li><p>Understand ownership without creating isolated silos.</p>
+</li>
+<li><p>Explain what another component expects from your component.</p>
+</li>
+</ul>
+<h3>A team project is one system</h3>
+<p>The Event Budget Helper is larger than the Day 2 mission, but it is built from the same kinds of small functions. The safest way to collaborate is to agree on the component contracts before everyone starts coding. A contract should name the function, list its inputs, state its returned value and describe the rule it owns.</p>
+<p>For example, participant_cost owns attendee-based food and transport cost. event_total owns the addition of venue cost to that participant cost. budget_status owns the comparison between total and budget. event_summary owns the final readable message. If these contracts are clear, team members can work separately and still create compatible pieces.</p>
+<h3>Ownership does not mean ignorance</h3>
+<p>Every learner should own code, but every learner should also understand how their component connects to at least one other component. A team member assigned only to presentation or administration has not produced enough technical evidence. Likewise, the strongest learner should not silently rewrite everyone else’s work.</p>
+<h3>Define before you build</h3>
+<p>Write the four contracts on paper or in your team notes. Agree on exact function names and return types. Then allocate owners and reviewers. This prevents integration failures caused by one person returning text where another component expects a number, or by inconsistent names.</p>
+<h2 class="lesson-section-title">Common mistakes to watch for</h2>
+<ul>
+<li><p>Starting to code before agreeing on function names and outputs.</p>
+</li>
+<li><p>Giving one learner all difficult technical work.</p>
+</li>
+<li><p>Changing another person’s contract without telling the team.</p>
+</li>
+</ul>
+<h2 class="lesson-section-title">Peer learning checkpoint</h2>
+<p>As a team, each learner should explain one component they do not own and describe what value enters it and what value should leave it.</p>
+<h2 class="lesson-section-title drills-title">Linked drills — test what you just learned</h2>
+<p><strong>D3.1A — Implement a Component Contract</strong></p>
+<p>Implement participant_cost exactly as specified: attendees * (food_per_person + transport_per_person). Return an integer.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D3.1B — Implement the Status Contract</strong></p>
+<p>Complete budget_status(budget, total). Return &quot;Within budget&quot; when total &lt;= budget; otherwise return &quot;Over budget&quot;.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+  </div>
+</article>

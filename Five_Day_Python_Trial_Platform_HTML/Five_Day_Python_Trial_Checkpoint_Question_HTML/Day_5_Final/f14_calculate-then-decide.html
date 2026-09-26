@@ -1,0 +1,55 @@
+<article class="l2e-checkpoint-question"
+  data-question="F14"
+  data-day="5"
+  data-checkpoint="Day 5 Final Coding Checkpoint">
+
+  <header class="checkpoint-question-header">
+    <p class="checkpoint-question-kicker">Day 5 Final Coding Checkpoint · F14</p>
+    <h1>Calculate Then Decide</h1>
+    
+  </header>
+
+  <section class="checkpoint-question-section">
+    <h2>Task</h2>
+    <p>Use event_total to calculate total, then return budget_status(budget, total). Keep both supplied helpers unchanged.</p>
+  </section>
+
+  <section class="checkpoint-question-section">
+    <h2>Starter code</h2>
+    <pre><code class="language-python">def event_total(attendees, per_person, venue):
+    return attendees * per_person + venue
+
+def budget_status(budget, total):
+    if total &lt;= budget:
+        return &quot;Within budget&quot;
+    return &quot;Over budget&quot;
+
+def event_result(attendees, per_person, venue, budget):
+    pass</code></pre>
+  </section>
+
+  <section class="checkpoint-question-section">
+    <h2>Published sample checks</h2>
+    <table class="checkpoint-question-tests">
+      <thead>
+        <tr>
+          <th>Call</th>
+          <th>Expected result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>event_result(10, 1000, 5000, 16000)</code></td><td><code>&quot;Within budget&quot;</code></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="checkpoint-question-section checkpoint-question-reminder">
+    <h2>Before you move on</h2>
+    <ul>
+      <li>Keep the supplied function name and parameters unchanged unless the question says otherwise.</li>
+      <li>Use the supplied inputs instead of hard-coding the sample answers.</li>
+      <li>Run the published sample checks where time allows.</li>
+      <li>Save your latest attempt before moving to the next question.</li>
+    </ul>
+  </section>
+</article>

@@ -1,0 +1,26 @@
+question_id,checkpoint,day,title,classification,filename
+B1,Day 2 Baseline,2,Return a Sum,Core,Checkpoint_Questions/Day_2_Baseline/b1_return-a-sum.md
+B2,Day 2 Baseline,2,Calculate a Total Cost,Core,Checkpoint_Questions/Day_2_Baseline/b2_calculate-a-total-cost.md
+B3,Day 2 Baseline,2,Build an Exact Message,Core,Checkpoint_Questions/Day_2_Baseline/b3_build-an-exact-message.md
+B4,Day 2 Baseline,2,Repair Arithmetic,Core,Checkpoint_Questions/Day_2_Baseline/b4_repair-arithmetic.md
+B5,Day 2 Baseline,2,Make a Decision,Core,Checkpoint_Questions/Day_2_Baseline/b5_make-a-decision.md
+B6,Day 2 Baseline,2,Use a Helper,Core,Checkpoint_Questions/Day_2_Baseline/b6_use-a-helper.md
+B7,Day 2 Baseline,2,Stretch: Read from a List,Stretch,Checkpoint_Questions/Day_2_Baseline/b7_stretch-read-from-a-list.md
+B8,Day 2 Baseline,2,Stretch: Repeat a Calculation,Stretch,Checkpoint_Questions/Day_2_Baseline/b8_stretch-repeat-a-calculation.md
+B9,Day 2 Baseline,2,Stretch: Read a Dictionary Value,Stretch,Checkpoint_Questions/Day_2_Baseline/b9_stretch-read-a-dictionary-value.md
+B10,Day 2 Baseline,2,Stretch: Count Matching Values,Stretch,Checkpoint_Questions/Day_2_Baseline/b10_stretch-count-matching-values.md
+F1,Day 5 Final,5,"Return, Do Not Print",Core,Checkpoint_Questions/Day_5_Final/f1_return-do-not-print.md
+F2,Day 5 Final,5,Add Two Costs,Core,Checkpoint_Questions/Day_5_Final/f2_add-two-costs.md
+F3,Day 5 Final,5,Multiply Quantity by Unit Price,Core,Checkpoint_Questions/Day_5_Final/f3_multiply-quantity-by-unit-price.md
+F4,Day 5 Final,5,Calculate Remaining Budget,Core,Checkpoint_Questions/Day_5_Final/f4_calculate-remaining-budget.md
+F5,Day 5 Final,5,Return an Exact Message,Core,Checkpoint_Questions/Day_5_Final/f5_return-an-exact-message.md
+F6,Day 5 Final,5,Build a Budget Message,Core,Checkpoint_Questions/Day_5_Final/f6_build-a-budget-message.md
+F7,Day 5 Final,5,Exact Boundary Comparison,Core,Checkpoint_Questions/Day_5_Final/f7_exact-boundary-comparison.md
+F8,Day 5 Final,5,Two-Branch Decision,Core,Checkpoint_Questions/Day_5_Final/f8_two-branch-decision.md
+F9,Day 5 Final,5,Use a Supplied Helper,Core,Checkpoint_Questions/Day_5_Final/f9_use-a-supplied-helper.md
+F10,Day 5 Final,5,Reuse a Returned Value,Core,Checkpoint_Questions/Day_5_Final/f10_reuse-a-returned-value.md
+F11,Day 5 Final,5,Repair Faulty Arithmetic,Core,Checkpoint_Questions/Day_5_Final/f11_repair-faulty-arithmetic.md
+F12,Day 5 Final,5,Repair a Boundary Bug,Core,Checkpoint_Questions/Day_5_Final/f12_repair-a-boundary-bug.md
+F13,Day 5 Final,5,Complete and Test a Status Function,Core,Checkpoint_Questions/Day_5_Final/f13_complete-and-test-a-status-function.md
+F14,Day 5 Final,5,Calculate Then Decide,Core,Checkpoint_Questions/Day_5_Final/f14_calculate-then-decide.md
+F15,Day 5 Final,5,Mini Integrated Summary,Core,Checkpoint_Questions/Day_5_Final/f15_mini-integrated-summary.md

@@ -1,0 +1,60 @@
+<article class="l2e-lesson" data-day="4" data-lesson="4.2" data-linked-drills="[&quot;D4.2A \u2014 Find the First Wrong Operation&quot;, &quot;D4.2B \u2014 Repair Without Breaking a Passing Helper&quot;]">
+  <header class="lesson-header">
+    <p class="lesson-kicker">LESSON 4.2</p>
+    <h1>Debug One Cause at a Time</h1>
+  </header>
+
+  <div class="lesson-body">
+<table class="lesson-meta-table">
+<thead>
+<tr>
+  <th><strong>Estimated time</strong></th>
+  <th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Learning purpose</strong></td>
+  <td>Use a controlled debugging loop instead of random changes.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="lesson-section-title">What you should be able to do</h2>
+<ul>
+<li><p>Reproduce a failure consistently.</p>
+</li>
+<li><p>Locate the earliest incorrect value or decision.</p>
+</li>
+<li><p>Make one focused change and retest.</p>
+</li>
+<li><p>Avoid modifying code that already passes its own tests.</p>
+</li>
+</ul>
+<h3>First reproduce the problem</h3>
+<p>A bug you cannot reproduce is difficult to reason about. Write down the failing input, expected result and actual result. Run it again. Once you can reproduce it, trace the calculation from the inputs until the first value differs from what you expected.</p>
+<h3>Protect known-good components</h3>
+<p>If `item_cost` passes its tests but `delivered_cost` fails, do not rewrite `item_cost` simply because both functions are in the same file. Start at the boundary where known-good output enters the failing function. This reduces the number of possible causes and prevents new bugs.</p>
+<h3>Change one thing</h3>
+<p>Random debugging often creates a moving target: several lines change, one test begins to pass, and nobody knows why. Make the smallest change that addresses the evidence, rerun the failing case, then rerun related passing cases.</p>
+<h2 class="lesson-section-title">Common mistakes to watch for</h2>
+<ul>
+<li><p>Editing a helper that already passes.</p>
+</li>
+<li><p>Making several speculative changes at once.</p>
+</li>
+<li><p>Ignoring the actual failing input and debugging a different example.</p>
+</li>
+</ul>
+<h2 class="lesson-section-title">Peer learning checkpoint</h2>
+<p>One learner describes a failing case without giving the fix. Another learner identifies the first variable or decision they would inspect.</p>
+<h2 class="lesson-section-title resources-title">Optional resources</h2>
+<p><strong>Visualise:</strong> <a href="https://pythontutor.com/" target="_blank" rel="noopener noreferrer"><u>Python Tutor</u></a></p>
+<h2 class="lesson-section-title drills-title">Linked drills — test what you just learned</h2>
+<p><strong>D4.2A — Find the First Wrong Operation</strong></p>
+<p>Repair the two arithmetic mistakes so print_balance returns the remaining budget.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D4.2B — Repair Without Breaking a Passing Helper</strong></p>
+<p>item_cost is correct. Fix only delivered_cost so it returns the correct total. Do not change item_cost.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+  </div>
+</article>

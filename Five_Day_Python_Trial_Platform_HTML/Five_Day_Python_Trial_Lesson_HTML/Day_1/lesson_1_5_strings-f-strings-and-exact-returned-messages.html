@@ -1,0 +1,67 @@
+<article class="l2e-lesson" data-day="1" data-lesson="1.5" data-linked-drills="[&quot;D1.5A \u2014 Welcome Message&quot;, &quot;D1.5B \u2014 Budget Message&quot;]">
+  <header class="lesson-header">
+    <p class="lesson-kicker">LESSON 1.5</p>
+    <h1>Strings, f-Strings and Exact Returned Messages</h1>
+  </header>
+
+  <div class="lesson-body">
+<table class="lesson-meta-table">
+<thead>
+<tr>
+  <th><strong>Estimated time</strong></th>
+  <th>30–35 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Learning purpose</strong></td>
+  <td>Learn to construct text responses that match a required format exactly.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="lesson-section-title">What you should be able to do</h2>
+<ul>
+<li><p>Distinguish text strings from integer values.</p>
+</li>
+<li><p>Use an f-string to insert supplied values into text.</p>
+</li>
+<li><p>Preserve required spaces, punctuation and wording.</p>
+</li>
+<li><p>Return text instead of printing it when the platform expects a returned value.</p>
+</li>
+</ul>
+<h3>Text is data too</h3>
+<p>Python represents text as strings. A string is written inside quotation marks, such as `&quot;Welcome Ada.&quot;`. The integer `500` and the string `&quot;500&quot;` are not the same type of value: one is a number used for arithmetic, while the other is text. A platform test may care about both the value and its type.</p>
+<h3>Insert values with f-strings</h3>
+<p>An f-string begins with `f` before the opening quote. Names inside braces are replaced by their current values. For example, `f&quot;Welcome {name}.&quot;` can produce `Welcome Ada.` or `Welcome Tobi.` depending on the argument supplied to the function.</p>
+<p>Exact-output drills are deliberately strict. If the expected result is `Ada has 500 naira remaining.`, then missing the full stop, adding an extra space, changing the word order, or printing instead of returning can fail the check even though the sentence looks similar to a person.</p>
+<h3>Separate calculation from presentation</h3>
+<p>It is often useful for one function to calculate a number and another function to turn that number into a readable message. That separation will become important in the Day 2 mission and the team project.</p>
+<h3>Worked example</h3>
+<p>def welcome(name, days):<br />
+return f&quot;Welcome {name}. Trial length: {days} days.&quot;</p>
+<p>def budget_message(name, remaining):<br />
+return f&quot;{name} has {remaining} naira remaining.&quot;</p>
+<p>Predict the exact string returned for welcome(&quot;Ada&quot;, 5). Then change both inputs and check every character in your prediction.</p>
+<h2 class="lesson-section-title">Common mistakes to watch for</h2>
+<ul>
+<li><p>Forgetting the `f` before an f-string.</p>
+</li>
+<li><p>Returning a number when a string is required, or a string when a number is required.</p>
+</li>
+<li><p>Changing required punctuation or spacing.</p>
+</li>
+</ul>
+<h2 class="lesson-section-title">Peer learning checkpoint</h2>
+<p>Read an expected output aloud to a peer. Ask them to compare your returned string character-by-character with the requirement.</p>
+<h2 class="lesson-section-title resources-title">Optional resources</h2>
+<p><strong>Watch:</strong> <a href="https://www.youtube.com/watch?v=nghuHvKLhJA" target="_blank" rel="noopener noreferrer"><u>F-Strings quick tutorial (Corey Schafer)</u></a></p>
+<h2 class="lesson-section-title drills-title">Linked drills — test what you just learned</h2>
+<p><strong>D1.5A — Welcome Message</strong></p>
+<p>Return exactly &quot;Welcome Ada.&quot; with the supplied name substituted. Preserve spaces and the final full stop.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D1.5B — Budget Message</strong></p>
+<p>Return exactly &quot;Ada has 500 naira remaining.&quot; using the supplied name and remaining value.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+  </div>
+</article>

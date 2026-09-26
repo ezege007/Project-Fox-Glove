@@ -1,0 +1,64 @@
+<article class="l2e-lesson" data-day="1" data-lesson="1.7" data-linked-drills="[&quot;D1.7A \u2014 Follow the Brief Exactly&quot;, &quot;D1.7B \u2014 Repair a Small Logic Error&quot;]">
+  <header class="lesson-header">
+    <p class="lesson-kicker">LESSON 1.7</p>
+    <h1>Read the Brief, Follow the Contract and Repair Small Errors</h1>
+  </header>
+
+  <div class="lesson-body">
+<table class="lesson-meta-table">
+<thead>
+<tr>
+  <th><strong>Estimated time</strong></th>
+  <th>30–35 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Learning purpose</strong></td>
+  <td>Learn to treat requirements as part of the programming problem, not as decoration.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="lesson-section-title">What you should be able to do</h2>
+<ul>
+<li><p>Extract function name, inputs, output type and exact wording from a brief.</p>
+</li>
+<li><p>Distinguish syntax errors from logic errors at a beginner level.</p>
+</li>
+<li><p>Make the smallest change needed to satisfy a stated requirement.</p>
+</li>
+<li><p>Check your answer against both the examples and the wording of the brief.</p>
+</li>
+</ul>
+<h3>The brief is part of the test</h3>
+<p>A coding task is not only “write something that works.” It defines a contract. The contract may specify the function name, parameters, required return type, exact output text, assumptions about the inputs and restrictions such as “do not print.” If you solve a different problem from the one described, technically valid Python can still be the wrong answer.</p>
+<p>Before coding, underline four things: the function name, the inputs, what must be returned, and any exact wording or boundary rule. Then rewrite the requirement in your own words. This two-minute habit prevents many avoidable mistakes.</p>
+<h3>Syntax error vs logic error</h3>
+<p>A syntax error prevents Python from understanding or running the code, for example a missing colon after `def` or inconsistent indentation. A logic error is different: the code runs but produces the wrong answer. `cost = pages + price_per_page` is valid Python, but it is the wrong logic if total printing cost should be pages multiplied by price per page.</p>
+<p>When you debug, first ask whether the program can run. If not, read the error location and inspect syntax. If it runs but fails a test, compare the expected calculation with the operations in your code.</p>
+<h3>Do not add unrelated features</h3>
+<p>In a short trial exercise, extra menus, input validation, files or clever shortcuts can make a simple solution harder to understand and harder to grade. Solve the stated problem directly. Advanced features earn no benefit when the task does not ask for them.</p>
+<h2 class="lesson-section-title">Common mistakes to watch for</h2>
+<ul>
+<li><p>Renaming the supplied function.</p>
+</li>
+<li><p>Adding `input()` prompts to a function-return drill.</p>
+</li>
+<li><p>Solving only the visible sample instead of the general rule.</p>
+</li>
+<li><p>Changing several things at once when debugging.</p>
+</li>
+</ul>
+<h2 class="lesson-section-title">Peer learning checkpoint</h2>
+<p>Exchange briefs with a peer. Without writing code, each person should state the function name, parameters, return type and one important restriction.</p>
+<h2 class="lesson-section-title resources-title">Optional resources</h2>
+<p><strong>Visualise:</strong> <a href="https://pythontutor.com/" target="_blank" rel="noopener noreferrer"><u>Python Tutor for tracing logic</u></a></p>
+<h2 class="lesson-section-title drills-title">Linked drills — test what you just learned</h2>
+<p><strong>D1.7A — Follow the Brief Exactly</strong></p>
+<p>Complete learner_status(name, tasks) to return exactly &quot;Ada completed 4 tasks.&quot; Use the supplied values and keep the word tasks even when the value is 1.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D1.7B — Repair a Small Logic Error</strong></p>
+<p>The function is meant to return the remaining budget after a printing cost. Repair the arithmetic.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+  </div>
+</article>

@@ -1,0 +1,69 @@
+<article class="l2e-lesson" data-day="2" data-lesson="2.2" data-linked-drills="[&quot;D2.2A \u2014 Funding Status&quot;, &quot;D2.2B \u2014 Capacity Status&quot;, &quot;D2.2C \u2014 Positive Places&quot;]">
+  <header class="lesson-header">
+    <p class="lesson-kicker">LESSON 2.2</p>
+    <h1>Make Decisions with if/else and Test the Boundary</h1>
+  </header>
+
+  <div class="lesson-body">
+<table class="lesson-meta-table">
+<thead>
+<tr>
+  <th><strong>Estimated time</strong></th>
+  <th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Learning purpose</strong></td>
+  <td>Use a comparison to choose between two outcomes.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="lesson-section-title">What you should be able to do</h2>
+<ul>
+<li><p>Write a two-branch if/else function.</p>
+</li>
+<li><p>Explain that only one branch runs in this pattern.</p>
+</li>
+<li><p>Handle equality according to the brief.</p>
+</li>
+<li><p>Return the required value from each branch.</p>
+</li>
+</ul>
+<h3>From a question to a decision</h3>
+<p>A comparison produces `True` or `False`. An `if/else` statement uses that result to decide which block of code should run. If the condition is true, Python executes the indented `if` block. Otherwise it executes the `else` block. For a simple two-outcome problem, exactly one of these branches runs.</p>
+<p>def funding_status(budget, cost):<br />
+if budget &gt;= cost:<br />
+return &quot;Enough&quot;<br />
+else:<br />
+return &quot;Not enough&quot;</p>
+<h3>Read the rule before choosing the operator</h3>
+<p>The important part is not memorising `if`. The important part is translating the requirement correctly. If the brief says an exact match is enough, then equality must be included. If you accidentally use `budget &gt; cost`, a budget of 700 and cost of 700 will go to the wrong branch.</p>
+<p>Indentation again shows structure. Both return statements are indented under the branch they belong to. The colon after the `if` condition and after `else` is required syntax.</p>
+<h3>Test three categories</h3>
+<p>Whenever a rule has a boundary, test below, equal and above. For funding_status with a cost of 700, try budgets of 699, 700 and 701. For a capacity rule where booked must be at most capacity, test one below capacity, exactly capacity and one above capacity.</p>
+<h2 class="lesson-section-title">Common mistakes to watch for</h2>
+<ul>
+<li><p>Forgetting the colon after `if` or `else`.</p>
+</li>
+<li><p>Using the wrong comparison at the equality boundary.</p>
+</li>
+<li><p>Returning the right words from the wrong branch.</p>
+</li>
+</ul>
+<h2 class="lesson-section-title">Peer learning checkpoint</h2>
+<p>Before running any code, take one drill sample and explain which branch should run and why. Your peer should challenge the equality case.</p>
+<h2 class="lesson-section-title resources-title">Optional resources</h2>
+<p><strong>Watch:</strong> <a href="https://www.youtube.com/watch?v=DZwmZ8Usvnk" target="_blank" rel="noopener noreferrer"><u>Conditionals and Booleans (Corey Schafer)</u></a></p>
+<h2 class="lesson-section-title drills-title">Linked drills — test what you just learned</h2>
+<p><strong>D2.2A — Funding Status</strong></p>
+<p>Return &quot;Enough&quot; when budget is greater than or equal to cost. Otherwise return &quot;Not enough&quot;. Exact equality counts as enough.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D2.2B — Capacity Status</strong></p>
+<p>Return &quot;Fits&quot; when booked is at most capacity; otherwise return &quot;Too many&quot;.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+<p><strong>D2.2C — Positive Places</strong></p>
+<p>Return &quot;Available&quot; when places is greater than zero; otherwise return &quot;Full&quot;.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+  </div>
+</article>

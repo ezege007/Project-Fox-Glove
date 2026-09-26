@@ -1,0 +1,74 @@
+<article class="l2e-lesson" data-day="1" data-lesson="1.4" data-linked-drills="[&quot;D1.4A \u2014 Travel Cost&quot;, &quot;D1.4B \u2014 Budget After Two Costs&quot;, &quot;D1.4C \u2014 Participant Cost&quot;]">
+  <header class="lesson-header">
+    <p class="lesson-kicker">LESSON 1.4</p>
+    <h1>Variables, Values and Arithmetic</h1>
+  </header>
+
+  <div class="lesson-body">
+<table class="lesson-meta-table">
+<thead>
+<tr>
+  <th><strong>Estimated time</strong></th>
+  <th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Learning purpose</strong></td>
+  <td>Use named values and arithmetic operators to represent simple calculations.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="lesson-section-title">What you should be able to do</h2>
+<ul>
+<li><p>Explain what a variable represents in the small programs used here.</p>
+</li>
+<li><p>Use +, -, and * correctly with integer inputs.</p>
+</li>
+<li><p>Break a calculation into readable intermediate steps.</p>
+</li>
+<li><p>Check an arithmetic expression against a hand-calculated expected result.</p>
+</li>
+</ul>
+<h3>Names make calculations readable</h3>
+<p>A variable is a name that refers to a value while the program is running. In `total = fare * trips`, the name `total` refers to the result of multiplying `fare` by `trips`. A useful variable name helps another person understand what the value means. Compare `x = a * b` with `total = fare * trips`; both may work, but the second communicates the purpose more clearly.</p>
+<p>Variables are not permanent boxes stored forever. In these beginner functions, they are temporary names used while one function call is executing. When the function is called again with different values, the calculations are performed again with those new values.</p>
+<h3>Arithmetic operators</h3>
+<p>Use `+` to add, `-` to subtract and `*` to multiply. Parentheses can make the intended order explicit. For example, an event with 10 attendees, food at ₦800 per person and transport at ₦200 per person has a participant cost of `10 * (800 + 200)`, which is ₦10,000.</p>
+<p>When several operations appear in one expression, do not rely only on intuition. Work out the expected result by hand and, where helpful, split the calculation into named steps. Readable code is easier to test and easier to explain.</p>
+<h3>Use the inputs — never the sample answer</h3>
+<p>If a drill shows `travel_cost(200, 3) =&gt; 600`, returning the number 600 directly is not a solution. The function must use `fare` and `trips` so it also works when the grader supplies different values. Hidden tests exist specifically to check that your logic generalises beyond the example.</p>
+<h3>Worked example</h3>
+<p>def travel_cost(fare, trips):<br />
+total = fare * trips<br />
+return total</p>
+<p>def budget_left(budget, food, transport):<br />
+remaining = budget - food - transport<br />
+return remaining</p>
+<p>For travel_cost(200, 3), total becomes 600. For budget_left(2000, 900, 600), remaining becomes 500. Change the inputs and recalculate before running.</p>
+<h2 class="lesson-section-title">Common mistakes to watch for</h2>
+<ul>
+<li><p>Using `+` when the brief requires multiplication.</p>
+</li>
+<li><p>Changing sample numbers inside the function instead of using parameters.</p>
+</li>
+<li><p>Ignoring zero values even though zero is a valid input.</p>
+</li>
+</ul>
+<h2 class="lesson-section-title">Peer learning checkpoint</h2>
+<p>Choose one arithmetic function and ask a peer to predict the output for a new set of values. Compare the prediction with the actual result and explain any difference.</p>
+<h2 class="lesson-section-title resources-title">Optional resources</h2>
+<p><strong>Read:</strong> <a href="https://docs.python.org/3/tutorial/introduction.html" target="_blank" rel="noopener noreferrer"><u>Python tutorial: numbers and basic expressions (optional reference)</u></a></p>
+<p><strong>Visualise:</strong> <a href="https://pythontutor.com/" target="_blank" rel="noopener noreferrer"><u>Python Tutor</u></a></p>
+<h2 class="lesson-section-title drills-title">Linked drills — test what you just learned</h2>
+<p><strong>D1.4A — Travel Cost</strong></p>
+<p>Complete travel_cost(fare, trips). Return fare multiplied by trips.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D1.4B — Budget After Two Costs</strong></p>
+<p>Complete budget_left(budget, food, transport). Return budget minus food minus transport.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D1.4C — Participant Cost</strong></p>
+<p>Complete participant_cost(attendees, food_per_person, transport_per_person). Return attendees multiplied by the sum of the two per-person costs.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+  </div>
+</article>

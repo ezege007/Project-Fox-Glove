@@ -1,0 +1,26 @@
+question_id,checkpoint,day,title,filename,classification
+B1,Day 2 Baseline,2,Return a Sum,Day_2_Baseline/b1_return-a-sum.html,Core
+B2,Day 2 Baseline,2,Calculate a Total Cost,Day_2_Baseline/b2_calculate-a-total-cost.html,Core
+B3,Day 2 Baseline,2,Build an Exact Message,Day_2_Baseline/b3_build-an-exact-message.html,Core
+B4,Day 2 Baseline,2,Repair Arithmetic,Day_2_Baseline/b4_repair-arithmetic.html,Core
+B5,Day 2 Baseline,2,Make a Decision,Day_2_Baseline/b5_make-a-decision.html,Core
+B6,Day 2 Baseline,2,Use a Helper,Day_2_Baseline/b6_use-a-helper.html,Core
+B7,Day 2 Baseline,2,Stretch: Read from a List,Day_2_Baseline/b7_stretch-read-from-a-list.html,Stretch
+B8,Day 2 Baseline,2,Stretch: Repeat a Calculation,Day_2_Baseline/b8_stretch-repeat-a-calculation.html,Stretch
+B9,Day 2 Baseline,2,Stretch: Read a Dictionary Value,Day_2_Baseline/b9_stretch-read-a-dictionary-value.html,Stretch
+B10,Day 2 Baseline,2,Stretch: Count Matching Values,Day_2_Baseline/b10_stretch-count-matching-values.html,Stretch
+F1,Day 5 Final,5,"Return, Do Not Print",Day_5_Final/f1_return-do-not-print.html,Core
+F2,Day 5 Final,5,Add Two Costs,Day_5_Final/f2_add-two-costs.html,Core
+F3,Day 5 Final,5,Multiply Quantity by Unit Price,Day_5_Final/f3_multiply-quantity-by-unit-price.html,Core
+F4,Day 5 Final,5,Calculate Remaining Budget,Day_5_Final/f4_calculate-remaining-budget.html,Core
+F5,Day 5 Final,5,Return an Exact Message,Day_5_Final/f5_return-an-exact-message.html,Core
+F6,Day 5 Final,5,Build a Budget Message,Day_5_Final/f6_build-a-budget-message.html,Core
+F7,Day 5 Final,5,Exact Boundary Comparison,Day_5_Final/f7_exact-boundary-comparison.html,Core
+F8,Day 5 Final,5,Two-Branch Decision,Day_5_Final/f8_two-branch-decision.html,Core
+F9,Day 5 Final,5,Use a Supplied Helper,Day_5_Final/f9_use-a-supplied-helper.html,Core
+F10,Day 5 Final,5,Reuse a Returned Value,Day_5_Final/f10_reuse-a-returned-value.html,Core
+F11,Day 5 Final,5,Repair Faulty Arithmetic,Day_5_Final/f11_repair-faulty-arithmetic.html,Core
+F12,Day 5 Final,5,Repair a Boundary Bug,Day_5_Final/f12_repair-a-boundary-bug.html,Core
+F13,Day 5 Final,5,Complete and Test a Status Function,Day_5_Final/f13_complete-and-test-a-status-function.html,Core
+F14,Day 5 Final,5,Calculate Then Decide,Day_5_Final/f14_calculate-then-decide.html,Core
+F15,Day 5 Final,5,Mini Integrated Summary,Day_5_Final/f15_mini-integrated-summary.html,Core

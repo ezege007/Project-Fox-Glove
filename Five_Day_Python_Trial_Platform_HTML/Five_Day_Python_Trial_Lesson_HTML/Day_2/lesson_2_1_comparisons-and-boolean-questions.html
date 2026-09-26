@@ -1,0 +1,68 @@
+<article class="l2e-lesson" data-day="2" data-lesson="2.1" data-linked-drills="[&quot;D2.1A \u2014 Can the Budget Cover the Cost?&quot;, &quot;D2.1B \u2014 Compare Two Totals&quot;]">
+  <header class="lesson-header">
+    <p class="lesson-kicker">LESSON 2.1</p>
+    <h1>Comparisons and Boolean Questions</h1>
+  </header>
+
+  <div class="lesson-body">
+<table class="lesson-meta-table">
+<thead>
+<tr>
+  <th><strong>Estimated time</strong></th>
+  <th>30–35 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Learning purpose</strong></td>
+  <td>Teach programs to ask yes/no questions about values.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="lesson-section-title">What you should be able to do</h2>
+<ul>
+<li><p>Explain what True and False represent.</p>
+</li>
+<li><p>Use ==, &gt;, &lt;, &gt;= and &lt;= in simple comparisons.</p>
+</li>
+<li><p>Distinguish assignment `=` from equality comparison `==`.</p>
+</li>
+<li><p>Predict the result of a comparison before running code.</p>
+</li>
+</ul>
+<h3>Programs often need questions, not only calculations</h3>
+<p>Yesterday most functions followed one straight path: receive values, calculate something and return an answer. Many useful programs also need to ask questions. Is the budget enough? Is the total exactly equal to the expected value? Has capacity been reached? A comparison answers a question with one of two Boolean values: `True` or `False`.</p>
+<p>`budget &gt;= cost` asks whether budget is greater than or equal to cost. `actual == expected` asks whether two values are equal. The double equals sign is important: a single `=` assigns a value to a name, while `==` compares two values.</p>
+<h3>Boundary values matter</h3>
+<p>Words such as “at least”, “at most”, “greater than”, “less than” and “exactly” translate into different comparisons. “At least 18” includes 18, so `age &gt;= 18` is appropriate. “More than 18” does not include 18, so `age &gt; 18` is different. Small wording differences create real logic differences.</p>
+<h3>Predict first</h3>
+<p>For each comparison, choose a value just below the boundary, exactly on the boundary, and just above it. If the rule is “budget is enough when budget &gt;= cost”, test 699, 700 and 701 against a cost of 700. This pattern helps reveal off-by-one and equality mistakes early.</p>
+<h3>Worked example</h3>
+<p>def can_afford(budget, cost):<br />
+return budget &gt;= cost</p>
+<p>def matches_expected(actual, expected):<br />
+return actual == expected</p>
+<p>can_afford(700, 700) returns True because equality is included. can_afford(699, 700) returns False.</p>
+<h2 class="lesson-section-title">Common mistakes to watch for</h2>
+<ul>
+<li><p>Using `=` instead of `==` for equality.</p>
+</li>
+<li><p>Using `&gt;` when the words say “greater than or equal to”.</p>
+</li>
+<li><p>Testing only values far away from the boundary.</p>
+</li>
+</ul>
+<h2 class="lesson-section-title">Peer learning checkpoint</h2>
+<p>Create one English rule containing “at least” or “at most.” Ask a peer to choose the correct comparison operator and explain why equality is or is not included.</p>
+<h2 class="lesson-section-title resources-title">Optional resources</h2>
+<p><strong>Watch:</strong> <a href="https://www.youtube.com/watch?v=DZwmZ8Usvnk" target="_blank" rel="noopener noreferrer"><u>Conditionals and Booleans (Corey Schafer)</u></a></p>
+<p><strong>Read:</strong> <a href="https://docs.python.org/3/tutorial/controlflow.html" target="_blank" rel="noopener noreferrer"><u>Python control flow reference (optional)</u></a></p>
+<h2 class="lesson-section-title drills-title">Linked drills — test what you just learned</h2>
+<p><strong>D2.1A — Can the Budget Cover the Cost?</strong></p>
+<p>Return True when budget is greater than or equal to cost; otherwise return False.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D2.1B — Compare Two Totals</strong></p>
+<p>Return True when actual is exactly equal to expected; otherwise return False.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+  </div>
+</article>

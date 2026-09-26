@@ -1,0 +1,58 @@
+<article class="l2e-lesson" data-day="3" data-lesson="3.3" data-linked-drills="[&quot;D3.3A \u2014 Test a Component with Zero&quot;, &quot;D3.3B \u2014 Repair a Teammate Component&quot;]">
+  <header class="lesson-header">
+    <p class="lesson-kicker">LESSON 3.3</p>
+    <h1>Test Your Component, Document a Handover and Repair Peer Code Carefully</h1>
+  </header>
+
+  <div class="lesson-body">
+<table class="lesson-meta-table">
+<thead>
+<tr>
+  <th><strong>Estimated time</strong></th>
+  <th>35–40 minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Learning purpose</strong></td>
+  <td>Make individual work safe to integrate and easy for a teammate to review.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="lesson-section-title">What you should be able to do</h2>
+<ul>
+<li><p>Test a component independently before handing it over.</p>
+</li>
+<li><p>Include normal, zero and boundary cases when relevant.</p>
+</li>
+<li><p>Write a short handover note that another learner can use.</p>
+</li>
+<li><p>Review peer code by identifying the smallest necessary change rather than taking over.</p>
+</li>
+</ul>
+<h3>A component is not ready because it ran once</h3>
+<p>Before handing your function to the team, run the published sample and at least one additional case. If zero is allowed, include it. If a boundary exists, include equality. Record the expected and actual result. This gives the integrator evidence that the component behaved correctly on its own.</p>
+<h3>A useful handover is short and concrete</h3>
+<p>A handover note can contain four lines: component owned; what it returns; tests run; any assumption or unresolved issue. This is enough for another learner to integrate your work without guessing what you intended.</p>
+<h3>Review without taking over</h3>
+<p>When reviewing peer code, first explain the observed problem and the evidence for it. Ask the owner what they think is happening. Point to the relevant rule or test. Only after the owner has had a chance to reason should you suggest a specific change. A reviewer who replaces the whole solution removes learning evidence from the owner.</p>
+<h2 class="lesson-section-title">Common mistakes to watch for</h2>
+<ul>
+<li><p>Handing over untested code.</p>
+</li>
+<li><p>Saying “it works” without listing a test result.</p>
+</li>
+<li><p>Rewriting a teammate’s entire function when one operator is wrong.</p>
+</li>
+</ul>
+<h2 class="lesson-section-title">Peer learning checkpoint</h2>
+<p>Exchange one component with another learner. The reviewer must first state one passing test and one question before suggesting any code change.</p>
+<h2 class="lesson-section-title drills-title">Linked drills — test what you just learned</h2>
+<p><strong>D3.3A — Test a Component with Zero</strong></p>
+<p>Complete venue_only_total so it returns venue_cost when attendees is zero and otherwise returns attendee costs plus venue. Use the supplied participant_cost helper.</p>
+<p><strong>Type:</strong> Core</p>
+<p><strong>D3.3B — Repair a Teammate Component</strong></p>
+<p>A teammate wrote the wrong operation. Repair event_total so it adds venue_cost after calling participant_cost.</p>
+<p><strong>Type:</strong> Reinforcement</p>
+  </div>
+</article>
