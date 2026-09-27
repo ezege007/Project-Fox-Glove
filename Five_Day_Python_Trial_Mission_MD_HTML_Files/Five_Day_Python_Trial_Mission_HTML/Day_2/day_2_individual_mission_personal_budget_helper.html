@@ -1,0 +1,195 @@
+<article class="l2e-mission individual-mission"
+  data-day="2"
+  data-mission="personal-budget-helper"
+  data-weight="25">
+
+  <header class="mission-header">
+    <p class="mission-kicker">DAY 2 · INDIVIDUAL MISSION · 25% OF FINAL SELECTION SCORE</p>
+    <h1>Personal Budget Helper</h1>
+    <p class="mission-intro">
+      This guided mission brings together the Python and problem-solving habits you have practised so far.
+      Your goal is to understand a brief, build two small functions, test them, improve them after feedback,
+      and explain what changed.
+    </p>
+  </header>
+
+  <section class="mission-section">
+    <h2>Mission Goal</h2>
+    <p>Build a small Personal Budget Helper with these two functions:</p>
+    <pre><code class="language-python">def budget_remaining(budget, food, transport):
+    pass
+
+def budget_message(name, remaining):
+    pass</code></pre>
+  </section>
+
+  <section class="mission-section">
+    <h2>What You Are Building</h2>
+
+    <h3>Function 1 — <code>budget_remaining</code></h3>
+    <p>It receives <code>budget</code>, <code>food</code>, and <code>transport</code>.</p>
+    <p>It must return:</p>
+    <pre><code>budget - food - transport</code></pre>
+    <p>Negative remaining values are allowed.</p>
+
+    <h3>Function 2 — <code>budget_message</code></h3>
+    <p>It receives <code>name</code> and <code>remaining</code>.</p>
+    <p>It must return a message in this exact pattern:</p>
+    <pre><code>Ada has 500 naira remaining.</code></pre>
+    <p>The name and amount must come from the supplied arguments.</p>
+  </section>
+
+  <section class="mission-section">
+    <h2>Acceptance Criteria</h2>
+    <ul>
+      <li><code>budget_remaining</code> returns <code>budget - food - transport</code>.</li>
+      <li>A zero expense is handled correctly.</li>
+      <li>An overspend can produce a negative remaining amount.</li>
+      <li><code>budget_message</code> uses the supplied <code>name</code>.</li>
+      <li><code>budget_message</code> uses the supplied <code>remaining</code> value.</li>
+      <li>The returned message matches the required wording and punctuation exactly.</li>
+      <li>Neither function asks the user for input.</li>
+      <li>Neither function prints unrelated output.</li>
+      <li>You preserve evidence of your first complete attempt before feedback.</li>
+      <li>You retest after making a change.</li>
+    </ul>
+  </section>
+
+  <section class="mission-section guided-step">
+    <h2>Step 1 — Understand the Brief Before Coding</h2>
+    <p>Write down the inputs, processing, and required output for each function in your own words before you begin.</p>
+  </section>
+
+  <section class="mission-section guided-step">
+    <h2>Step 2 — Predict the Results</h2>
+    <p>Predict these results before running code:</p>
+    <table class="mission-tests">
+      <thead>
+        <tr><th>Budget</th><th>Food</th><th>Transport</th><th>Expected result</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2000</td><td>900</td><td>600</td><td>500</td></tr>
+        <tr><td>1500</td><td>0</td><td>0</td><td>1500</td></tr>
+        <tr><td>1000</td><td>800</td><td>500</td><td>-300</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="mission-section guided-step">
+    <h2>Step 3 — Implement <code>budget_remaining</code></h2>
+    <pre><code class="language-python">def budget_remaining(budget, food, transport):
+    pass</code></pre>
+    <p>Replace <code>pass</code> with your implementation. Do not hard-code the sample answers.</p>
+  </section>
+
+  <section class="mission-section guided-step">
+    <h2>Step 4 — Test <code>budget_remaining</code></h2>
+    <p>Run at least a normal case, a zero case, and an overspend case.</p>
+    <p>For each test, record the input, expected result, actual result, and pass/fail.</p>
+  </section>
+
+  <section class="mission-section guided-step">
+    <h2>Step 5 — Implement <code>budget_message</code></h2>
+    <pre><code class="language-python">def budget_message(name, remaining):
+    pass</code></pre>
+    <p>The required pattern is:</p>
+    <pre><code>Ada has 500 naira remaining.</code></pre>
+    <p>Examples:</p>
+    <table class="mission-tests">
+      <thead><tr><th>Call</th><th>Expected result</th></tr></thead>
+      <tbody>
+        <tr><td><code>budget_message("Ada", 500)</code></td><td><code>"Ada has 500 naira remaining."</code></td></tr>
+        <tr><td><code>budget_message("Tobi", -300)</code></td><td><code>"Tobi has -300 naira remaining."</code></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="mission-section">
+    <h2>Test Your Full Mission</h2>
+    <pre><code class="language-python">remaining = budget_remaining(2000, 900, 600)
+print(remaining)
+
+message = budget_message("Ada", remaining)
+print(message)</code></pre>
+    <p>
+      Your functions themselves should return values. You may use <code>print()</code> outside the functions while testing.
+    </p>
+  </section>
+
+  <section class="mission-section">
+    <h2>Save Your First Complete Attempt</h2>
+    <ol>
+      <li>Save your files.</li>
+      <li>Make sure the code runs.</li>
+      <li>Preserve this version before receiving feedback.</li>
+      <li>Commit it to your assigned Gitea repository.</li>
+    </ol>
+    <p>A useful commit message is:</p>
+    <pre><code>Complete first Personal Budget Helper attempt</code></pre>
+  </section>
+
+  <section class="mission-section">
+    <h2>Feedback Round</h2>
+    <p>Receive one specific review point or hint from a peer or coding mentor.</p>
+    <p>Good feedback identifies a concrete issue without replacing your work.</p>
+    <ul>
+      <li>“Your overspend case is returning the wrong value.”</li>
+      <li>“Your message is missing the final full stop.”</li>
+      <li>“Your function prints the answer instead of returning it.”</li>
+    </ul>
+  </section>
+
+  <section class="mission-section">
+    <h2>Improve One Thing at a Time</h2>
+    <ol>
+      <li>Identify the exact problem.</li>
+      <li>Change only what is needed.</li>
+      <li>Rerun the failing case.</li>
+      <li>Rerun at least one earlier passing case.</li>
+      <li>Record what changed and why.</li>
+    </ol>
+    <p>Then save and commit the improved version.</p>
+  </section>
+
+  <section class="mission-section">
+    <h2>Evidence You Must Submit</h2>
+    <ol>
+      <li><strong>Final code</strong> for both required functions.</li>
+      <li><strong>Test evidence</strong> showing a normal, zero, overspend, and message-format case.</li>
+      <li><strong>First attempt evidence</strong> from before feedback.</li>
+      <li><strong>Feedback received</strong> as one specific review point.</li>
+      <li><strong>Improved attempt</strong> showing what changed.</li>
+      <li><strong>Short reflection</strong> explaining your learning.</li>
+    </ol>
+  </section>
+
+  <section class="mission-section">
+    <h2>Short Reflection</h2>
+    <ol>
+      <li>What part of the mission was easiest for you?</li>
+      <li>What test exposed a mistake or gave you confidence that your code was correct?</li>
+      <li>What feedback did you receive?</li>
+      <li>What exactly did you change after the feedback?</li>
+      <li>If you had ten more minutes, what would you check again?</li>
+    </ol>
+  </section>
+
+  <section class="mission-section mission-checklist">
+    <h2>Before You Submit</h2>
+    <ul>
+      <li>☐ I used the required function names and parameters.</li>
+      <li>☐ I used supplied values instead of hard-coding examples.</li>
+      <li>☐ My functions return values.</li>
+      <li>☐ I tested normal, zero, and overspend cases.</li>
+      <li>☐ My message matches the required format.</li>
+      <li>☐ I preserved my first complete attempt.</li>
+      <li>☐ I recorded the feedback I received.</li>
+      <li>☐ I retested after making my improvement.</li>
+      <li>☐ I can explain my own code.</li>
+    </ul>
+  </section>
+
+  <footer class="mission-footer">
+    <p><strong>Mission pattern:</strong> understand → build → test → receive feedback → improve → explain.</p>
+  </footer>
+</article>

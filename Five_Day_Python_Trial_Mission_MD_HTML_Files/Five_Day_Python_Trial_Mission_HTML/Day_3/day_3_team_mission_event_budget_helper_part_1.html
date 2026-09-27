@@ -1,0 +1,134 @@
+<article class="l2e-mission team-mission"
+  data-day="3"
+  data-mission="event-budget-helper-part-1">
+
+  <header class="mission-header">
+    <p class="mission-kicker">DAY 3 · TEAM MISSION · PART 1</p>
+    <h1>Event Budget Helper — Build, Test and Integrate</h1>
+    <p>
+      Teams of 2–4 expand the Day 2 budget idea into a small shared program.
+      The challenge is component ownership, testing, review, handover, and integration.
+    </p>
+  </header>
+
+  <section class="mission-section">
+    <h2>Mission Goal</h2>
+
+    <h3>A — <code>participant_cost</code></h3>
+    <pre><code class="language-python">def participant_cost(attendees, food_per_person, transport_per_person):
+    pass</code></pre>
+    <p>Return <code>attendees * (food_per_person + transport_per_person)</code>.</p>
+
+    <h3>B — <code>event_total</code></h3>
+    <pre><code class="language-python">def event_total(attendees, food_per_person, transport_per_person, venue_cost):
+    pass</code></pre>
+    <p>Call <code>participant_cost</code>, add <code>venue_cost</code>, and return the total.</p>
+
+    <h3>C — <code>budget_status</code></h3>
+    <pre><code class="language-python">def budget_status(budget, total):
+    pass</code></pre>
+    <p>Return <code>"Within budget"</code> when <code>total &lt;= budget</code>; otherwise return <code>"Over budget"</code>.</p>
+
+    <h3>D — <code>event_summary</code></h3>
+    <pre><code class="language-python">def event_summary(event_name, total, status):
+    pass</code></pre>
+    <p>Return an exact readable summary using the supplied values.</p>
+  </section>
+
+  <section class="mission-section">
+    <h2>Team Rule: Divide the Work, Not the Understanding</h2>
+    <p>By the end of Day 3, every learner must have:</p>
+    <ul>
+      <li>one attributable code contribution;</li>
+      <li>at least one test result;</li>
+      <li>at least one review action;</li>
+      <li>enough understanding to explain what their component receives and returns.</li>
+    </ul>
+  </section>
+
+  <section class="mission-section">
+    <h2>Recommended Team Workflow</h2>
+    <ol>
+      <li>Read all four function contracts together.</li>
+      <li>Assign clear component ownership.</li>
+      <li>Predict the full program flow before coding.</li>
+      <li>Build and test components separately.</li>
+      <li>Write short technical handover notes.</li>
+      <li>Review a teammate component without taking it over.</li>
+      <li>Integrate one component at a time.</li>
+    </ol>
+  </section>
+
+  <section class="mission-section">
+    <h2>Shared Prediction Case</h2>
+    <pre><code>attendees = 10
+food_per_person = 800
+transport_per_person = 200
+venue_cost = 5000
+budget = 16000
+event_name = "Study Day"</code></pre>
+    <table class="mission-tests">
+      <thead><tr><th>Stage</th><th>Expected result</th></tr></thead>
+      <tbody>
+        <tr><td><code>participant_cost</code></td><td><code>10000</code></td></tr>
+        <tr><td><code>event_total</code></td><td><code>15000</code></td></tr>
+        <tr><td><code>budget_status</code></td><td><code>"Within budget"</code></td></tr>
+        <tr><td><code>event_summary</code></td><td><code>"Study Day: total 15000 naira. Within budget."</code></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="mission-section">
+    <h2>Minimum Component Tests</h2>
+    <ul>
+      <li><strong>participant_cost:</strong> normal attendees and zero attendees.</li>
+      <li><strong>event_total:</strong> normal attendee cost plus venue, and zero attendees with a venue.</li>
+      <li><strong>budget_status:</strong> below budget, exact budget, and over budget.</li>
+      <li><strong>event_summary:</strong> required example and one different event.</li>
+    </ul>
+  </section>
+
+  <section class="mission-section">
+    <h2>Short Handover Format</h2>
+    <pre><code>Component: budget_status
+Returns: "Within budget" when total &lt;= budget, otherwise "Over budget"
+Tests: below budget, exact budget, over budget
+Issue: none</code></pre>
+  </section>
+
+  <section class="mission-section">
+    <h2>Integrate in Small Steps</h2>
+    <pre><code>participant_cost
+      ↓
+event_total
+      ↓
+budget_status
+      ↓
+event_summary</code></pre>
+    <p>Run a test after connecting each step.</p>
+  </section>
+
+  <section class="mission-section">
+    <h2>Day 3 Acceptance Case</h2>
+    <pre><code class="language-python">people = participant_cost(10, 800, 200)
+total = event_total(10, 800, 200, 5000)
+status = budget_status(16000, total)
+summary = event_summary("Study Day", total, status)</code></pre>
+  </section>
+
+  <section class="mission-section">
+    <h2>Day 3 Evidence Required</h2>
+    <ul>
+      <li>each learner's code contribution;</li>
+      <li>at least one test result per learner;</li>
+      <li>one review action per learner;</li>
+      <li>one short handover note per learner;</li>
+      <li>the first integrated Day 3 program;</li>
+      <li>any unresolved issue to continue on Day 4.</li>
+    </ul>
+  </section>
+
+  <footer class="mission-footer">
+    <p><strong>Day 3 finish line:</strong> clear ownership, tested components, visible contribution, review evidence, and a first integrated version.</p>
+  </footer>
+</article>

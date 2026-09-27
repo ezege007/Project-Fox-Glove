@@ -1,0 +1,143 @@
+<article class="l2e-mission team-mission"
+  data-day="4"
+  data-mission="event-budget-helper-part-2">
+
+  <header class="mission-header">
+    <p class="mission-kicker">DAY 4 · TEAM MISSION · PART 2</p>
+    <h1>Event Budget Helper — Integrate, Cross-Test, Improve and Inspect</h1>
+    <p>
+      Day 4 turns the team's first integrated version into verified evidence.
+      Finish the program, test important cases, cross-test with another team, improve carefully, retest, and prepare for inspection.
+    </p>
+  </header>
+
+  <section class="mission-section">
+    <h2>Mission Goal</h2>
+    <p>Finish and verify the shared Event Budget Helper with these four components:</p>
+    <pre><code class="language-python">participant_cost(attendees, food_per_person, transport_per_person)
+event_total(attendees, food_per_person, transport_per_person, venue_cost)
+budget_status(budget, total)
+event_summary(event_name, total, status)</code></pre>
+  </section>
+
+  <section class="mission-section">
+    <h2>1. Finish the Four Components</h2>
+    <p>Rerun each component's Day 3 tests before integration. If a component fails, record the failing input, expected result, and actual result before changing code.</p>
+  </section>
+
+  <section class="mission-section">
+    <h2>2. Run Shared Acceptance Tests</h2>
+    <ul>
+      <li><strong>Normal event</strong> — standard participant and venue costs.</li>
+      <li><strong>Zero attendees</strong> — venue cost must still be included.</li>
+      <li><strong>Exact budget</strong> — <code>total == budget</code> must return <code>"Within budget"</code>.</li>
+      <li><strong>Over budget</strong> — <code>total &gt; budget</code> must return <code>"Over budget"</code>.</li>
+      <li><strong>Summary output</strong> — use the supplied event name, total, and status.</li>
+    </ul>
+  </section>
+
+  <section class="mission-section">
+    <h2>3. Record Test Evidence</h2>
+    <table class="mission-tests">
+      <thead><tr><th>Input / case</th><th>Expected</th><th>Actual</th><th>Pass / Fail</th></tr></thead>
+      <tbody>
+        <tr><td>Normal event</td><td>...</td><td>...</td><td>...</td></tr>
+        <tr><td>Zero attendees</td><td>...</td><td>...</td><td>...</td></tr>
+        <tr><td>Exact budget</td><td>...</td><td>...</td><td>...</td></tr>
+        <tr><td>Over budget</td><td>...</td><td>...</td><td>...</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="mission-section">
+    <h2>4. Cross-Test with Another Team</h2>
+    <p>Exchange the integrated program with another team. Report defects using:</p>
+    <pre><code>Input:
+Expected:
+Actual:
+Location or component suspected:</code></pre>
+    <p>Do not replace another team's implementation. Make the failure reproducible.</p>
+  </section>
+
+  <section class="mission-section">
+    <h2>5. Implement or Verify an Improvement</h2>
+    <p>Every learner must implement or verify at least one documented improvement.</p>
+    <ul>
+      <li>correct a wrong arithmetic operation;</li>
+      <li>correct an exact-boundary condition;</li>
+      <li>fix summary formatting;</li>
+      <li>repair integration between components;</li>
+      <li>add a missing test;</li>
+      <li>verify that a peer fix solved the reported failure.</li>
+    </ul>
+  </section>
+
+  <section class="mission-section">
+    <h2>6. Retest After Every Fix</h2>
+    <ol>
+      <li>Rerun the previously failing case.</li>
+      <li>Rerun at least one related case that passed before.</li>
+      <li>Confirm that the fix did not create a regression.</li>
+    </ol>
+  </section>
+
+  <section class="mission-section">
+    <h2>7. Prepare for Coding Mentor Inspection</h2>
+    <p>Each learner should be ready to explain:</p>
+    <ol>
+      <li>what component or change they owned;</li>
+      <li>what requirement applied;</li>
+      <li>what problem or test they worked on;</li>
+      <li>what they changed or verified;</li>
+      <li>what evidence proves it works;</li>
+      <li>one area of teammate code they reviewed.</li>
+    </ol>
+    <p>Use this explanation pattern:</p>
+    <pre><code>Requirement → observed problem → change → evidence</code></pre>
+  </section>
+
+  <section class="mission-section">
+    <h2>Final Team Submission</h2>
+    <h3>Shared team evidence</h3>
+    <ul>
+      <li>final integrated program;</li>
+      <li>final acceptance-test evidence;</li>
+      <li>cross-team defect reports;</li>
+      <li>corrected and retested version;</li>
+      <li>shared final result.</li>
+    </ul>
+
+    <h3>Individual evidence</h3>
+    <ul>
+      <li>attributable code contribution;</li>
+      <li>test evidence;</li>
+      <li>one review or cross-test action;</li>
+      <li>one documented improvement or verification;</li>
+      <li>handover/contribution record;</li>
+      <li>explanation during mentor inspection.</li>
+    </ul>
+  </section>
+
+  <section class="mission-section mission-checklist">
+    <h2>Final Mission Checklist</h2>
+    <ul>
+      <li>☐ All four required components are present.</li>
+      <li>☐ The integrated program runs.</li>
+      <li>☐ Normal-event behaviour was tested.</li>
+      <li>☐ Zero-attendee behaviour was tested.</li>
+      <li>☐ Exact-budget behaviour was tested.</li>
+      <li>☐ Over-budget behaviour was tested.</li>
+      <li>☐ Summary formatting was tested.</li>
+      <li>☐ Cross-team testing was completed.</li>
+      <li>☐ Defects were recorded with input, expected and actual results.</li>
+      <li>☐ Fixes and earlier passing behaviour were retested.</li>
+      <li>☐ Every learner has visible technical evidence.</li>
+      <li>☐ Every learner can explain their own work.</li>
+      <li>☐ The team is ready for coding mentor inspection.</li>
+    </ul>
+  </section>
+
+  <footer class="mission-footer">
+    <p><strong>Mission pattern:</strong> integrate → test → find evidence → repair carefully → retest → explain ownership.</p>
+  </footer>
+</article>
