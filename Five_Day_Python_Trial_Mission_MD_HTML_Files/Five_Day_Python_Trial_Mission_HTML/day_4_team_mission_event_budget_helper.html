@@ -1,0 +1,391 @@
+<article class="l2e-mission team-mission" data-day="4" data-mission="event-budget-helper">
+<h1>Day 4 Team Mission — Event Budget Helper</h1>
+<blockquote>
+<p><strong>Full-Day Team Mission · Teams of 2–4</strong></p>
+</blockquote>
+<p>Day 3 is now a <strong>lessons-and-drills day only</strong>. Those lessons and drills prepare candidates for this mission.</p>
+<p>Day 4 is the complete team mission. The activities that were previously split across Day 3 and Day 4 are now combined into one professional build cycle:</p>
+<blockquote>
+<p><strong>plan → build → test → hand over → review → integrate → cross-test → improve → retest → explain</strong></p>
+</blockquote>
+<hr />
+<h2>Mission Goal</h2>
+<p>Build a working <strong>Event Budget Helper</strong> that can:</p>
+<ol>
+<li>calculate participant-related costs;</li>
+<li>add the venue cost to get the total event cost;</li>
+<li>decide whether the event is within budget;</li>
+<li>return a clear event summary.</li>
+</ol>
+<p>Use these four functions:</p>
+<pre><code class="language-python">def participant_cost(attendees, food_per_person, transport_per_person):
+    pass
+
+def event_total(attendees, food_per_person, transport_per_person, venue_cost):
+    pass
+
+def budget_status(budget, total):
+    pass
+
+def event_summary(event_name, total, status):
+    pass
+</code></pre>
+<hr />
+<h2>Component Contracts</h2>
+<h3>A. <code>participant_cost</code></h3>
+<p>Return:</p>
+<pre><code class="language-text">attendees * (food_per_person + transport_per_person)
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-text">participant_cost(10, 800, 200) =&gt; 10000
+</code></pre>
+<h3>B. <code>event_total</code></h3>
+<p>It must:</p>
+<ol>
+<li>call <code>participant_cost</code>;</li>
+<li>add <code>venue_cost</code>;</li>
+<li>return the combined total.</li>
+</ol>
+<p>Example:</p>
+<pre><code class="language-text">event_total(10, 800, 200, 5000) =&gt; 15000
+</code></pre>
+<h3>C. <code>budget_status</code></h3>
+<p>Return <code>&quot;Within budget&quot;</code> when:</p>
+<pre><code class="language-text">total &lt;= budget
+</code></pre>
+<p>Otherwise return <code>&quot;Over budget&quot;</code>.</p>
+<p>The exact-budget boundary matters.</p>
+<pre><code class="language-text">budget_status(15000, 15000) =&gt; &quot;Within budget&quot;
+</code></pre>
+<h3>D. <code>event_summary</code></h3>
+<p>Return a readable message using the supplied values.</p>
+<p>Required pattern:</p>
+<pre><code class="language-text">Study Day: total 15000 naira. Within budget.
+</code></pre>
+<p>Do not hard-code the event name, total, or status.</p>
+<hr />
+<h2>Team Rule — Divide the Work, Not the Understanding</h2>
+<p>Every learner must have:</p>
+<ul>
+<li>an attributable code contribution;</li>
+<li>at least one test they personally ran or verified;</li>
+<li>at least one peer-review or cross-testing action;</li>
+<li>at least one documented improvement, fix, or verification;</li>
+<li>enough understanding to explain how their work connects to the full program.</li>
+</ul>
+<p>A learner may own one component, but every learner should understand the complete flow.</p>
+<hr />
+<h2>Phase 1 — Plan and Assign Ownership</h2>
+<p>Agree on:</p>
+<ul>
+<li>exact function names;</li>
+<li>exact parameters;</li>
+<li>exact return values;</li>
+<li>dependencies between functions;</li>
+<li>who owns each component.</li>
+</ul>
+<p>Example:</p>
+<table>
+<thead>
+<tr>
+  <th>Learner</th>
+  <th>Primary responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Learner A</td>
+  <td><code>participant_cost</code></td>
+</tr>
+<tr>
+  <td>Learner B</td>
+  <td><code>event_total</code></td>
+</tr>
+<tr>
+  <td>Learner C</td>
+  <td><code>budget_status</code></td>
+</tr>
+<tr>
+  <td>Learner D</td>
+  <td><code>event_summary</code></td>
+</tr>
+</tbody>
+</table>
+<p>Teams with fewer than four learners may assign more than one component to a learner.</p>
+<hr />
+<h2>Phase 2 — Predict Before Coding</h2>
+<p>Use:</p>
+<pre><code class="language-text">event_name = &quot;Study Day&quot;
+attendees = 10
+food_per_person = 800
+transport_per_person = 200
+venue_cost = 5000
+budget = 16000
+</code></pre>
+<p>Predict:</p>
+<table>
+<thead>
+<tr>
+  <th>Stage</th>
+  <th>Expected result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>participant_cost</code></td>
+  <td><code>10000</code></td>
+</tr>
+<tr>
+  <td><code>event_total</code></td>
+  <td><code>15000</code></td>
+</tr>
+<tr>
+  <td><code>budget_status</code></td>
+  <td><code>&quot;Within budget&quot;</code></td>
+</tr>
+<tr>
+  <td><code>event_summary</code></td>
+  <td><code>&quot;Study Day: total 15000 naira. Within budget.&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Phase 3 — Build and Test Components</h2>
+<p>Each component owner should:</p>
+<ol>
+<li>implement the assigned function;</li>
+<li>run the required example;</li>
+<li>run at least one additional test;</li>
+<li>record expected and actual results;</li>
+<li>save the work;</li>
+<li>commit the contribution through the assigned Gitea workflow.</li>
+</ol>
+<p>Do not wait until the whole program is assembled before testing.</p>
+<h3>Minimum component tests</h3>
+<p><strong><code>participant_cost</code></strong></p>
+<ul>
+<li>normal attendee count;</li>
+<li>zero attendees.</li>
+</ul>
+<p><strong><code>event_total</code></strong></p>
+<ul>
+<li>normal participant cost plus venue;</li>
+<li>zero attendees with a non-zero venue.</li>
+</ul>
+<p><strong><code>budget_status</code></strong></p>
+<ul>
+<li>below budget;</li>
+<li>exactly equal to budget;</li>
+<li>over budget.</li>
+</ul>
+<p><strong><code>event_summary</code></strong></p>
+<ul>
+<li>required Study Day example;</li>
+<li>one different event name and total.</li>
+</ul>
+<hr />
+<h2>Phase 4 — Handover</h2>
+<p>Each owner should provide:</p>
+<pre><code class="language-text">Component:
+What it receives:
+What it returns:
+Tests run:
+Known issue, if any:
+</code></pre>
+<p>Keep the handover short and technical.</p>
+<hr />
+<h2>Phase 5 — Peer Review</h2>
+<p>Every learner should review at least one teammate contribution.</p>
+<p>A useful review should:</p>
+<ul>
+<li>identify the requirement being checked;</li>
+<li>inspect the relevant code;</li>
+<li>run or inspect a test;</li>
+<li>ask the owner a specific question;</li>
+<li>report a concrete issue if one exists.</li>
+</ul>
+<p>Do not take over a teammate's work.</p>
+<hr />
+<h2>Phase 6 — Integrate One Step at a Time</h2>
+<p>Integrate in this order:</p>
+<pre><code class="language-text">participant_cost
+      ↓
+event_total
+      ↓
+budget_status
+      ↓
+event_summary
+</code></pre>
+<p>After every connection:</p>
+<ol>
+<li>run a test;</li>
+<li>compare expected and actual results;</li>
+<li>resolve failures before adding the next step.</li>
+</ol>
+<hr />
+<h2>Full Acceptance Case</h2>
+<pre><code class="language-python">people = participant_cost(10, 800, 200)
+total = event_total(10, 800, 200, 5000)
+status = budget_status(16000, total)
+summary = event_summary(&quot;Study Day&quot;, total, status)
+</code></pre>
+<p>Expected:</p>
+<pre><code class="language-text">people  =&gt; 10000
+total   =&gt; 15000
+status  =&gt; &quot;Within budget&quot;
+summary =&gt; &quot;Study Day: total 15000 naira. Within budget.&quot;
+</code></pre>
+<hr />
+<h2>Phase 7 — Acceptance Testing</h2>
+<p>The team must test:</p>
+<ol>
+<li><strong>Normal event</strong></li>
+<li><strong>Zero attendees</strong></li>
+<li><strong>Exact budget</strong> — equality must return <code>&quot;Within budget&quot;</code></li>
+<li><strong>Over budget</strong></li>
+<li><strong>Summary formatting</strong></li>
+</ol>
+<p>Record evidence:</p>
+<table>
+<thead>
+<tr>
+  <th>Test / Input</th>
+  <th>Expected</th>
+  <th>Actual</th>
+  <th>Pass / Fail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Normal event</td>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+</tr>
+<tr>
+  <td>Zero attendees</td>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+</tr>
+<tr>
+  <td>Exact budget</td>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+</tr>
+<tr>
+  <td>Over budget</td>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+</tr>
+<tr>
+  <td>Summary format</td>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+</tr>
+</tbody>
+</table>
+<p>“Everything passed” is not enough evidence.</p>
+<hr />
+<h2>Phase 8 — Cross-Test with Another Team</h2>
+<p>Exchange the integrated program with another team.</p>
+<p>Use this defect format:</p>
+<pre><code class="language-text">Input:
+Expected:
+Actual:
+Component suspected:
+</code></pre>
+<p>The reviewing team should test the program, not rewrite it.</p>
+<hr />
+<h2>Phase 9 — Improve and Retest</h2>
+<p>If a defect is found:</p>
+<ol>
+<li>identify the failing behaviour;</li>
+<li>identify the likely component;</li>
+<li>change only what is necessary;</li>
+<li>rerun the failing case;</li>
+<li>rerun at least one earlier passing case.</li>
+</ol>
+<p>This final step checks for <strong>regression</strong> — something that worked before becoming broken after a change.</p>
+<p>Every learner should be able to identify at least one improvement, fix, or verification they personally contributed to.</p>
+<hr />
+<h2>Phase 10 — Prepare for Coding Mentor Inspection</h2>
+<p>Each learner should be ready to show and explain:</p>
+<ol>
+<li>the component or change they personally owned;</li>
+<li>their own code contribution;</li>
+<li>one test they ran and its expected/actual result;</li>
+<li>how data moves through the four functions;</li>
+<li>one teammate contribution they reviewed;</li>
+<li>one defect, fix, improvement, or verification they worked on;</li>
+<li>what they retested after a change;</li>
+<li>Gitea evidence of their contribution;</li>
+<li>what cross-testing revealed.</li>
+</ol>
+<p>A strong explanation follows:</p>
+<pre><code class="language-text">requirement → observed problem → change → evidence
+</code></pre>
+<hr />
+<h2>Final Submission</h2>
+<h3>Shared team evidence</h3>
+<ul>
+<li>final integrated program;</li>
+<li>component-test evidence;</li>
+<li>acceptance-test evidence;</li>
+<li>cross-team defect report(s);</li>
+<li>corrected and retested version;</li>
+<li>shared final result.</li>
+</ul>
+<h3>Individual evidence</h3>
+<p>Every learner must show:</p>
+<ul>
+<li>attributable code contribution;</li>
+<li>at least one personal test or verification;</li>
+<li>at least one review or cross-test action;</li>
+<li>at least one documented improvement, fix, or verification;</li>
+<li>Gitea evidence where applicable;</li>
+<li>clear explanation during mentor inspection.</li>
+</ul>
+<hr />
+<h2>Final Checklist</h2>
+<ul>
+<li>[ ] All four required functions are present.</li>
+<li>[ ] Every function follows its contract.</li>
+<li>[ ] <code>event_total</code> reuses <code>participant_cost</code>.</li>
+<li>[ ] The integrated program runs.</li>
+<li>[ ] Normal-event behaviour was tested.</li>
+<li>[ ] Zero-attendee behaviour was tested.</li>
+<li>[ ] Exact-budget behaviour was tested.</li>
+<li>[ ] Over-budget behaviour was tested.</li>
+<li>[ ] Summary formatting was tested.</li>
+<li>[ ] Every learner has an attributable contribution.</li>
+<li>[ ] Every learner reviewed or cross-tested something.</li>
+<li>[ ] Cross-team testing was completed.</li>
+<li>[ ] Defects include input, expected, and actual results.</li>
+<li>[ ] Fixes were retested.</li>
+<li>[ ] Earlier passing behaviour was checked after changes.</li>
+<li>[ ] Gitea evidence is available where required.</li>
+<li>[ ] Every learner can explain their own work.</li>
+<li>[ ] The team is ready for coding mentor inspection.</li>
+</ul>
+<hr />
+<h2>What a Strong Submission Looks Like</h2>
+<p>A strong team does more than produce the correct final sentence.</p>
+<p>It shows:</p>
+<ul>
+<li>clear ownership;</li>
+<li>correct function contracts;</li>
+<li>deliberate tests;</li>
+<li>meaningful review;</li>
+<li>careful integration;</li>
+<li>evidence-based debugging;</li>
+<li>regression checks;</li>
+<li>visible individual contribution;</li>
+<li>a working final program;</li>
+<li>learners who can explain what they did and why.</li>
+</ul>
+
+</article>
